@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<!-- 데이터 베이스 연동을 위한 Connection -->
+	<bean id="DB_Info" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="org.mariadb.jdbc.Driver" />
+		<property name="url" value="jdbc:mariadb://supergo.kr:7778/kshbsu"/>
+		<property name="username" value="kshbsu"/>
+		<property name="password" value="mdHe1per!@"/>
+	</bean>
+
+	<!-- 쿼리정의 Mapper Bean -->
+	<bean id="sessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="DB_Info" />
+		<property name="mapperLocations" value="classpath*:sample/config/mappers/**/*.xml" />
+		<!-- 
+		<property name="mapperLocations">
+			<list>
+				<value>classpath:/everywhere/com/mynetgear/ccvf2/user/mapper/member/memberMapper.xml</value>
+			</list>
+		</property>
+		 -->
+		
+	</bean>
+
+	
+	
+	
+	<!-- MYBATIS 연동을 위한 Object Injection (DI) -->
+	<bean id="sqlTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sessionFactoryBean" />
+	</bean>
+
+	<!-- 트랜잭션 처리 시 필요한 Object Injection (DI) -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="DB_Info"/>
+	</bean>
+
+</beans>

@@ -32,12 +32,73 @@
 		</div>
 	</div>
 </div>
-<!-- end page title -->
 
 <div class="row">
-zzz
+	<div class="col-lg-12">
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title">검색조건</h4>
+				<p class="card-title-desc">검색주의</p>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-12">
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title">검색결과</h4>
+				<p class="card-title-desc">검색결과입니다.</p>
+
+				<div class="table-responsive">
+					<table class="table table-hover mb-0">
+						<thead class="table-light">
+							<tr>
+								<th>no</th>
+								<th>코드</th>
+								<th>코드명</th>
+								<th>코드그룹명(코드그룹)</th>
+								<th>코드값</th>
+								<th>코드설명</th>
+								<th>등록일</th>
+							</tr>
+						</thead>
+						<tbody>
+							<!-- <tr>
+								<th scope="row">1</th>
+								<td>Table cell</td>
+								<td>Table cell</td>
+								<td>Table cell</td>
+								<td>Table cell</td>
+								<td>Table cell</td>
+							</tr> -->
+						<c:forEach var="list" items="${codeGroupList}">
+							<tr>
+								<th scope="row">1</th>
+								<td>${list.code}</td>
+								<td>${list.code_name}</td>
+								<td>${list.code_group_name}(${list.code_group})</td>
+								<td>${list.code_value}</td>
+								<td>${list.code_comment}</td>
+								<td>${list.code_regdt}</td>
+							</tr>
+						</c:forEach>
+
+						</tbody>
+					</table>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+<!-- end row -->
+
+
+<!-- end page title -->
+<%-- <div class="row">
 <c:forEach var="list" items="${codeGroupList}">
 	${list.code}/${list.code_name}/${list.code_group}/${list.code_group_name}/${list.code_value}/${list.code_comment}/${list.code_regdt}<br/>
 </c:forEach>
 </div> <!-- end row-->
-
+ --%>

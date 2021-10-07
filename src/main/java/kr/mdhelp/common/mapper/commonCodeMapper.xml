@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.mdhelp.common.mapper.commonCodeMapper">
+	<resultMap type="kr.mdhelp.common.model.CodeVO" id="codeMap">
+		<result property="code" column="CODE" />
+		<result property="code_name" column="CODE_NAME" />
+		<result property="code_group" column="CODE_GROUP" />
+		<result property="code_group_name" column="CODE_GROUP_NAME" />
+		<result property="code_sort" column="CODE_SORT" />
+		<result property="code_value" column="CODE_VALUE" />
+	</resultMap>
+	
+	
+	
+		<select id="select_code_group_list" resultType="kr.mdhelp.common.model.CodeVO">
+			SELECT
+				codeT.CODE				AS code
+				, codeT.CODE_NAME		AS code_name
+				, codeT.CODE_GROUP		AS code_group
+				, codeT.CODE_GROUP_NAME	AS code_group_name
+				, codeT.CODE_SORT		AS code_sort
+				, codeT.CODE_VALUE		AS code_value
+				, codeT.CODE_COMMENT	AS code_comment
+				, codeT.CODE_REGDT		AS code_regdt
+			FROM
+				TBL_COMMON_CODE AS codeT
+			GROUP BY
+				codeT.CODE_GROUP
+				,codeT.CODE_GROUP_NAME
+	</select>
+</mapper>

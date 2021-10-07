@@ -1,4 +1,4 @@
-package kr.mdhelp.www;
+package kr.mdhelp;
 
 import java.text.DateFormat;
 import java.util.Date;

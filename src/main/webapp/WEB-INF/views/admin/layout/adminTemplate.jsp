@@ -21,12 +21,66 @@
 <meta charset="UTF-8">
 <tiles:insertAttribute name="adminHeader" />
 </head>
-<body>
-<span class="testbody">
-<tiles:insertAttribute name="adminBody" />
-</span>
-<span class="testfooter">
-<tiles:insertAttribute name="adminFooter" />
-</span>
-</body>
+	<body data-sidebar="dark">
+
+	<!-- <body data-layout="horizontal" data-topbar="dark"> -->
+
+		<!-- Begin page -->
+		<div id="layout-wrapper">
+
+			
+			<header id="page-topbar">
+				<tiles:insertAttribute name="adminTopbar" />
+			</header>
+
+			<!-- ========== Left Sidebar Start ========== -->
+			<div class="vertical-menu">
+
+				<div data-simplebar class="h-100">
+
+					<!--- Sidemenu -->
+					<div id="sidebar-menu">
+						<tiles:insertAttribute name="adminMenuSidebar" />
+					</div>
+					<!-- Sidebar -->
+				</div>
+			</div>
+			<!-- Left Sidebar End -->
+
+			
+
+			<!-- ============================================================== -->
+			<!-- Start right Content here -->
+			<!-- ============================================================== -->
+			<div class="main-content">
+
+				<div class="page-content">
+					<div class="container-fluid">
+						<tiles:insertAttribute name="adminBody" />
+						<!-- 모달영역 
+						<div class="modal fade modal-with-bg" id="subscribeModal" tabindex="-1" aria-hidden="true"></div>
+						 모달영역 -->
+					</div>
+					<!-- container-fluid -->
+				</div>
+				<!-- End Page-content -->
+				<tiles:insertAttribute name="adminFooter" />
+			</div>
+			<!-- end main content-->
+
+		</div>
+		<!-- END layout-wrapper -->
+
+		<!-- Right Sidebar -->
+		<tiles:insertAttribute name="adminThemaRightSidebar" />
+		<!-- /Right-bar -->
+
+		<!-- Right bar overlay-->
+		<div class="rightbar-overlay"></div>
+
+		<!-- JAVASCRIPT -->
+		<!-- adminHeader로 이동 -->
+		<!-- App js -->
+		<script src="/adminAssets/js/app.js"></script>
+	</body>
 </html>

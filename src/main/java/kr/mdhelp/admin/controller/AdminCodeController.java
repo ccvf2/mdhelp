@@ -25,7 +25,7 @@ public class AdminCodeController {
 	@Autowired
 	CommonCodeService codeService;
 	
-	@RequestMapping(value = "admin/codegroup", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/codegroup", method = RequestMethod.GET)
 	public ModelAndView codeGroupPage(HttpServletRequest request, HttpServletResponse response) {
 		logger.info("=============================codeGroupPage");
 		ModelAndView mav = new ModelAndView();

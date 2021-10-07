@@ -14,4 +14,17 @@
  * 1.	2021. 10. 7.	ccvf2.dev		최초작성
  ***************************************
  --%>
-<div>발바닥</div>
+<footer class="footer">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-6">
+				<script>document.write(2021)</script> © Samply.
+			</div>
+			<div class="col-sm-6">
+				<div class="text-sm-end d-none d-sm-block">
+					(발바닥)Design & Develop by Pichforest
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>

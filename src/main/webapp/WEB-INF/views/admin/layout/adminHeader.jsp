@@ -14,13 +14,29 @@
  * 1.	2021. 10. 7.	ccvf2.dev		최초작성
  ***************************************
  --%>
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-<meta charset="UTF-8">
-<title>대가리</title>
-</head>
-<body>
+<meta charset="utf-8" />
+<title>MDHelp Administrator</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+<meta content="Pichforest" name="author" />
+<!-- App favicon -->
+<link rel="shortcut icon" href="/adminAssets/images/favicon.ico">
 
-</body>
-</html>
+<!-- Bootstrap Css -->
+<link href="/adminAssets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+<!-- Icons Css -->
+<link href="/adminAssets/css/icons.min.css" rel="stylesheet" type="text/css" />
+<!-- App Css-->
+<link href="/adminAssets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+<!-- Dark Mode Css-->
+<link href="/adminAssets/css/dark-layout.min.css" id="app-style" rel="stylesheet" type="text/css" />
+
+
+
+
+		<!-- JAVASCRIPT -->
+		<script src="/adminAssets/libs/jquery/jquery.min.js"></script>
+		<script src="/adminAssets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<script src="/adminAssets/libs/metismenu/metisMenu.min.js"></script>
+		<script src="/adminAssets/libs/simplebar/simplebar.min.js"></script>
+		<script src="/adminAssets/libs/node-waves/waves.min.js"></script>

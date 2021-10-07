@@ -12,16 +12,22 @@
  
     <!-- (2) 레이아웃을 적용하는화면-->
     <definition name="adminTemplate" template="/WEB-INF/views/admin/layout/adminTemplate.jsp">
-        <put-attribute name="adminHeader" value="/WEB-INF/views/admin/layout/adminHeader.jsp" />
-        <put-attribute name="adminFooter" value="/WEB-INF/views/admin/layout/adminFooter.jsp" />
+        <put-attribute name="adminHeader"				value="/WEB-INF/views/admin/layout/adminHeader.jsp" />
+        <put-attribute name="adminTopbar"				value="/WEB-INF/views/admin/layout/adminTopbar.jsp" />
+        <put-attribute name="adminMenuSidebar"			value="/WEB-INF/views/admin/layout/adminMenuSidebar.jsp" />
+        <put-attribute name="adminThemaRightSidebar"	value="/WEB-INF/views/admin/layout/adminThemaRightSidebar.jsp" />
+        <put-attribute name="adminFooter"				value="/WEB-INF/views/admin/layout/adminFooter.jsp" />
     </definition>
     
     <!-- (1) -->    
     <definition name="*" extends="adminTemplate">
       <put-attribute name="adminBody" value="/WEB-INF/views/{1}.jsp" />
     </definition>
-    <definition name="*/*" extends="adminTemplate">
-      <put-attribute name="adminBody" value="/WEB-INF/views/{1}/{2}.jsp" />
+    <definition name="admin/*" extends="adminTemplate">
+      <put-attribute name="adminBody" value="/WEB-INF/views/admin/{1}.jsp" />
+    </definition>
+    <definition name="admin/*/*" extends="adminTemplate">
+      <put-attribute name="adminBody" value="/WEB-INF/views/admin/{1}/{2}.jsp" />
     </definition>
  
     <!-- (2) -->

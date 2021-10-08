@@ -80,7 +80,6 @@
 
 		<!-- JAVASCRIPT -->
 		<!-- adminHeader로 이동 -->
-		<!-- App js -->
-		<script src="/adminAssets/js/app.js"></script>
+
 	</body>
 </html>

@@ -1,5 +1,6 @@
 package kr.mdhelp.common.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -19,9 +20,20 @@ public class CommonCodeDAO {
 	private SqlSessionTemplate sql;
 	
 	public List<CodeVO> getCodeGroupList(Map<String, Object> searchParam) {
-		logger.info("=============================getCodeGroupList DAO");
+		logger.info("=============================get_CodeGroup_List DAO");
 		return sql.selectList("select_code_group_list", searchParam);
 		
 	}
+	public int insertCodeGroup(CodeVO codeGroupVO) {
+		logger.info("=============================insertCodeGroup DAO");
+		return sql.insert("insert_code_group", codeGroupVO);
+		//sql.selectList("insert_code_group", codeGroupVO);
+	}
+
+	public List<CodeVO> getCodeList(HashMap<String, Object> searchParam) {
+		logger.info("=============================get_Code_List DAO");
+		return sql.selectList("select_code_list", searchParam);
+	}
+
 
 }

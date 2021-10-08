@@ -4,14 +4,14 @@ import java.util.Date;
 
 public class CodeVO {
 
-	String	code			="";
-	String	code_name		="";
-	String	code_group		="";
-	String	code_group_name	="";
-	int		code_group_sort	=0;
-	String	code_value		="";
-	String	code_comment	="";
-	Date	code_regdt		= new Date();
+	private String	code			="";
+	private String	code_name		="";
+	private String	code_group		="";
+	private String	code_group_name	="";
+	private int		code_sort	=0;
+	private String	code_value		="";
+	private String	code_comment	="";
+	private Date	code_regdt		= new Date();
 	
 	public String getCode() {
 		return code;
@@ -37,11 +37,11 @@ public class CodeVO {
 	public void setCode_group_name(String code_group_name) {
 		this.code_group_name = code_group_name;
 	}
-	public int getCode_group_sort() {
-		return code_group_sort;
+	public int getCode_sort() {
+		return code_sort;
 	}
-	public void setCode_group_sort(int code_group_sort) {
-		this.code_group_sort = code_group_sort;
+	public void setCode_sort(int code_sort) {
+		this.code_sort = code_sort;
 	}
 	public String getCode_value() {
 		return code_value;
@@ -62,4 +62,5 @@ public class CodeVO {
 		this.code_regdt = code_regdt;
 	}
 	
+
 }

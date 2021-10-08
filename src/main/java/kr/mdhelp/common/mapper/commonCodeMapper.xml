@@ -12,20 +12,73 @@
 	
 	
 	
-		<select id="select_code_group_list" resultType="kr.mdhelp.common.model.CodeVO">
-			SELECT
-				codeT.CODE				AS code
-				, codeT.CODE_NAME		AS code_name
-				, codeT.CODE_GROUP		AS code_group
-				, codeT.CODE_GROUP_NAME	AS code_group_name
-				, codeT.CODE_SORT		AS code_sort
-				, codeT.CODE_VALUE		AS code_value
-				, codeT.CODE_COMMENT	AS code_comment
-				, codeT.CODE_REGDT		AS code_regdt
-			FROM
-				TBL_COMMON_CODE AS codeT
-			GROUP BY
-				codeT.CODE_GROUP
-				,codeT.CODE_GROUP_NAME
+	<select id="select_code_group_list" resultType="kr.mdhelp.common.model.CodeVO">
+		SELECT
+			codeT.CODE				AS code
+			, codeT.CODE_NAME		AS code_name
+			, codeT.CODE_GROUP		AS code_group
+			, codeT.CODE_GROUP_NAME	AS code_group_name
+			, codeT.CODE_SORT		AS code_sort
+			, codeT.CODE_VALUE		AS code_value
+			, codeT.CODE_COMMENT	AS code_comment
+			, codeT.CODE_REGDT		AS code_regdt
+		FROM
+			TBL_COMMON_CODE AS codeT
+		GROUP BY
+			codeT.CODE_GROUP
+			,codeT.CODE_GROUP_NAME
+		ORDER BY
+			codeT.CODE_REGDT
+		DESC
+	</select>
+	
+	<insert id="insert_code_group" parameterType="kr.mdhelp.common.model.CodeVO">
+		INSERT INTO 
+			TBL_COMMON_CODE
+			(
+				  CODE
+				, CODE_NAME
+				, CODE_GROUP
+				, CODE_GROUP_NAME
+				, CODE_SORT
+				, CODE_VALUE
+				, CODE_COMMENT
+			) 
+		VALUES 
+		(
+			 #{code}
+			,#{code_name}
+			,#{code_group}
+			,#{code_group_name}
+			,#{code_sort}
+			,#{code_value}
+			,#{code_comment}
+		)
+	</insert>
+	
+	
+	
+	
+	
+	
+	
+	
+	<select id="select_code_list" resultType="kr.mdhelp.common.model.CodeVO">
+		SELECT
+			codeT.CODE				AS code
+			, codeT.CODE_NAME		AS code_name
+			, codeT.CODE_GROUP		AS code_group
+			, codeT.CODE_GROUP_NAME	AS code_group_name
+			, codeT.CODE_SORT		AS code_sort
+			, codeT.CODE_VALUE		AS code_value
+			, codeT.CODE_COMMENT	AS code_comment
+			, codeT.CODE_REGDT		AS code_regdt
+		FROM
+			TBL_COMMON_CODE AS codeT
+		ORDER BY
+			codeT.CODE_GROUP
+		DESC,
+			codeT.CODE_SORT
+		ASC
 	</select>
 </mapper>

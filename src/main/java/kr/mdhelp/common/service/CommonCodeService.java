@@ -19,7 +19,7 @@ public class CommonCodeService {
 	
 	@Autowired
 	CommonCodeDAO commonCodeDAO;
-	
+	/** 코드그룹목록 불러오기*/
 	public List<CodeVO> getCodeGroupListNotRetunToNULL(Map<String, Object> searchParam) {
 		logger.info("=============================get_CodeGroup_ListNotRetunToNULL");
 		List<CodeVO> cgList = commonCodeDAO.getCodeGroupList(searchParam);
@@ -28,7 +28,7 @@ public class CommonCodeService {
 		}
 		return cgList;
 	}
-	
+	/** 코드그룹등록*/
 	public CodeVO insertCodeGroupRetunToNULL(CodeVO codeGroupVO) {
 		logger.info("=============================insertCodeGroup");
 		codeGroupVO.setCode_sort(0);
@@ -38,13 +38,18 @@ public class CommonCodeService {
 		commonCodeDAO.insertCodeGroup(codeGroupVO);
 		return codeGroupVO;
 	}
-
-	public List<CodeVO> getCodeListNotRetunToNULL(HashMap<String, Object> searchParam) {
+	/** 코드목록 불러오기*/
+	public List<CodeVO> getCodeListNotRetunToNULL(Map<String, Object> searchParam) {
 		logger.info("=============================get_Code_ListNotRetunToNULL");
 		List<CodeVO> codeList = commonCodeDAO.getCodeList(searchParam);
 		if(codeList == null) {
 			codeList = new LinkedList<CodeVO>();
 		}
 		return codeList;
+	}
+	/** 코드그룹삭제 */
+	public CodeVO deleteCodeGroupRetunToNULL(CodeVO codeGroupVO) {
+		commonCodeDAO.deleteCodeGroup(codeGroupVO);
+		return codeGroupVO;
 	}
 }

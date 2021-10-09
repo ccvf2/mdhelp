@@ -41,5 +41,3 @@
 		<script src="/adminAssets/libs/simplebar/simplebar.min.js"></script>
 		<script src="/adminAssets/libs/node-waves/waves.min.js"></script>
 		<script src="/adminResource/asynchronousHttp.js"></script>
-		<!-- App js -->
-		<!-- <script src="/adminAssets/js/app.js"></script> -->

@@ -67,23 +67,17 @@
 							<input class="form-control" type="text" id="code_group_comment" placeholder="해당 코드그룹에대한 상세 메세지를 적으세요.">
 						</div>
 					</div>
+					<div class="col-lg-12">
+						<div class="mb-3">
+							<button type="button" class="btn btn-primary waves-effect waves-light" onclick="codeGroup.CG_insert();">등록하기</button>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-<div class="row">
-	<div class="col-lg-12">
-		<div class="card">
-			<div class="card-body">
-				<h4 class="card-title">검색조건</h4>
-				<p class="card-title-desc">검색주의</p>
-				
-				
-			</div>
-		</div>
-	</div>
-</div>
+
 <div class="row">
 	<div class="col-lg-12">
 		<div class="card">
@@ -95,11 +89,11 @@
 						<thead class="table-light">
 							<tr>
 								<th>no</th>
-								<th>코드</th>
-								<th>코드명</th>
+								<th>코드그룹</th>
+								<!-- <th>코드명</th> -->
 								<th>코드그룹명</th>
-								<th>코드값</th>
-								<th>코드설명</th>
+								<th>코드그룹값</th>
+								<th>코드그룹설명</th>
 								<th>등록일</th>
 								<th>삭제</th>
 							</tr>
@@ -117,7 +111,7 @@
 							<tr>
 								<th scope="row">${index.count}</th>
 								<td>${list.code}</td>
-								<td>${list.code_name}</td>
+								<%-- <td>${list.code_name}</td> --%>
 								<td>${list.code_group_name}</td>
 								<%-- <td>${list.code_group}</td> 코드그룹==코드 --%>
 								<td>${list.code_value}</td>
@@ -125,7 +119,7 @@
 								<td><fmt:formatDate pattern="yyyy-MM-dd hh:mm" value="${list.code_regdt}"/></td>
 								<%-- <td>${list.code_regdt}</td> --%>
 								<td>
-									<button type="button" class="btn btn-danger btn-sm waves-effect waves-light">그룹삭제</button>
+									<button type="button" class="btn btn-danger btn-sm waves-effect waves-light" onclick="codeGroup.CG_delete('${list.code}');">그룹삭제</button>
 								</td>
 							</tr>
 						</c:forEach>
@@ -142,36 +136,82 @@ $(document).ready(function(){
 
 
 var codeGroup = {
-	CG_insert : function(){
-		var param = {
-			"code"			: ""
-			, "code_name"	: ""
-			, "code_value"	: ""
-			, "code_comment": ""
-			
+	getInputValue : function(){
+		var obj = {
+			"code"			: document.getElementById("code_group").value
+			, "code_name"	: document.getElementById("code_group_name").value
+			, "code_value"	: document.getElementById("code_group_value").value
+			, "code_comment": document.getElementById("code_group_comment").value
+		};
+		//TO-DO  trim 처리 필요
+		return obj
+	},
+	valueDataValidation : function(obj){
+		var resultValue = true;
+		if(obj.code == ""){
+			resultValue = false;;
+			alert("코드가 입력되지 않았습니다.");
 		}
-		param.code			= document.getElementById("code_group").value;
-		param.code_name		= document.getElementById("code_group_name").value;
-		param.code_value	= document.getElementById("code_group_value").value;
-		param.code_comment	= document.getElementById("code_group_comment").value;
+		else if(obj.code.length <= 4){
+			resultValue = false;;
+			alert("코드가 너무 잛습니다. 5자 이상으로 작성하세요.");
+		}
+		
+		else if(obj.code_name == ""){
+			resultValue = false;;
+			alert("코드명이 입력되지 않았습니다.");
+		}
+		else if(obj.code_value == ""){
+			resultValue = false;;
+			alert("코드값이 입력되지 않았습니다.");
+		}
+		else if(obj.code_value == ""){
+			resultValue = false;;
+			alert("코드코멘트가 입력되지 않았습니다.");
+		}
+		
+		return resultValue;
+	},
+	CG_insert : function(){
+		var param = this.getInputValue();
+		var valid = this.valueDataValidation(param);
+		if(valid){
+			$.ajax({
+				url: "/admin/codegroupinsert.ajax",
+				type:"POST",
+				dataType:"TEXT",
+				data:param,
+				success:function(data){
+					alert("등록되었습니다.새로고침 하세요.");
+				},
+				error:function(xhr, status, errorMsg){
+					alert("등록 실패 되었습니다.");
+					console.log(xhr)
+					console.log(status)
+					console.log(errorMsg)
+				}
+			});
+		}
+	},
+	CG_delete : function(code){
+		//TO-DO  code trim 처리 필요
+		alert(code);
+		var param = {"code" : code};
 		$.ajax({
-			url: "/admin/codegroupinsert.ajax",
+			url: "/admin/codegroupdelete.ajax",
 			type:"POST",
 			dataType:"TEXT",
 			data:param,
 			success:function(data){
-				console.log(data);
+				alert("삭제되었습니다.새로고침 하세요.");
 			},
 			error:function(xhr, status, errorMsg){
+				alert("삭제되지 않았습니아.!");
 				console.log(xhr)
 				console.log(status)
 				console.log(errorMsg)
 			}
 		});
-		
-	},
-	CG_delete : function(){
-		
 	}
 }
 

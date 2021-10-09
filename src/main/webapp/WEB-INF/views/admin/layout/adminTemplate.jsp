@@ -20,6 +20,9 @@
 <head>
 <meta charset="UTF-8">
 <tiles:insertAttribute name="adminHeader" />
+<style type="text/css">
+.boldFont {font-weight: bold !important;}
+</style>
 </head>
 	<body data-sidebar="dark">
 
@@ -80,6 +83,8 @@
 
 		<!-- JAVASCRIPT -->
 		<!-- adminHeader로 이동 -->
+		<!-- App js -->
+		<script src="/adminAssets/js/app.js"></script>
 
 	</body>
 </html>

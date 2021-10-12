@@ -44,7 +44,7 @@
 									</li> -->
 								</ul>
 							</li>
-				
+<%--
 							<li>
 								<a href="javascript: void(0);" class="waves-effect">
 									<span class="badge rounded-pill bg-success float-end">9</span>
@@ -176,5 +176,5 @@
 									</li>
 								</ul>
 							</li>
-
+--%>
 						</ul>

@@ -119,7 +119,9 @@
 								<td><fmt:formatDate pattern="yyyy-MM-dd hh:mm" value="${list.code_regdt}"/></td>
 								<%-- <td>${list.code_regdt}</td> --%>
 								<td>
-									<button type="button" class="btn btn-danger btn-sm waves-effect waves-light" onclick="codeGroup.CG_delete('${list.code}');">그룹삭제</button>
+									<button type="button" class="btn btn-danger btn-sm waves-effect waves-light" onclick="codeGroup.CG_delete('${list.code}');">
+										그룹삭제&nbsp;<i class="fas fa-trash-alt"></i>
+									</button>
 								</td>
 							</tr>
 						</c:forEach>

@@ -118,6 +118,22 @@ public class AdminCodeController {
 		mav.setViewName("admin/code/code");
 		return mav;
 	}
+	@RequestMapping(value = "/admin/codeinsert", method = RequestMethod.POST)
+	public ModelAndView codeInsert(HttpServletRequest request, HttpServletResponse response,
+			@RequestParam Map<String,Object> searchMap) {
+		logger.info("=============================codeInsert");
+		ModelAndView mav = new ModelAndView();
+		logger.info("============================= searchMap : [{}]", searchMap.toString());
+		
+		List<CodeVO> codeGroupList = codeService.getCodeGroupListNotRetunToNULL(new HashMap<String, Object>());
+		mav.addObject("codeGroupList", codeGroupList);
+		mav.addObject("searchMap", searchMap);
+		
+		List<CodeVO> codeList = codeService.getCodeListNotRetunToNULL(searchMap);
+		mav.addObject("codeList", codeList);
+		mav.setViewName("admin/code/code");
+		return mav;
+	}
 	
 	/*@RequestMapping(value = "/admin/code.ajax", method = RequestMethod.POST)*/
 	@ResponseBody

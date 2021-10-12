@@ -34,21 +34,70 @@
 		</div>
 	</div>
 </div>
-
+<form action="/admin/codeinsert" method="post" name="updateCode" id="updateCode">
 <div class="row">
 	<div class="col-lg-12">
 		<div class="card">
 			<div class="card-body">
-				<h4 class="card-title">검색조건</h4>
-				<p class="card-title-desc">검색주의</p>
-				searchCondition1	: ${searchMap.searchCondition1}<br/>
+				<h4 class="card-title">코드등록</h4>
+				<p class="card-title-desc">코드등록에 주의 하세요.</p>
+				<div class="row">
+					<div class="col-lg-2">
+						<div class="mb-3">
+							<label for="example-text-input" class="form-label">코드그룹</label>
+							<select class="form-select" onchange="code.selectCodeGroup(this.value);" name="searchCondition1" >
+								<c:forEach var="groupItem" items="${codeGroupList}" varStatus="index">
+									<option value="${groupItem.code}">
+										${groupItem.code_group_name}(${groupItem.code_group})
+									</option>
+								</c:forEach>
+							</select>
+						</div>
+					</div>
+					<div class="col-lg-2">
+						<div class="mb-3">
+							<label for="example-text-input" class="form-label">코드</label>
+							<input class="form-control" type="text" value="NAPI001" id="example-text-input">
+						</div>
+					</div>
+					<div class="col-lg-2">
+						<div class="mb-3">
+							<label for="example-text-input" class="form-label">코드명</label>
+							<input class="form-control" type="text" value="" id="example-text-input">
+						</div>
+					</div>
+					<div class="col-lg-2">
+						<div class="mb-3">
+							<label for="example-text-input" class="form-label">코드값</label>
+							<input class="form-control" type="text" value="" id="example-text-input">
+						</div>
+					</div>
+					<div class="col-lg-2">
+						<div class="mb-3">
+							<label for="example-text-input" class="form-label">코드정렬</label>
+							<input class="form-control" type="text" value="" id="example-text-input">
+						</div>
+					</div>
+					<div class="col-lg-2">
+						<div class="mb-3">
+							<label for="example-text-input" class="form-label">코드설명</label>
+							<input class="form-control" type="text" value="" id="example-text-input">
+						</div>
+					</div>
+					<div class="col-lg-12">
+						<div class="mb-3">
+							<button type="button" class="btn btn-primary waves-effect waves-light">등록/수정</button>
+						</div>
+					</div>
+				</div>
+				<%-- searchCondition1	: ${searchMap.searchCondition1}<br/>
 				searchCondition2	: ${searchMap.searchCondition2}<br/>
-				searchWord			: ${searchMap.searchWord}/code_comment<br/>
+				searchWord			: ${searchMap.searchWord}/code_comment<br/> --%>
 			</div>
 		</div>
 	</div>
 </div>
-
+</form>
 
 <form action="/admin/code" method="post" name="searchCode" id="searchCode">
 <div class="row">

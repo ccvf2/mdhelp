@@ -42,7 +42,7 @@
 								</div>
 							</div>
 							<%--<h4 class="text-uppercase mt-4">Internal Server Error</h4>--%>
-							<h4 class="text-uppercase mt-4">뭘누른겨?! </h4>
+							<h4 class="text-uppercase mt-4">뭘누른겨?!</h4>
 							<p class="text-muted">뭘 하려고 한교....;; 에러낫자너~</p>
 							<div class="mt-5">
 								<a class="btn btn-primary waves-effect waves-light" href="/admin">관리자메인으로</a>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/security https://www.springframework.org/schema/security/spring-security.xsd">
+
+
+	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+	<!-- <bean id="customUserDetailsService" class="pere.jax.security.CustomUserDetailsService"></bean> -->
+
+	<!-- 
+	<security:http auto-config="true">
+		#리소스 시큐리티 통과
+		<security:intercept-url	pattern="/adminAssets/**"	access="permitAll" />
+		<security:intercept-url	pattern="/adminResource/**"	access="permitAll" />
+		#리소스 시큐리티 통과
+		
+		#시큐리티 체크 안함 URL
+		<security:intercept-url	pattern="/admin/login"		access="permitAll" />
+		<security:intercept-url	pattern="/admin/main"		access="permitAll" />
+		#시큐리티 체크 안함 URL
+		
+		#시큐리티 체크함 URL
+		<security:intercept-url	pattern="/admin/**"	access="ROLE_ADMIN" />
+		#시큐리티 체크함 URL
+		
+		<security:form-login username-parameter="admin_id" password-parameter="admin_pwd" login-page="/admin/login" default-target-url="/admin/main" authentication-failure-url="/admin/login"/>
+	</security:http>
+	
+	<security:authentication-manager>
+		<security:authentication-provider>
+			<security:user-service>
+				<security:user name="user" password="user" authorities="ROLE_USER" />
+				<security:user name="admin" password="admin" authorities="ROLE_ADMIN" />
+			</security:user-service>
+		</security:authentication-provider>
+	</security:authentication-manager>
+	 -->
+	
+	<context:component-scan base-package="kr.mdhelp.config"/>
+	<security:global-method-security pre-post-annotations="enabled" secured-annotations="enabled" />
+
+
+
+</beans>

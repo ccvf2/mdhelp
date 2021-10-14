@@ -7,13 +7,39 @@
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<!-- <param-value>/WEB-INF/webSettings/db_setting/JDBC.xml</param-value> -->
-		<param-value>/WEB-INF/webSettings/db_setting/mybatis-context.xml</param-value>
+		<param-value>
+		/WEB-INF/webSettings/appServlet/mybatis-context.xml
+		, /WEB-INF/webSettings/appServlet/security-config.xml
+		</param-value>
 	</context-param>
 	
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
+	<!-- 한글설정 -->
+	<filter>
+		<filter-name>enCodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>enCodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<!-- spring security -->
+	<filter>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 
 	<!-- Processes application requests -->
 	<servlet>
@@ -32,19 +58,6 @@
 	</servlet-mapping>
 	
 	
-		<!-- 한글설정 -->
-	<filter>
-		<filter-name>enCodingFilter</filter-name>
-		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
-		<init-param>
-			<param-name>encoding</param-name>
-			<param-value>UTF-8</param-value>
-		</init-param>
-	</filter>
-	<filter-mapping>
-		<filter-name>enCodingFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
 	
 	<!-- 에러페이지 -->
 	<error-page>

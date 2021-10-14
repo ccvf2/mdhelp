@@ -1,4 +1,4 @@
-package kr.mdhelp;
+package kr.mdhelp.config;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;

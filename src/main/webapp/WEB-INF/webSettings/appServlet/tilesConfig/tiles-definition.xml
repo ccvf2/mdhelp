@@ -2,14 +2,9 @@
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
-    <!-- (1) 레이아웃을 적용하지않는화면-->    
-    <!-- <definition name=".login" template="/WEB-INF/jsp/tileLayout/loginLayout.jsp">
-        <put-attribute name="title" value="" />
-        <put-attribute name="header" value="/WEB-INF/jsp/tilesView/header.jsp" />
-        <put-attribute name="menu" value="" />        
-        <put-attribute name="footer" value="" />
-    </definition> -->
- 
+
+    
+    
     <!-- (2) 레이아웃을 적용하는화면-->
     <definition name="adminTemplate" template="/WEB-INF/views/admin/layout/adminTemplate.jsp">
         <put-attribute name="adminHeader"				value="/WEB-INF/views/admin/layout/adminHeader.jsp" />
@@ -19,10 +14,22 @@
         <put-attribute name="adminFooter"				value="/WEB-INF/views/admin/layout/adminFooter.jsp" />
     </definition>
     
-    <!-- (1) -->    
-    <definition name="*" extends="adminTemplate">
-      <put-attribute name="adminBody" value="/WEB-INF/views/{1}.jsp" />
+    
+    <!-- 미적용-->
+    <definition name="single_page_template" template="/WEB-INF/views/admin/layout/adminSingleTemplate.jsp">
     </definition>
+    <definition name="admin/adminLogin" extends="single_page_template">
+      <put-attribute name="singleBody" value="/WEB-INF/views/admin/adminLogin.jsp" />
+    </definition>
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <definition name="admin/*" extends="adminTemplate">
       <put-attribute name="adminBody" value="/WEB-INF/views/admin/{1}.jsp" />
     </definition>
@@ -30,8 +37,5 @@
       <put-attribute name="adminBody" value="/WEB-INF/views/admin/{1}/{2}.jsp" />
     </definition>
  
-    <!-- (2) -->
-   <!-- <definition name="/*/*" extends=".root">      
-      <put-attribute name="body" value="/WEB-INF/jsp/{1}/{2}.jsp" />
-    </definition> -->
+
 </tiles-definitions>

@@ -5,7 +5,7 @@
 	<head>
 		
 		<meta charset="utf-8" />
-		<title> :-< 페이지 없음(403)</title>
+		<title> :-&lt; 페이지 없음(403)</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
 		<meta content="Pichforest" name="author" />

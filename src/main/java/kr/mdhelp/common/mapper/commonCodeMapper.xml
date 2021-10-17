@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
 <mapper namespace="kr.mdhelp.common.mapper.commonCodeMapper">
-	
-	<resultMap type="kr.mdhelp.common.model.CodeVO" id="codeMap">
+
+	<resultMap type="codeVO" id="codeMap">
 		<result property="code" column="CODE" />
 		<result property="code_name" column="CODE_NAME" />
 		<result property="code_group" column="CODE_GROUP" />
@@ -14,7 +13,7 @@
 	
 	
 	
-	<select id="select_code_group_list" resultType="kr.mdhelp.common.model.CodeVO">
+	<select id="select_code_group_list" resultType="codeVO">
 		SELECT
 			codeT.CODE				AS code
 			, codeT.CODE_NAME		AS code_name
@@ -34,7 +33,7 @@
 		DESC
 	</select>
 	
-	<insert id="insert_code_group" parameterType="kr.mdhelp.common.model.CodeVO">
+	<insert id="insert_code_group" parameterType="codeVO">
 		INSERT INTO 
 			TBL_COMMON_CODE
 			(
@@ -59,7 +58,7 @@
 	</insert>
 	
 		<!-- 코드 내용삭제 -->
-	<delete id="delete_code_group" parameterType="kr.mdhelp.common.model.CodeVO">
+	<delete id="delete_code_group" parameterType="codeVO">
 		DELETE FROM
 			TBL_COMMON_CODE
 		WHERE
@@ -74,7 +73,7 @@
 	
 	
 	
-	<select id="select_code_list" parameterType="java.util.Map" resultType="kr.mdhelp.common.model.CodeVO">
+	<select id="select_code_list" parameterType="Map" resultType="codeVO">
 		SELECT
 			codeT.CODE				AS code
 			, codeT.CODE_NAME		AS code_name
@@ -88,28 +87,32 @@
 			TBL_COMMON_CODE AS codeT
 		<where>
 			<choose>
-				<when test="searchCondition1 !=''">
-					<if test="searchCondition1 !=null">
+				<when test="searchCondition1 !='' and searchCondition1 !=null">
 						AND codeT.CODE_GROUP=#{searchCondition1}
+					<if test="searchWord != '' and searchWord != null">
+						AND codeT.CODE like '%'||#{searchWord,javaType=String,jdbcType=VARCHAR}||'%'
+						AND codeT.CODE_NAME like '%'||#{searchWord,javaType=String,jdbcType=VARCHAR}||'%'
+						AND codeT.CODE_VALUE like '%'||#{searchWord,javaType=String,jdbcType=VARCHAR}||'%
+						AND codeT.CODE_COMMENT like '%'||#{searchWord,javaType=String,jdbcType=VARCHAR}||'%'
 					</if>
 				</when>
 				<when test="searchCondition2 =='code'">
-					<if test="searchWord !=''">
+					<if test="searchWord != '' and searchWord != null">
 						AND codeT.CODE like '%'||#{searchWord}||'%'
 					</if>
 				</when>
 				<when test="searchCondition2 =='code_name'">
-					<if test="searchWord !=''">
+					<if test="searchWord != '' and searchWord != null">
 						AND codeT.CODE_NAME like '%'||#{searchWord}||'%'
 					</if>
 				</when>
 				<when test="searchCondition2 =='code_value'">
-					<if test="searchWord !=''">
+					<if test="searchWord != '' and searchWord != null">
 						AND codeT.CODE_VALUE like '%'||#{searchWord}||'%'
 					</if>
 				</when>
 				<when test="searchCondition2 =='code_comment'">
-					<if test="searchWord !=''">
+					<if test="searchWord != '' and searchWord != null">
 						AND codeT.CODE_COMMENT like '%'||#{searchWord}||'%'
 					</if>
 				</when>

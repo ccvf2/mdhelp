@@ -13,19 +13,19 @@ import org.springframework.stereotype.Component;
 public class MD_Helper_aspect {
 	private static final Logger logger = LoggerFactory.getLogger(MD_Helper_aspect.class);
 	
-	@Around("within(ke.co.mdh..*)")
+	@Around("within(kr.mdhelp..*)")
 	public Object advice(ProceedingJoinPoint joinPoint) {
 		Object obj=null;
 		try {
-			logger.debug("ASPECT CLASS:[{}]",joinPoint.getTarget().getClass().getName());
-			logger.debug("ASPECT METHOD:[{}]",joinPoint.getSignature().getName());
+			logger.debug("▒▒▒▒▒ MDHelp Default Message ▒▒▒▒▒ ASPECT CLASS:[{}]",joinPoint.getTarget().getClass().getName());
+			logger.debug("▒▒▒▒▒ MDHelp Default Message ▒▒▒▒▒ ASPECT METHOD:[{}]",joinPoint.getSignature().getName());
 			obj=new Object(); 
 			if(obj!=null){
 				obj=joinPoint.proceed();
 			}
 		} catch (Throwable e) {
-			//logger.info("Advice Throwable Message");
-			e.printStackTrace();
+			logger.info("▒▒▒▒▒ MDHelp Default Message ▒▒▒▒▒ - Advice Throwable Message");
+			logger.error(e.toString());
 		}
 		return obj;
 	}

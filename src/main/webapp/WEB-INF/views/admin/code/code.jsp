@@ -45,7 +45,7 @@
 					<div class="col-lg-2">
 						<div class="mb-3">
 							<label for="example-text-input" class="form-label">코드그룹</label>
-							<select class="form-select" onchange="code.selectCodeGroup(this.value);" name="searchCondition1" >
+							<select class="form-select" name="" >
 								<c:forEach var="groupItem" items="${codeGroupList}" varStatus="index">
 									<option value="${groupItem.code}">
 										${groupItem.code_group_name}(${groupItem.code_group})
@@ -100,6 +100,7 @@
 </form>
 
 <form action="/admin/code" method="post" name="searchCode" id="searchCode">
+<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 <div class="row">
 	<div class="col-lg-12">
 		<div class="card">

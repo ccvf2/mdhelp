@@ -19,11 +19,11 @@
 		<!-- 
 		<property name="mapperLocations">
 			<list>
-				<value>classpath:/everywhere/com/mynetgear/ccvf2/user/mapper/member/memberMapper.xml</value>
+				<value>classpath:/kr/mdhelp/common/mapper/commonCodeMapper.xml</value>
 			</list>
 		</property>
 		 -->
-		
+		<property name="configLocation" value="/WEB-INF/webSettings/appServlet/tilesConfig/mybatis-config.xml" />
 	</bean>
 	
 	
@@ -37,5 +37,6 @@
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="DB_Info"/>
 	</bean>
+
 
 </beans>

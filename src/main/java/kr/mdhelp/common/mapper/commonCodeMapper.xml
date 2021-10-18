@@ -125,4 +125,39 @@
 			codeT.CODE_SORT
 		ASC
 	</select>
+	
+	
+		<insert id="insert_code" parameterType="codeVO">
+		INSERT INTO 
+			TBL_COMMON_CODE
+			(
+				  CODE
+				, CODE_NAME
+				, CODE_GROUP
+				, CODE_GROUP_NAME
+				, CODE_SORT
+				, CODE_VALUE
+				, CODE_COMMENT
+				, CODE_ACTIVE
+			) 
+		VALUES 
+		(
+			 #{code}
+			,#{code_name}
+			,#{code_group}
+			,#{code_group_name}
+			,#{code_sort}
+			,#{code_value}
+			,#{code_comment}
+			,#{code_active}
+		)
+	</insert>
+	
+	
+	<delete id="delete_code" parameterType="String">
+		DELETE FROM
+			TBL_COMMON_CODE
+		WHERE
+			CODE = #{code}
+	</delete>
 </mapper>

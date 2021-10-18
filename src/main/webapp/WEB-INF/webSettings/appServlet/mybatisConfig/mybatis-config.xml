@@ -3,5 +3,6 @@
 <configuration>
 	<typeAliases>
 		<typeAlias alias="codeVO" type="kr.mdhelp.common.model.CodeVO"/>
+		<typeAlias alias="memberDTO" type="kr.mdhelp.member.model.MemberDTO"/>
 	</typeAliases>
 </configuration>

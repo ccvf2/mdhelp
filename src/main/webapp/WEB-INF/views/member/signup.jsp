@@ -28,54 +28,56 @@
 					<p class="font-size-15 text-muted mt-3">Responsive <b>Bootstrap 5</b> Admin Dashboard</p>
 				</div>
 				<div class="card overflow-hidden">
-					<div class="row g-0">
-						<div class="col-lg-6">
-							<div class="p-lg-5 p-4">
 
-								<div>
-									<h5>Register account</h5>
-									<p class="text-muted">Get your free Samply account now.</p>
-								</div>
-							
-								<div class="mt-4 pt-3">
-									<form action="index.html">
-	
-										<div class="mb-3">
-											<label class="fw-semibold" for="useremail">Email</label>
-											<input type="email" class="form-control" id="useremail" placeholder="Enter email">		
-										</div>
-				
-										<div class="mb-3">
-											<label class="fw-semibold" for="username">Username</label>
-											<input type="text" class="form-control" id="username" placeholder="Enter username">
-										</div>
-				
-										<div class="mb-3">
-											<label class="fw-semibold" for="userpassword">Password</label>
-											<input type="password" class="form-control" id="userpassword" placeholder="Enter password">		
-										</div>
-				
-										<div class="mt-4 text-end">
-											<button class="btn btn-primary w-md waves-effect waves-light" type="submit">Register</button>
-										</div>
+				<div class="row g-0">
+					<div class="col-lg-6">
+						<div class="p-lg-5 p-4">
 
-										<div class="mt-4 text-center">
-											<p class="mb-0 text-muted">By registering you agree to the Samply <a href="#" class="text-primary fw-semibold text-decoration-underline">Terms of Use</a></p>
-										</div>
-									</form>
-								</div>
-			
+							<div>
+								<h5>Register account</h5>
+								<p class="text-muted">Get your free Samply account now.(${_csrf.parameterName})(${_csrf.token})</p>
 							</div>
-						</div>
-						<div class="col-lg-6">
-							<div class="p-lg-5 p-4 bg-auth h-100 d-none d-lg-block">
-								<div class="bg-overlay"></div>
-								
-							</div>
-						</div>
 						
+							<div class="mt-4 pt-3">
+								<form action="/member/signupProcess/" method="post">
+									<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+									<div class="mb-3">
+										<label class="fw-semibold" for="reg_idEmail">Email</label>
+										<input type="email" class="form-control" name="reg_idEmail" id="reg_idEmail" placeholder="Enter email">
+									</div>
+									
+									<div class="mb-3">
+										<label class="fw-semibold" for="reg_username">Username</label>
+										<input type="text" class="form-control" name="reg_username" id="reg_username" placeholder="Enter username">
+									</div>
+									
+									<div class="mb-3">
+										<label class="fw-semibold" for="reg_pwd">Password</label>
+										<input type="password" class="form-control" name="reg_pwd" id="reg_pwd" placeholder="Enter password">
+									</div>
+									
+									<div class="mt-4 text-end">
+										<button class="btn btn-primary w-md waves-effect waves-light" type="submit">Register</button>
+									</div>
+									
+									<div class="mt-4 text-center">
+										<p class="mb-0 text-muted">By registering you agree to the Samply <a href="#" class="text-primary fw-semibold text-decoration-underline">Terms of Use</a></p>
+									</div>
+								</form>
+							</div>
+						</div>
 					</div>
+					<div class="col-lg-6">
+						<div class="p-lg-5 p-4 bg-auth h-100 d-none d-lg-block">
+							<div class="bg-overlay"></div>
+							
+						</div>
+					</div>
+					
 				</div>
+
+				</div>
+				
 				<!-- end card -->
 				<div class="mt-5 text-center">
 					<p>Already have an account ? <a href="/member/signin" class="fw-semibold text-decoration-underline"> Sign In </a> </p>

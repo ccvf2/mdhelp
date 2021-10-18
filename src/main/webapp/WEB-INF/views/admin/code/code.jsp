@@ -34,7 +34,10 @@
 		</div>
 	</div>
 </div>
-<form action="/admin/codeinsert" method="post" name="updateCode" id="updateCode">
+<form method="post" name="insertCodeForm" id="insertCodeForm" onsubmit="return false">
+<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+<input type="hidden" id="code_group" name="code_group" value="" />
+<input type="hidden" id="code_group_name" name="code_group_name" value="" />
 <div class="row">
 	<div class="col-lg-12">
 		<div class="card">
@@ -45,9 +48,10 @@
 					<div class="col-lg-2">
 						<div class="mb-3">
 							<label for="example-text-input" class="form-label">코드그룹</label>
-							<select class="form-select" name="" >
+							<select class="form-select" name="" onchange="codeOBJECT.targetCodeGroupChange(this.value);">
+									<option value="/">선택하세요.</option>
 								<c:forEach var="groupItem" items="${codeGroupList}" varStatus="index">
-									<option value="${groupItem.code}">
+									<option value="${groupItem.code_group}/${groupItem.code_group_name}" title="${groupItem.code_group_name}">
 										${groupItem.code_group_name}(${groupItem.code_group})
 									</option>
 								</c:forEach>
@@ -57,36 +61,36 @@
 					<div class="col-lg-2">
 						<div class="mb-3">
 							<label for="example-text-input" class="form-label">코드</label>
-							<input class="form-control" type="text" value="NAPI001" id="example-text-input">
+							<input class="form-control" type="text" name="code" value="USERLEV01" id="example-text-input">
 						</div>
 					</div>
 					<div class="col-lg-2">
 						<div class="mb-3">
 							<label for="example-text-input" class="form-label">코드명</label>
-							<input class="form-control" type="text" value="" id="example-text-input">
+							<input class="form-control" type="text" name="code_name" value="일반사용자" id="example-text-input">
 						</div>
 					</div>
 					<div class="col-lg-2">
 						<div class="mb-3">
 							<label for="example-text-input" class="form-label">코드값</label>
-							<input class="form-control" type="text" value="" id="example-text-input">
+							<input class="form-control" type="text" name="code_value" value="MEMBER" id="example-text-input">
 						</div>
 					</div>
 					<div class="col-lg-2">
 						<div class="mb-3">
 							<label for="example-text-input" class="form-label">코드정렬</label>
-							<input class="form-control" type="text" value="" id="example-text-input">
+							<input class="form-control" type="text" name="code_sort" value="1" id="example-text-input">
 						</div>
 					</div>
 					<div class="col-lg-2">
 						<div class="mb-3">
 							<label for="example-text-input" class="form-label">코드설명</label>
-							<input class="form-control" type="text" value="" id="example-text-input">
+							<input class="form-control" type="text" name="code_comment" value="유저등급-일반사용자" id="example-text-input">
 						</div>
 					</div>
 					<div class="col-lg-12">
 						<div class="mb-3">
-							<button type="button" class="btn btn-primary waves-effect waves-light">등록/수정</button>
+							<button type="button" class="btn btn-primary waves-effect waves-light" onclick="codeOBJECT.insert();">등록/수정</button>
 						</div>
 					</div>
 				</div>
@@ -100,7 +104,7 @@
 </form>
 
 <form action="/admin/code" method="post" name="searchCode" id="searchCode">
-<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+<input type="hidden"  name="${_csrf.parameterName}" value="${_csrf.token}" />
 <div class="row">
 	<div class="col-lg-12">
 		<div class="card">
@@ -111,7 +115,7 @@
 					<div class="col-lg-2">
 						<div class="mb-3">
 							<label class="form-label">코드그룹</label>
-							<select class="form-select" onchange="code.selectCodeGroup(this.value);" name="searchCondition1" >
+							<select class="form-select" onchange="codeOBJECT.selectCodeGroup(this.value);" name="searchCondition1" >
 								<option value="">전체</option>
 								<c:forEach var="groupItem" items="${codeGroupList}" varStatus="index">
 									<c:choose>
@@ -246,12 +250,12 @@
 								<td>
 									<c:choose>
 										<c:when test='${item.code_sort eq "0"}'>
-											<button type="button" class="btn btn-secondary btn-sm waves-effect waves-light" disabled="disabled">
+											<button type="button" class="btn btn-secondary btn-sm waves-effect waves-light" onclick="codeOBJECT.codeDeleteDisable();">
 												코드삭제&nbsp;<i class="fas fa-trash-alt"></i>
 											</button>
 										</c:when>
 										<c:otherwise>
-											<button type="button" class="btn btn-danger btn-sm waves-effect waves-light">
+											<button type="button" class="btn btn-danger btn-sm waves-effect waves-light" onclick="codeOBJECT.codeDelete('${item.code_name}','${item.code}')">
 												코드삭제&nbsp;<i class="fas fa-trash-alt"></i>
 											</button>
 										</c:otherwise>
@@ -269,10 +273,99 @@
 </div>
 <script type="text/javascript">
 
-var code = {
+var codeOBJECT = {
 	selectCodeGroup : function (obj){
 		var form = document.getElementById("searchCode");
 		form.submit(); 
 	},
+	
+	targetCodeGroupChange : function(obj){
+		var spArr = obj.split("/");
+		document.getElementById("code_group").value = spArr[0];
+		document.getElementById("code_group_name").value = spArr[1];
+	},
+	insert : function (){
+		var valide = this.dataValidetion();
+		if(valide){
+			var form = document.getElementById("insertCodeForm");
+			form.action="/admin/codeinsert";
+			form.submit(); 
+		}
+	},
+	
+	
+	
+	dataValidetion : function (){
+		var validResult = true;
+		
+		var code_group = $('[name="code_group"]').val();
+		if( (validResult == true)&&(code_group == "") ){
+			validResult = false;
+			alert("코드그룹 미선택");
+		}
+		
+		var code = $('[name="code"]').val();
+		if( (validResult == true)&&(code == "") ){
+			validResult = false;
+			alert("코드미입력");
+		}
+		if( (validResult == true)&&(code.length>8) ){
+			validResult = false;
+			alert("코드는 8자리 까지 생성");
+		}
+		var code_name = $('[name="code_name"]').val();
+		if( (validResult == true)&&(code_name == "") ){
+			validResult = false;
+			alert("코드명미입력");
+		}
+		var code_value = $('[name="code_value"]').val();
+		if( (validResult == true)&&(code_value == "") ){
+			validResult = false;
+			alert("코드값미입력");
+		}
+		var code_sort = $('[name="code_sort"]').val();
+		if( (validResult == true)&&(code_sort == "") ){
+			validResult = false;
+			alert("코드정렬 미입력");
+		}
+		if( (validResult == true)&&(isNaN(Number(code_sort))) ){
+			validResult = false;
+			alert("코드정렬 숫자만 입력");
+		}
+		if( (validResult == true)&&(Number(code_sort) <= 0) ){
+			validResult = false;
+			alert("코드정렬 은 1이상 정수로 입력");
+		}
+		return validResult;
+	},
+	
+	codeDeleteDisable : function(){
+		alert("해당코드는 코드그룹에서 수정 가능합니다.");
+	},
+	codeDelete : function(codeName,code){
+		var confirmYN = confirm("정말로\""+code+"("+codeName+")"+"\"코드를 삭제 하시겠습니까? 삭제된 코드는 복구 될 수 없으며, 참조값이 존재하는 경우 삭제 될 수 없습니다.");
+		if(confirmYN){
+			var param ={"code":code};
+			param["${_csrf.parameterName}"] ="${_csrf.token}";
+			
+			$.ajax({
+				url: "/admin/codedelete",
+				type:"POST",
+				dataType:"TEXT",
+				data:param,
+				success:function(data){
+					var form = document.getElementById("searchCode");
+					form.submit();
+				},
+				error:function(xhr, status, errorMsg){
+					alert("등록 실패 되었습니다.");
+					console.log(xhr)
+					console.log(status)
+					console.log(errorMsg)
+				}
+			});
+		}
+	}
+	
 };
 </script>

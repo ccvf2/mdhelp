@@ -139,12 +139,14 @@ $(document).ready(function(){
 
 var codeGroup = {
 	getInputValue : function(){
+		
 		var obj = {
 			"code"			: document.getElementById("code_group").value
 			, "code_name"	: document.getElementById("code_group_name").value
 			, "code_value"	: document.getElementById("code_group_value").value
 			, "code_comment": document.getElementById("code_group_comment").value
 		};
+		obj["${_csrf.parameterName}"] = "${_csrf.token}"; 
 		//TO-DO  trim 처리 필요
 		return obj
 	},

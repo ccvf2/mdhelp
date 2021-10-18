@@ -51,4 +51,14 @@ public class CommonCodeService {
 		commonCodeDAO.deleteCodeGroup(codeGroupVO);
 		return codeGroupVO;
 	}
+	
+	/** 코드등록*/
+	public CodeVO insertCodeRetunToNULL(CodeVO codeVO) {
+		commonCodeDAO.insertCode(codeVO);
+		return codeVO;
+	}
+	public int deleteCodeRetunToNULL(String code) {
+		commonCodeDAO.deleteCode(code);
+		return 0;
+	}
 }

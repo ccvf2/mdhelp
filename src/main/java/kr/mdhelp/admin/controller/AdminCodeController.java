@@ -120,9 +120,37 @@ public class AdminCodeController {
 	}
 	@RequestMapping(value = "/admin/codeinsert", method = RequestMethod.POST)
 	public ModelAndView codeInsert(HttpServletRequest request, HttpServletResponse response,
-			@RequestParam Map<String,Object> searchMap) {
+			@ModelAttribute CodeVO codeVO) {
 		logger.info("=============================codeInsert");
 		ModelAndView mav = new ModelAndView();
+		
+		CodeVO resultCodeVO = new CodeVO();
+		
+		resultCodeVO = codeService.insertCodeRetunToNULL(codeVO);
+		
+		HashMap<String, Object> searchMap= new HashMap<String, Object>();
+		logger.info("============================= searchMap : [{}]", searchMap.toString());
+		
+		List<CodeVO> codeGroupList = codeService.getCodeGroupListNotRetunToNULL(new HashMap<String, Object>());
+		mav.addObject("codeGroupList", codeGroupList);
+		mav.addObject("searchMap", searchMap);
+		
+		List<CodeVO> codeList = codeService.getCodeListNotRetunToNULL(searchMap);
+		mav.addObject("codeList", codeList);
+		mav.setViewName("admin/code/code");
+		return mav;
+	}
+	@RequestMapping(value = "/admin/codedelete", method = RequestMethod.POST)
+	public ModelAndView codeDelete(HttpServletRequest request, HttpServletResponse response,
+			@ModelAttribute CodeVO codeVO) {
+		logger.info("=============================codeInsert");
+		ModelAndView mav = new ModelAndView();
+		
+		CodeVO resultCodeVO = codeVO;
+		int result = codeService.deleteCodeRetunToNULL(codeVO.getCode());
+		
+		
+		HashMap<String, Object> searchMap= new HashMap<String, Object>();
 		logger.info("============================= searchMap : [{}]", searchMap.toString());
 		
 		List<CodeVO> codeGroupList = codeService.getCodeGroupListNotRetunToNULL(new HashMap<String, Object>());

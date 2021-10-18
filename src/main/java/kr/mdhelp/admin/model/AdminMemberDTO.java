@@ -3,7 +3,7 @@
  */
 package kr.mdhelp.admin.model;
 
-import kr.mdhelp.member.dao.MemberDTO;
+import kr.mdhelp.member.model.MemberDTO;
 
 /**
  * @author ccvf2.dev

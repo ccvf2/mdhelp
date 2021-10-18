@@ -36,6 +36,14 @@ public class CommonCodeDAO {
 	public int deleteCodeGroup(CodeVO codeGroupVO) {
 		return sql.delete("delete_code_group", codeGroupVO);
 	}
+	public int insertCode(CodeVO codeVO) {
+		logger.info("=============================insertCode DAO");
+		return sql.insert("insert_code", codeVO);
+	}
+	public int deleteCode(String code) {
+		logger.info("=============================deleteCode DAO");
+		return sql.delete("delete_code", code);
+	}
 
 
 }

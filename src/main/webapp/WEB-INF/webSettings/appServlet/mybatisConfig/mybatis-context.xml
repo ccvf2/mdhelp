@@ -23,7 +23,7 @@
 			</list>
 		</property>
 		 -->
-		<property name="configLocation" value="/WEB-INF/webSettings/appServlet/tilesConfig/mybatis-config.xml" />
+		<property name="configLocation" value="/WEB-INF/webSettings/appServlet/mybatisConfig/mybatis-config.xml" />
 	</bean>
 	
 	

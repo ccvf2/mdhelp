@@ -8,7 +8,7 @@
 		<param-name>contextConfigLocation</param-name>
 		<!-- <param-value>/WEB-INF/webSettings/db_setting/JDBC.xml</param-value> -->
 		<param-value>
-		/WEB-INF/webSettings/appServlet/mybatis-context.xml
+		/WEB-INF/webSettings/appServlet/mybatisConfig/mybatis-context.xml
 		, /WEB-INF/webSettings/appServlet/security-config.xml
 		</param-value>
 	</context-param>

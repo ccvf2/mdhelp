@@ -1,4 +1,4 @@
-package kr.mdhelp.member.dao;
+package kr.mdhelp.member.model;
 
 import java.util.Date;
 

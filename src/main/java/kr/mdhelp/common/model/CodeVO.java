@@ -8,11 +8,11 @@ public class CodeVO {
 	private String	code_name		="";
 	private String	code_group		="";
 	private String	code_group_name	="";
-	private int		code_sort	=0;
+	private int		code_sort		=0;
 	private String	code_value		="";
 	private String	code_comment	="";
 	private Date	code_regdt		= new Date();
-	
+	private boolean	code_active	=true;
 	public String getCode() {
 		return code;
 	}
@@ -61,6 +61,13 @@ public class CodeVO {
 	public void setCode_regdt(Date code_regdt) {
 		this.code_regdt = code_regdt;
 	}
+	public boolean isCode_active() {
+		return code_active;
+	}
+	public void setCode_active(boolean code_active) {
+		this.code_active = code_active;
+	}
 	
+
 
 }

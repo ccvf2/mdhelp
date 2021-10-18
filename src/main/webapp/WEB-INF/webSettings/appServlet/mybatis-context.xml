@@ -27,7 +27,6 @@
 	</bean>
 	
 	
-	
 	<!-- MYBATIS 연동을 위한 Object Injection (DI) -->
 	<bean id="sqlTemplate" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sessionFactoryBean" />

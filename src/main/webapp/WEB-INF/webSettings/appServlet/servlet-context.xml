@@ -18,6 +18,9 @@
 	<!-- <resources mapping="/resources/**" location="/resources/" /> -->
 	<resources mapping="/adminAssets/**" location="/resources/admin/assets/" />
 	<resources mapping="/adminResource/**" location="/resources/admin/" />
+	
+	<resources mapping="/memberAssets/**" location="/resources/member/assets/" />
+	<resources mapping="/memberResource/**" location="/resources/member/" />
 
 	<!-- tilesView -->
 	<beans:bean id="tileConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">

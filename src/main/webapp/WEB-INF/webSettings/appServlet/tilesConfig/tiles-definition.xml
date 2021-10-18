@@ -17,8 +17,9 @@
 	<!-- 관리자 onePage Template -->
 	<definition name="adminSinglePageTemplate" template="/WEB-INF/views/admin/layout/adminSingleTemplate.jsp">
 	</definition>
+	
 	<definition name="admin/adminLogin" extends="adminSinglePageTemplate">
-		<put-attribute name="singleBody" value="/WEB-INF/views/admin/adminLogin.jsp" />
+		<put-attribute name="adminSingleBody" value="/WEB-INF/views/admin/adminLogin.jsp" />
 	</definition>
 	
 	
@@ -39,10 +40,20 @@
 
 
 	<!-- 사용자 onePage Template -->
-	<definition name="singlePageTemplate" template="/WEB-INF/views/member/layout/singleTemplate.jsp">
+	<definition name="signUpPageTemplate" template="/WEB-INF/views/member/layout/singleTemplate.jsp">
+		<put-attribute name="singleBody" value="/WEB-INF/views/member/signup.jsp" />
 	</definition>
-	<definition name="member/login" extends="singlePageTemplate">
-	  <put-attribute name="singleBody" value="/WEB-INF/views/admin/adminLogin.jsp" />
+	<definition name="signInPageTemplate" template="/WEB-INF/views/member/layout/singleTemplate.jsp">
+		<put-attribute name="singleBody" value="/WEB-INF/views/member/signin.jsp" />
+	</definition>
+	
+	<!-- 사용자 onePage Template - 회원가입 -->
+	<definition name="member/signup" extends="signUpPageTemplate">
+		<put-attribute name="singleBody" value="/WEB-INF/views/member/signup.jsp" />
+	</definition>
+	<!-- 사용자 onePage Template - 로그인 -->
+	<definition name="member/signin" extends="signInPageTemplate">
+		<put-attribute name="singleBody" value="/WEB-INF/views/member/signin.jsp" />
 	</definition>
 
 

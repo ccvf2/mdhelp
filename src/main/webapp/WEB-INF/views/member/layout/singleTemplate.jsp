@@ -25,30 +25,29 @@
 		<meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
 		<meta content="Pichforest" name="author" />
 		<!-- App favicon -->
-		<link rel="shortcut icon" href="/adminAssets/images/favicon.ico">
+		<link rel="shortcut icon" href="/memberAssets/images/favicon.ico">
 
 		<!-- Bootstrap Css -->
-		<link href="/adminAssets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+		<link href="/memberAssets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
 		<!-- Icons Css -->
-		<link href="/adminAssets/css/icons.min.css" rel="stylesheet" type="text/css" />
+		<link href="/memberAssets/css/icons.min.css" rel="stylesheet" type="text/css" />
 		<!-- App Css-->
-		<link href="/adminAssets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+		<link href="/memberAssets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
 		<!-- Dark Mode Css-->
-		<link href="/adminAssets/css/dark-layout.min.css" id="app-style" rel="stylesheet" type="text/css" />
+		<link href="/memberAssets/css/dark-layout.min.css" id="app-style" rel="stylesheet" type="text/css" />
 
 	</head>
 
 	<body data-sidebar="dark">
 
 		<!-- JAVASCRIPT -->
-		<script src="/adminAssets/libs/jquery/jquery.min.js"></script>
-		<script src="/adminAssets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-		<script src="/adminAssets/libs/metismenu/metisMenu.min.js"></script>
-		<script src="/adminAssets/libs/simplebar/simplebar.min.js"></script>
-		<script src="/adminAssets/libs/node-waves/waves.min.js"></script>
+		<script src="/memberAssets/libs/jquery/jquery.min.js"></script>
+		<script src="/memberAssets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<script src="/memberAssets/libs/metismenu/metisMenu.min.js"></script>
+		<script src="/memberAssets/libs/simplebar/simplebar.min.js"></script>
+		<script src="/memberAssets/libs/node-waves/waves.min.js"></script>
 
-		<script src="/adminAssets/js/app.js"></script>
-	
+		<script src="/memberAssets/js/app.js"></script>
 		<tiles:insertAttribute name="singleBody" />
 	</body>
 </html>

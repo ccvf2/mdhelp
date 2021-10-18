@@ -40,7 +40,7 @@
 
 	<body data-sidebar="dark">
 
-		<tiles:insertAttribute name="singleBody" />
+		<tiles:insertAttribute name="adminSingleBody" />
 
 		<!-- JAVASCRIPT -->
 		<script src="/adminAssets/libs/jquery/jquery.min.js"></script>

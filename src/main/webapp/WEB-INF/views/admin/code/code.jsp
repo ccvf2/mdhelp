@@ -61,31 +61,31 @@
 					<div class="col-lg-2">
 						<div class="mb-3">
 							<label for="example-text-input" class="form-label">코드</label>
-							<input class="form-control" type="text" name="code" value="USERLEV01" id="example-text-input">
+							<input class="form-control" type="text" name="code" value="" id="example-text-input" maxlength="8">
 						</div>
 					</div>
 					<div class="col-lg-2">
 						<div class="mb-3">
 							<label for="example-text-input" class="form-label">코드명</label>
-							<input class="form-control" type="text" name="code_name" value="일반사용자" id="example-text-input">
+							<input class="form-control" type="text" name="code_name" value="" id="example-text-input">
 						</div>
 					</div>
 					<div class="col-lg-2">
 						<div class="mb-3">
 							<label for="example-text-input" class="form-label">코드값</label>
-							<input class="form-control" type="text" name="code_value" value="MEMBER" id="example-text-input">
+							<input class="form-control" type="text" name="code_value" value="" id="example-text-input">
 						</div>
 					</div>
 					<div class="col-lg-2">
 						<div class="mb-3">
 							<label for="example-text-input" class="form-label">코드정렬</label>
-							<input class="form-control" type="text" name="code_sort" value="1" id="example-text-input">
+							<input class="form-control" type="text" name="code_sort" value="" id="example-text-input">
 						</div>
 					</div>
 					<div class="col-lg-2">
 						<div class="mb-3">
 							<label for="example-text-input" class="form-label">코드설명</label>
-							<input class="form-control" type="text" name="code_comment" value="유저등급-일반사용자" id="example-text-input">
+							<input class="form-control" type="text" name="code_comment" value="" id="example-text-input">
 						</div>
 					</div>
 					<div class="col-lg-12">
@@ -94,9 +94,6 @@
 						</div>
 					</div>
 				</div>
-				<%-- searchCondition1	: ${searchMap.searchCondition1}<br/>
-				searchCondition2	: ${searchMap.searchCondition2}<br/>
-				searchWord			: ${searchMap.searchWord}/code_comment<br/> --%>
 			</div>
 		</div>
 	</div>

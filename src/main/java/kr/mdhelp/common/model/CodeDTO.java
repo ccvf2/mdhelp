@@ -2,7 +2,7 @@ package kr.mdhelp.common.model;
 
 import java.util.Date;
 
-public class CodeVO {
+public class CodeDTO {
 
 	private String	code			="";
 	private String	code_name		="";

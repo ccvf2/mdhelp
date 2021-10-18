@@ -2,7 +2,7 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias alias="codeVO" type="kr.mdhelp.common.model.CodeVO"/>
+		<typeAlias alias="codeDTO" type="kr.mdhelp.common.model.CodeDTO"/>
 		<typeAlias alias="memberDTO" type="kr.mdhelp.member.model.MemberDTO"/>
 	</typeAliases>
 </configuration>

@@ -21,21 +21,24 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import kr.mdhelp.common.model.CodeVO;
-import kr.mdhelp.common.service.CommonCodeService;
+import kr.mdhelp.admin.service.AdminCodeServiceInterface;
+import kr.mdhelp.common.model.CodeDTO;
+import kr.mdhelp.common.service.CommonCodeServiceInterface;
 
 @Controller
 public class AdminCodeController {
 	private static final Logger logger = LoggerFactory.getLogger(AdminCodeController.class);
 	
 	@Autowired
-	CommonCodeService codeService;
+	CommonCodeServiceInterface codeService;
+	@Autowired
+	AdminCodeServiceInterface adminCodeService;
 	
 	@RequestMapping(value = "/admin/codegroup", method = RequestMethod.GET)
 	public ModelAndView codeGroupPage(HttpServletRequest request, HttpServletResponse response) {
 		logger.info("=============================codeGroupPage");
 		ModelAndView mav = new ModelAndView();
-		List<CodeVO> codeGroupList = codeService.getCodeGroupListNotRetunToNULL(new HashMap<String, Object>());
+		List<CodeDTO> codeGroupList = codeService.getCodeGroupListNotRetunToNULL(new HashMap<String, Object>());
 		mav.addObject("codeGroupList", codeGroupList);
 		mav.setViewName("admin/code/codeGroup");
 		return mav;
@@ -43,14 +46,14 @@ public class AdminCodeController {
 	
 	@ResponseBody
 	@PostMapping("/admin/codegroupinsert.ajax")
-	public CodeVO insertCodeGroup(@ModelAttribute CodeVO codeGroupVO) {
+	public CodeDTO insertCodeGroup(@ModelAttribute CodeDTO codeGroupDTO) {
 		logger.info("=============================getCodeOne   A");
-		logger.info("=============================getCodeOne.code   [{}]",codeGroupVO.getCode());
-		logger.info("=============================getCodeOne.codename   [{}]",codeGroupVO.getCode_name());
-		logger.info("=============================getCodeOne.codevalur   [{}]",codeGroupVO.getCode_value());
-		logger.info("=============================getCodeOne.codecomment   [{}]",codeGroupVO.getCode_comment());
-		logger.info("=============================getCodeOne.coderegdt   [{}]",codeGroupVO.getCode_regdt());
-		CodeVO insertCodeGroup = codeService.insertCodeGroupRetunToNULL(codeGroupVO);
+		logger.info("=============================getCodeOne.code   [{}]",codeGroupDTO.getCode());
+		logger.info("=============================getCodeOne.codename   [{}]",codeGroupDTO.getCode_name());
+		logger.info("=============================getCodeOne.codevalur   [{}]",codeGroupDTO.getCode_value());
+		logger.info("=============================getCodeOne.codecomment   [{}]",codeGroupDTO.getCode_comment());
+		logger.info("=============================getCodeOne.coderegdt   [{}]",codeGroupDTO.getCode_regdt());
+		CodeDTO insertCodeGroup = adminCodeService.insertCodeGroupRetunToNULL(codeGroupDTO);
 		logger.info("=============================outCodeOne   A");
 		logger.info("=============================outCodeOne.code   [{}]",insertCodeGroup.getCode());
 		logger.info("=============================outCodeOne.codename   [{}]",insertCodeGroup.getCode_name());
@@ -65,12 +68,12 @@ public class AdminCodeController {
 	}
 	@ResponseBody
 	@PostMapping("/admin/codegroupdelete.ajax")
-	public CodeVO deleteCodeGroup(@ModelAttribute CodeVO codeGroupVO) {
-		codeGroupVO.setCode_sort(0);
+	public CodeDTO deleteCodeGroup(@ModelAttribute CodeDTO codeGroupDTO) {
+		codeGroupDTO.setCode_sort(0);
 		logger.info("============================= deleteCodeGroup   B");
-		logger.info("=============================getCodeOne.code   [{}]",codeGroupVO.getCode());
-		logger.info("=============================getCodeOne.codevalur   [{}]",codeGroupVO.getCode_value());
-		CodeVO deleteCodeGroup = codeService.deleteCodeGroupRetunToNULL(codeGroupVO);
+		logger.info("=============================getCodeOne.code   [{}]",codeGroupDTO.getCode());
+		logger.info("=============================getCodeOne.codevalur   [{}]",codeGroupDTO.getCode_value());
+		CodeDTO deleteCodeGroup = adminCodeService.deleteCodeGroupRetunToNULL(codeGroupDTO);
 		return deleteCodeGroup;
 	}
 	
@@ -92,8 +95,8 @@ public class AdminCodeController {
 	public ModelAndView codePage(HttpServletRequest request, HttpServletResponse response) {
 		logger.info("=============================codePage get");
 		ModelAndView mav = new ModelAndView();
-		List<CodeVO> codeGroupList = codeService.getCodeGroupListNotRetunToNULL(new HashMap<String, Object>());
-		List<CodeVO> codeList = codeService.getCodeListNotRetunToNULL(new HashMap<String, Object>());
+		List<CodeDTO> codeGroupList = codeService.getCodeGroupListNotRetunToNULL(new HashMap<String, Object>());
+		List<CodeDTO> codeList = codeService.getCodeListNotRetunToNULL(new HashMap<String, Object>());
 		mav.addObject("codeGroupList", codeGroupList);
 		mav.addObject("codeList", codeList);
 		mav.setViewName("admin/code/code");
@@ -109,55 +112,54 @@ public class AdminCodeController {
 		
 		
 		
-		List<CodeVO> codeGroupList = codeService.getCodeGroupListNotRetunToNULL(new HashMap<String, Object>());
+		List<CodeDTO> codeGroupList = codeService.getCodeGroupListNotRetunToNULL(new HashMap<String, Object>());
 		mav.addObject("codeGroupList", codeGroupList);
 		mav.addObject("searchMap", searchMap);
 
-		List<CodeVO> codeList = codeService.getCodeListNotRetunToNULL(searchMap);
+		List<CodeDTO> codeList = codeService.getCodeListNotRetunToNULL(searchMap);
 		mav.addObject("codeList", codeList);
 		mav.setViewName("admin/code/code");
 		return mav;
 	}
 	@RequestMapping(value = "/admin/codeinsert", method = RequestMethod.POST)
 	public ModelAndView codeInsert(HttpServletRequest request, HttpServletResponse response,
-			@ModelAttribute CodeVO codeVO) {
+			@ModelAttribute CodeDTO codeDTO) {
 		logger.info("=============================codeInsert");
 		ModelAndView mav = new ModelAndView();
 		
-		CodeVO resultCodeVO = new CodeVO();
-		
-		resultCodeVO = codeService.insertCodeRetunToNULL(codeVO);
+		CodeDTO resultCodeDTO = adminCodeService.insertCodeRetunToNULL(codeDTO);
+		mav.addObject("insertResult", resultCodeDTO);
 		
 		HashMap<String, Object> searchMap= new HashMap<String, Object>();
 		logger.info("============================= searchMap : [{}]", searchMap.toString());
 		
-		List<CodeVO> codeGroupList = codeService.getCodeGroupListNotRetunToNULL(new HashMap<String, Object>());
+		List<CodeDTO> codeGroupList = codeService.getCodeGroupListNotRetunToNULL(new HashMap<String, Object>());
 		mav.addObject("codeGroupList", codeGroupList);
 		mav.addObject("searchMap", searchMap);
 		
-		List<CodeVO> codeList = codeService.getCodeListNotRetunToNULL(searchMap);
+		List<CodeDTO> codeList = codeService.getCodeListNotRetunToNULL(searchMap);
 		mav.addObject("codeList", codeList);
 		mav.setViewName("admin/code/code");
 		return mav;
 	}
 	@RequestMapping(value = "/admin/codedelete", method = RequestMethod.POST)
 	public ModelAndView codeDelete(HttpServletRequest request, HttpServletResponse response,
-			@ModelAttribute CodeVO codeVO) {
+			@ModelAttribute CodeDTO codeDTO) {
 		logger.info("=============================codeInsert");
 		ModelAndView mav = new ModelAndView();
 		
-		CodeVO resultCodeVO = codeVO;
-		int result = codeService.deleteCodeRetunToNULL(codeVO.getCode());
+		int result = adminCodeService.deleteCodeRetunToNULL(codeDTO.getCode());
 		
+		logger.info("============================= result : [{}]", result);
 		
 		HashMap<String, Object> searchMap= new HashMap<String, Object>();
 		logger.info("============================= searchMap : [{}]", searchMap.toString());
 		
-		List<CodeVO> codeGroupList = codeService.getCodeGroupListNotRetunToNULL(new HashMap<String, Object>());
+		List<CodeDTO> codeGroupList = codeService.getCodeGroupListNotRetunToNULL(new HashMap<String, Object>());
 		mav.addObject("codeGroupList", codeGroupList);
 		mav.addObject("searchMap", searchMap);
 		
-		List<CodeVO> codeList = codeService.getCodeListNotRetunToNULL(searchMap);
+		List<CodeDTO> codeList = codeService.getCodeListNotRetunToNULL(searchMap);
 		mav.addObject("codeList", codeList);
 		mav.setViewName("admin/code/code");
 		return mav;
@@ -166,18 +168,18 @@ public class AdminCodeController {
 	/*@RequestMapping(value = "/admin/code.ajax", method = RequestMethod.POST)*/
 	@ResponseBody
 	@PostMapping("/admin/code.ajax")
-	public List<CodeVO> getCodeList(HttpServletRequest request, HttpServletResponse response) {
+	public List<CodeDTO> getCodeList(HttpServletRequest request, HttpServletResponse response) {
 		logger.info("============================= getCodeList   A");
-		List<CodeVO> codeList = codeService.getCodeListNotRetunToNULL(new HashMap<String, Object>());
+		List<CodeDTO> codeList = codeService.getCodeListNotRetunToNULL(new HashMap<String, Object>());
 		return codeList;
 	}
 	@ResponseBody
 	@PostMapping("/admin/codeOne.ajax")
-	public CodeVO getCodeOne(HttpServletRequest request, HttpServletResponse response) {
+	public CodeDTO getCodeOne(HttpServletRequest request, HttpServletResponse response) {
 		logger.info("=============================getCodeOne   A");
-		List<CodeVO> codeList = codeService.getCodeListNotRetunToNULL(new HashMap<String, Object>());
-		CodeVO vo = new CodeVO();
-		vo = codeList.get(0);
-		return vo;
+		List<CodeDTO> codeList = codeService.getCodeListNotRetunToNULL(new HashMap<String, Object>());
+		CodeDTO dto = new CodeDTO();
+		dto = codeList.get(0);
+		return dto;
 	}
 }

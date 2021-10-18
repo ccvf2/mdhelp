@@ -41,7 +41,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		//web.ignoring().antMatchers("/css/**","/js/**","/img/**","lib/**");
-		web.ignoring().antMatchers("/adminAssets/**","/adminResource/**");
+		web.ignoring().antMatchers("/memberAssets/**","/memberResource/**","/adminAssets/**","/adminResource/**");
 	}
 
 	/*
@@ -62,14 +62,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				//.antMatchers("/admin/**").hasRole("ADMIN")
 
 				// /member로 시작하는 모든 경로는 "ROLE_USER"롤을 가진 사용자만 접근 가능
-				/* .antMatchers("/member/info").hasRole("USER") */
+				//.antMatchers("/member/info").hasRole("USER")
 
 				//.antMatchers("/admin/code/**").permitAll()
 				// 모든 경로는 권한없이 접근 가능
 				.antMatchers("/**").permitAll()
+				//.antMatchers("/").permitAll()
 
-				// 회원가입 페이지 권한없이 접근 가능
-//				.antMatchers("/member/member").permitAll()
+				// 회원가입|로그인 페이지 권한없이 접근 가능
+				.antMatchers("/member/signin").permitAll()
+				.antMatchers("/member/signup").permitAll()
 
 				// 모든 요청에 대해, 인증된 사용자만 접근하도록 설정(필터)
 				.anyRequest().authenticated()
@@ -88,14 +90,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 			// SpringSecurity가 제공해주는 폼을 사용안할 거면 .loginPage()로 URL 지정
 			//.loginPage("/member/member")
-			.loginPage("/admin/login")
+			.loginPage("/member/signin")
 
 			// form action의 경로와 일치 시켜줘야 한다.
 			.loginProcessingUrl("/member/loginProc")
 
 			// 로그인 성공시 이동할 페이지
 			//.defaultSuccessUrl("/")
-			.defaultSuccessUrl("/admin/main")
+			.defaultSuccessUrl("/member/main")
 			.permitAll()
 
 		.and()

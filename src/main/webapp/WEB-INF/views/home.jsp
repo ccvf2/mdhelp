@@ -18,6 +18,7 @@
 	<a href="/admin/code">관리자-코드</a><br/>
 	<hr/>
 	<h2>사용자</h2>
+	<a href="/member/main">사용자-메인</a><br/>
 	<a href="/member/signup">사용자-회원가입</a><br/>
 	<a href="/member/signin">사용자-로그인</a><br/>
 </body>

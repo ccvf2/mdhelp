@@ -5,7 +5,7 @@
 
 	
 	
-	<!-- 관리자 기본 템플릿-->
+	<!-- Administrator default Template-->
 	<definition name="adminTemplate" template="/WEB-INF/views/admin/layout/adminTemplate.jsp">
 		<put-attribute name="adminHeader"				value="/WEB-INF/views/admin/layout/adminHeader.jsp" />
 		<put-attribute name="adminTopbar"				value="/WEB-INF/views/admin/layout/adminTopbar.jsp" />
@@ -14,7 +14,7 @@
 		<put-attribute name="adminFooter"				value="/WEB-INF/views/admin/layout/adminFooter.jsp" />
 	</definition>
 	
-	<!-- 관리자 onePage Template -->
+	<!-- Administrator onePage Template -->
 	<definition name="adminSinglePageTemplate" template="/WEB-INF/views/admin/layout/adminSingleTemplate.jsp">
 	</definition>
 	
@@ -36,6 +36,12 @@
 
 
 
+	<!-- Member default Template-->
+	<definition name="defaultTemplate"	template="/WEB-INF/views/member/layout/defaultTemplate.jsp">
+		<put-attribute name="topBar"	value="/WEB-INF/views/member/layout/topBar.jsp" />
+		<put-attribute name="navMenu"	value="/WEB-INF/views/member/layout/navMenu.jsp" />
+		<put-attribute name="footer"	value="/WEB-INF/views/member/layout/footer.jsp" />
+	</definition>
 
 
 
@@ -57,6 +63,12 @@
 	</definition>
 
 
+	<definition name="member/*" extends="defaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/views/member/{1}.jsp" />
+	</definition>
+	<definition name="member/*/*" extends="defaultTemplate">
+		<put-attribute name="body" value="/WEB-INF/views/member/{1}/{2}.jsp" />
+	</definition>
 
 
 </tiles-definitions>

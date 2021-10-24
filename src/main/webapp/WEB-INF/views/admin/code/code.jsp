@@ -116,7 +116,7 @@
 								<option value="">전체</option>
 								<c:forEach var="groupItem" items="${codeGroupList}" varStatus="index">
 									<c:choose>
-										<c:when test="${groupItem.code eq searchMap.searchCondition1}">
+										<c:when test="${groupItem.code_group eq searchMap.searchCondition1}">
 											<option value="${groupItem.code_group}" selected="selected">
 												${groupItem.code_group_name}(${groupItem.code_group})
 											</option>

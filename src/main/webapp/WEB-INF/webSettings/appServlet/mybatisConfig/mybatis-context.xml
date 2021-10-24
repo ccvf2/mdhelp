@@ -15,7 +15,13 @@
 	<!-- 쿼리정의 Mapper Bean -->
 	<bean id="sessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="DB_Info" />
-		<property name="mapperLocations" value="classpath*:/kr/mdhelp/common/mapper/*.xml" />
+		<!-- <property name="mapperLocations" value="classpath*:/kr/mdhelp/common/mapper/*.xml" /> -->
+		<property name="mapperLocations">
+			<list>
+				<value>classpath*:/kr/mdhelp/common/mapper/*.xml</value>
+				<value>classpath*:/kr/mdhelp/member/mapper/*.xml</value>
+			</list>
+		</property>
 		<!-- 
 		<property name="mapperLocations">
 			<list>

@@ -13,18 +13,16 @@ import kr.mdhelp.member.model.MemberDTO;
 public class SignUpService implements SignUpServiceInterface{
 	private static final Logger logger = LoggerFactory.getLogger(SignUpService.class);
 	
-	@Autowired
-	private PasswordEncoder passwordEncoder;
+	//@Autowired
+	//private PasswordEncoder passwordEncoder;
 	@Autowired
 	private SignUpDAOinterface signUpDAO; 
 	
 	
-	@Override
-	public String PasswordEncryptorReturnToNULL(String pwd) {
-		String encPwd = null;
-		encPwd = passwordEncoder.encode(pwd);
-		return encPwd;
-	}
+	/*
+	 * @Override public String PasswordEncryptorReturnToNULL(String pwd) { String
+	 * encPwd = null; encPwd = passwordEncoder.encode(pwd); return encPwd; }
+	 */
 
 	/**회원가입 처리.*/
 	@Override

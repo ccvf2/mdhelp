@@ -15,7 +15,7 @@ public class MemberDTO{
 	/** 고객등록일 */
 	private Date registrationDate = new Date();
 	/** 고객정보최종수정일 */
-	private Date ModifiedDate = new Date();
+	private Date modifiedDate = new Date();
 	/** 추가메일주소 */
 	private String subEmail ="";
 	/** 고객연락처1 */
@@ -24,9 +24,16 @@ public class MemberDTO{
 	private String contactNumber2 ="";
 	/** 고객주소 */
 	private String contactAddress ="";
+	/** 미사용필드1 */
 	private String contactFild1 ="";
+	/** 미사용필드2 */
 	private String contactFild2 ="";
-	
+	/** 고객등급 */
+	private String level ="";
+	/** 고객이메일 인증여부 */
+	private String authenticat ="";
+	/** 고객이메일 유저상태 */
+	private String active ="";
 	public Integer getUserNumber() {
 		return userNumber;
 	}
@@ -40,7 +47,9 @@ public class MemberDTO{
 		this.id = id;
 	}
 	public String getPassword() {
-		return password;
+		String tempPWd = new String(password);
+		this.password = "";
+		return tempPWd;
 	}
 	public void setPassword(String password) {
 		this.password = password;
@@ -58,10 +67,10 @@ public class MemberDTO{
 		this.registrationDate = registrationDate;
 	}
 	public Date getModifiedDate() {
-		return ModifiedDate;
+		return modifiedDate;
 	}
 	public void setModifiedDate(Date modifiedDate) {
-		ModifiedDate = modifiedDate;
+		this.modifiedDate = modifiedDate;
 	}
 	public String getSubEmail() {
 		return subEmail;
@@ -99,5 +108,24 @@ public class MemberDTO{
 	public void setContactFild2(String contactFild2) {
 		this.contactFild2 = contactFild2;
 	}
+	public String getLevel() {
+		return level;
+	}
+	public void setLevel(String level) {
+		this.level = level;
+	}
+	public String getAuthenticat() {
+		return authenticat;
+	}
+	public void setAuthenticat(String authenticat) {
+		this.authenticat = authenticat;
+	}
+	public String getActive() {
+		return active;
+	}
+	public void setActive(String active) {
+		this.active = active;
+	}
 	
+
 }

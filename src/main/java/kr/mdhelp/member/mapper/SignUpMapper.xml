@@ -3,6 +3,10 @@
 <mapper namespace="kr.mdhelp.member.mapper.SignUpMapper">
 
 	
-	<insert id="insert_member" parameterType="memberDTO">
+	<insert id="insert_member_info" parameterType="memberDTO" useGeneratedKeys="true" keyProperty="userNumber" >
+	INSERT INTO 
+		TBL_USER ( USER_ID, PASSWORD, USER_NAME, USER_LEVEL, USER_AUTHENTICAT, USER_ACTIVE ) 
+	VALUES 
+		(#{id}, #{password}, #{fullName}, #{level}, #{authenticat}, #{active})
 	</insert>
 </mapper>

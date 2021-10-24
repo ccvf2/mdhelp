@@ -32,14 +32,13 @@
 				<div class="row g-0">
 					<div class="col-lg-6">
 						<div class="p-lg-5 p-4">
-
 							<div>
 								<h5>Register account</h5>
 								<p class="text-muted">Get your free Samply account now.(${_csrf.parameterName})(${_csrf.token})</p>
 							</div>
 						
 							<div class="mt-4 pt-3">
-								<form action="/member/signupProcess/" method="post">
+								<form action="/member/signupProcess/" method="post" name="signupForm" onsubmit="return false">
 									<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 									<div class="mb-3">
 										<label class="fw-semibold" for="reg_idEmail">Email</label>
@@ -57,7 +56,7 @@
 									</div>
 									
 									<div class="mt-4 text-end">
-										<button class="btn btn-primary w-md waves-effect waves-light" type="submit">Register</button>
+										<button class="btn btn-primary w-md waves-effect waves-light" type="button" onclick="signUpCore.signUpRequest();">Register</button>
 									</div>
 									
 									<div class="mt-4 text-center">
@@ -91,3 +90,68 @@
 	<!-- end container -->
 </div>
 <!-- end account page -->
+<script type="text/javascript">
+var testVer = "====================== 0.9 ======================";
+$(document).ready(function(){
+	//alert("test");
+	console.log(testVer);
+});
+var signUpCore = {
+	getInputValue : function(){
+		var dataObj = {};
+		var form = document.getElementsByName("signupForm")[0]
+		form.forEach(function(item,index){
+			var itemName = item.name+"";
+			var itemValue = item.value+"";
+			if(itemName != ""){
+				dataObj[itemName] = itemValue;
+			}
+		});
+		return dataObj;
+	},
+	
+	dataValidation : function(dataObj) {
+		var checkValue = true;
+		if((checkValue == true)&&(dataObj["reg_idEmail"] == "")){
+			checkValue = false;
+			alert("아이디로 사용할 이메일 미입력");
+		}
+		if((checkValue == true)&&(dataObj["reg_pwd"] == "")){
+			checkValue = false;
+			alert("비밀번호 미입력");
+		}
+		
+		if((checkValue == true)&&(dataObj["reg_username"] == "")){
+			checkValue = false;
+			alert("이름 미입력");
+		}
+		
+		return checkValue; 
+	},
+	
+	signUpRequest : function(){
+		var dataObj = this.getInputValue();
+		//var validation = this.dataValidation(dataObj);
+		var validation = true;
+		if(validation){
+			$.ajax({
+				url: "/member/signupProcess.ajax",
+				type:"POST",
+				dataType:"TEXT",
+				data:dataObj,
+				success:function(data){
+					alert("등록 성공 되었습니다.");
+					console.log(data);
+				},
+				error:function(xhr, status, errorMsg){
+					alert("등록 실패 되었습니다.");
+					console.log(xhr)
+					console.log(status)
+					console.log(errorMsg)
+				}
+			});
+		}
+	} 
+}
+
+</script>

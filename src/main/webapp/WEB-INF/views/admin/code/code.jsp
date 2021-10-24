@@ -117,12 +117,12 @@
 								<c:forEach var="groupItem" items="${codeGroupList}" varStatus="index">
 									<c:choose>
 										<c:when test="${groupItem.code eq searchMap.searchCondition1}">
-											<option value="${groupItem.code}" selected="selected">
+											<option value="${groupItem.code_group}" selected="selected">
 												${groupItem.code_group_name}(${groupItem.code_group})
 											</option>
 										</c:when>
 										<c:otherwise>
-											<option value="${groupItem.code}">
+											<option value="${groupItem.code_group}">
 												${groupItem.code_group_name}(${groupItem.code_group})
 											</option>
 										</c:otherwise>

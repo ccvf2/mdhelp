@@ -47,7 +47,7 @@ public class SignUpController {
 		MemberDTO memberDto = new MemberDTO();
 		//memberDto.setUserNumber(0);
 		memberDto.setId(StringUtils.trimToEmpty(reg_idEmail));
-		memberDto.setPassword(reg_pwdTrim);
+		memberDto.setPwd(reg_pwdTrim);
 		memberDto.setFullName(reg_username);
 		//memberDto.setRegistrationDate();
 		//memberDto.setModifiedDate();
@@ -57,9 +57,9 @@ public class SignUpController {
 		//memberDto.setContactAddress();
 		//memberDto.setContactFild1();
 		//memberDto.setContactFild2();
-		memberDto.setLevel("USERLEV1");
-		memberDto.setAuthenticat("UAUTH00");
-		memberDto.setActive("NOACTIVE");
+		memberDto.setMember_level("USERLEV1");
+		memberDto.setAuthenticat_method("UAUTH00");
+		memberDto.setAccount_active("NOACTIVE");
 		
 		signUpService.MemberSignUpProcess1(memberDto); 
 		

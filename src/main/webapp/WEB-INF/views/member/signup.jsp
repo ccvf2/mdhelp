@@ -137,7 +137,7 @@ var signUpCore = {
 			$.ajax({
 				url: "/member/signupProcess.ajax",
 				type:"POST",
-				dataType:"TEXT",
+				dataType:"json",
 				data:dataObj,
 				success:function(data){
 					alert("등록 성공 되었습니다.");

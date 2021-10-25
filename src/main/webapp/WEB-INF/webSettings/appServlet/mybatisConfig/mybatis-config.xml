@@ -2,8 +2,8 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias alias="codeDTO" type="kr.mdhelp.common.model.CodeDTO"/>
-		<typeAlias alias="memberDTO" type="kr.mdhelp.member.model.MemberDTO"/>
-		<typeAlias alias="customUserDetails" type="kr.mdhelp.config.CustomUserDetails"/>
+		<typeAlias alias="codeDTO"				type="kr.mdhelp.common.model.CodeDTO"			/>
+		<typeAlias alias="memberDTO"			type="kr.mdhelp.member.model.MemberDTO"			/>
+		<typeAlias alias="customUserDetails"	type="kr.mdhelp.common.model.CustomUserDetails"	/>
 	</typeAliases>
 </configuration>

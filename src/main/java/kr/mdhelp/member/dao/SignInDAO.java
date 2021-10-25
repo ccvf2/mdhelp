@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import kr.mdhelp.config.CustomUserDetails;
+import kr.mdhelp.common.model.CustomUserDetails;
 import kr.mdhelp.member.model.MemberDTO;
 
 @Repository

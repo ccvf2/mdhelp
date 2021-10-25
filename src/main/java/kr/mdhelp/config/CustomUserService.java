@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import kr.mdhelp.common.model.CustomUserDetails;
 import kr.mdhelp.member.dao.SignInDAOInterface;
 import kr.mdhelp.member.model.MemberDTO;
 @Service
@@ -22,7 +23,7 @@ public class CustomUserService implements CustomUserServiceInterface {
 		MemberDTO memberDto = new MemberDTO();
 		memberDto.setId(username);
 		
-		CustomUserDetails user = signInDAO.loginProcess(memberDto);
+		UserDetails user = (CustomUserDetails)signInDAO.loginProcess(memberDto);
 		
 		if(user==null) {
 			throw new UsernameNotFoundException(username);

@@ -10,6 +10,8 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import kr.mdhelp.common.model.CustomUserDetails;
+
 public class CustomAuthenticationProvide implements AuthenticationProvider {
 	private static final Logger logger = LoggerFactory.getLogger(CustomAuthenticationProvide.class);
 	private static final String sCPrefix = "▦▩▦▩▦ CustomAuthenticationProvide ▩ - ";
@@ -28,11 +30,13 @@ public class CustomAuthenticationProvide implements AuthenticationProvider {
         logger.debug(sCPrefix +"authenticate-password : [{}]",password);
         
 
-        //AccountContext accountContext = (AccountContext) userDetailsService.loadUserByUsername(username);
         CustomUserDetails user = (CustomUserDetails) userDetailsService.loadUserByUsername(username);
+        //MemberDTO user = (MemberDTO) userDetailsService.loadUserByUsername(username);
 
+        String dbPwd =user.getPwd();
+        logger.debug(sCPrefix +"user-password : [{}]",dbPwd);
         // password 일치하지 않으면!
-        if(!passwordEncoder.matches(password,user.getPassword())){
+        if(!passwordEncoder.matches(password,dbPwd)){
         	logger.debug(sCPrefix +" !!!-- 비밀번호 불일치 --!!! ");
             throw new BadCredentialsException("BadCredentialsException");
         }else {

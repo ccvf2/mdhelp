@@ -24,8 +24,8 @@ public class SignUpDAO implements SignUpDAOinterface{
 		
 		
 		String encPwd = null;
-		encPwd = passwordEncoder.encode(memberDTO.getPassword());
-		memberDTO.setPassword(encPwd);
+		encPwd = passwordEncoder.encode(memberDTO.getPwd());
+		memberDTO.setPwd(encPwd);
 		
 		sql.insert("insert_member_info", memberDTO);
 		//memberDTO.setPassword("");

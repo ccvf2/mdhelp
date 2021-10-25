@@ -115,7 +115,8 @@ var loginProcessObject = {
 				dataType:"TEXT",
 				data:data,
 				success:function(data){
-					alert("등록되었습니다.새로고침 하세요.");
+					console.log(data)
+					alert("통신성공.새로고침 하세요.");
 				},
 				error:function(xhr, status, errorMsg){
 					alert("등록 실패 되었습니다.");

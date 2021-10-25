@@ -59,6 +59,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/member/main").permitAll()
 				.antMatchers("/member/signin").permitAll()
 				.antMatchers("/member/signup").permitAll()
+				.antMatchers("/member/signupProcess.ajax").permitAll()
 				
 				// /admin으로 시작하는 모든 경로는 "ROLE_ADMIN"롤을 가진 사용자만 접근 가능
 				.antMatchers("/admin/**").hasRole("ADMIN")

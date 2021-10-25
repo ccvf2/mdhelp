@@ -43,7 +43,7 @@ public class SignInController {
 		
 		MemberDTO memberDto = new MemberDTO();
 		memberDto.setId(StringUtils.trimToEmpty(reg_idEmail));
-		memberDto.setPassword(reg_pwdTrim);
+		memberDto.setPwd(reg_pwdTrim);
 		
 		signInService.signinProcess(memberDto); 
 		

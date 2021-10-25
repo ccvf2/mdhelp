@@ -1,38 +1,34 @@
 package kr.mdhelp.config;
 
-//import org.springframework.context.annotation.Bean;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-//import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-//import kr.mdhelp.common.service.MDHelpLoginService;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-	/*
-	 *   https://blog.naver.com/ubermansh/221982518179
-	 * 
-	WebSecurityConfigurerAdapter를 상속받은 클래스에 @EnableWebSecurity 어노테이션을 붙여
-	SpringSecurity 설정 클래스라고 명시 해준다.
-	@EnableGlobalMethodSecurity을 이용해 Controller 특정 페이지에 특정 권한이 있는 접근만
-	허용할 경우 @PreAuthorize 어노테이션을 사용해 활성화 시킬 수 있다.(필수 X)
-	 */
+	private static final Logger logger = LoggerFactory.getLogger(SecurityConfig.class);
+	private static final String sCPrefix = "▦▩▦▩▦SecurityConfig▩ - ";
 
-	/* BCrypt 비밀번호 암호화 */
-	/*
-	 * @Bean public PasswordEncoder passwordEncoder() { return new
-	 * BCryptPasswordEncoder(); }
-	 */
-	
-	
-	public SecurityConfig(){ 
+//	 BCrypt 비밀번호 암호화
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
+	@Bean
+	public AuthenticationProvider authenticationProvider() {
+		return new CustomAuthenticationProvide();
 	}
 	/*
 	WebSecurity는 FilterChainProxy를 생성하는 필터
@@ -40,7 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	 */
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		//web.ignoring().antMatchers("/css/**","/js/**","/img/**","lib/**");
+		logger.debug(sCPrefix +"configure WEB");
 		web.ignoring().antMatchers("/memberAssets/**","/memberResource/**","/adminAssets/**","/adminResource/**");
 	}
 
@@ -50,28 +46,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	 */
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-
+		logger.debug(sCPrefix +"configure HttpSecurity=============================================");
 		/*
 		HttpSevletRequest에 따라 접근 제한, 페이지 관련 권한 설정
 		.andMatechers메소드 = 특정 경로 지정,
 		.permitAll()과 .hasRole() 메소드는 역할(Role)에 따른 접근 설정
 		 */
 		http.authorizeRequests()
-
-				// /admin으로 시작하는 모든 경로는 "ROLE_ADMIN"롤을 가진 사용자만 접근 가능
-				//.antMatchers("/admin/**").hasRole("ADMIN")
-
-				// /member로 시작하는 모든 경로는 "ROLE_USER"롤을 가진 사용자만 접근 가능
-				//.antMatchers("/member/info").hasRole("USER")
-
-				//.antMatchers("/admin/code/**").permitAll()
-				// 모든 경로는 권한없이 접근 가능
-				.antMatchers("/**").permitAll()
-				//.antMatchers("/").permitAll()
-
-				// 회원가입|로그인 페이지 권한없이 접근 가능
+				// 한없이 접근 가능 페이지
+				.antMatchers("/").permitAll()
+				.antMatchers("/admin/main").permitAll()
+				.antMatchers("/member/main").permitAll()
 				.antMatchers("/member/signin").permitAll()
 				.antMatchers("/member/signup").permitAll()
+				
+				// /admin으로 시작하는 모든 경로는 "ROLE_ADMIN"롤을 가진 사용자만 접근 가능
+				.antMatchers("/admin/**").hasRole("ADMIN")
+				// /member로 시작하는 모든 경로는 "ROLE_USER"롤을 가진 사용자만 접근 가능
+				.antMatchers("/member/info").hasRole("USER")
 
 				// 모든 요청에 대해, 인증된 사용자만 접근하도록 설정(필터)
 				.anyRequest().authenticated()
@@ -89,14 +81,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.passwordParameter("pwd")
 
 			// SpringSecurity가 제공해주는 폼을 사용안할 거면 .loginPage()로 URL 지정
-			//.loginPage("/member/member")
 			.loginPage("/member/signin")
 
 			// form action의 경로와 일치 시켜줘야 한다.
-			.loginProcessingUrl("/member/loginProc")
+			.loginProcessingUrl("/member/signInProcess.ajax")
 
 			// 로그인 성공시 이동할 페이지
-			//.defaultSuccessUrl("/")
 			.defaultSuccessUrl("/member/main")
 			.permitAll()
 
@@ -119,17 +109,26 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 
 
-
-
+	
+	
 	/*
 	http.authenticationProvider는 내부적으로
 	AuthenticationManagerBuilder.authenticationProvider를 호출한다.
 	AuthenticationManagerBuilder.userDetatilsService().passwordEncoder()를 통해
 	패스워드 암호화에 사용될 PasswordEncoder 구현체를 지정한다.
 	 */
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		//auth.userDetailsService(memberService).passwordEncoder(passwordEncoder());
-		//auth.userDetailsService(loginService).passwordEncoder(passwordEncoder());
-	}
+    @Override
+    public void configure(AuthenticationManagerBuilder auth) throws Exception {
+
+//        String password = passwordEncoder().encode("1111");
+
+//        auth.inMemoryAuthentication().withUser("user").password(password).roles("USER");
+//        auth.inMemoryAuthentication().withUser("manager").password(password).roles("MANAGER");
+//        auth.inMemoryAuthentication().withUser("admin").password(password).roles("ADMIN");
+//        auth.userDetailsService(userDetailsService);
+        auth.authenticationProvider(authenticationProvider());
+    }
+
+
+
 }

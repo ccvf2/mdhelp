@@ -35,8 +35,8 @@ public class SignInController {
 	@ResponseBody
 	@RequestMapping(value = "member/signInProcess.ajax", method = RequestMethod.POST)
 	public MemberDTO signUp(HttpServletRequest request, HttpServletResponse response, 
-			@RequestParam(defaultValue = "",	name = "reg_idEmail",	required = true)String reg_idEmail
-			, @RequestParam(defaultValue = "",	name = "reg_pwd",		required = true)String reg_pwd
+			@RequestParam(defaultValue = "",	name = "email",	required = true)String reg_idEmail
+			, @RequestParam(defaultValue = "",	name = "pwd",		required = true)String reg_pwd
 			)throws Exception {
 		ModelAndView mav  = new ModelAndView();
 		String reg_pwdTrim = StringUtils.trimToEmpty(reg_pwd);

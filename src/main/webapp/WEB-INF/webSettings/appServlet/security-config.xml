@@ -10,7 +10,7 @@
 		http://www.springframework.org/schema/security https://www.springframework.org/schema/security/spring-security.xsd">
 
 
-	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+	<!-- <bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" /> -->
 	<!-- <bean id="customUserDetailsService" class="pere.jax.security.CustomUserDetailsService"></bean> -->
 
 	<!-- 
@@ -42,7 +42,8 @@
 	</security:authentication-manager>
 	 -->
 	
-	<context:component-scan base-package="kr.mdhelp.config"/>
+	<!-- <context:component-scan base-package="kr.mdhelp.config"/> -->
+	<context:component-scan base-package="kr.mdhelp"/>
 	<security:global-method-security pre-post-annotations="enabled" secured-annotations="enabled" />
 
 

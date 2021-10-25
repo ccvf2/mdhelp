@@ -48,7 +48,7 @@ public class MemberDTO{
 	}
 	public String getPassword() {
 		String tempPWd = new String(password);
-		this.password = "";
+		//this.password = "";
 		return tempPWd;
 	}
 	public void setPassword(String password) {

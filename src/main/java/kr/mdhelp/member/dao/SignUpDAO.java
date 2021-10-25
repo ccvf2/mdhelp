@@ -31,6 +31,8 @@ public class SignUpDAO implements SignUpDAOinterface{
 		//memberDTO.setPassword("");
 		return memberDTO;
 	}
+
+
 	
 	
 }

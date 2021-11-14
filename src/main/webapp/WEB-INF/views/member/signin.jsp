@@ -36,16 +36,16 @@
 								</div>
 							
 								<div class="mt-4 pt-3">
-									<form action="index.html">
+									<form action="index.html" id="signInForm">
 	
 										<div class="mb-3">
 											<label for="email" class="fw-semibold">Username</label>
-											<input type="text" class="form-control" id="email" placeholder="Enter username">
+											<input type="text" class="form-control" id="email" name="email" placeholder="Enter username">
 										</div>
 				
 										<div class="mb-3 mb-4">
 											<label for="pwd" class="fw-semibold">Password</label>
-											<input type="password" class="form-control" id="pwd" placeholder="Enter password">
+											<input type="password" class="form-control" id="pwd" name="pwd" placeholder="Enter password">
 										</div>
 
 										<div class="row align-items-center">
@@ -93,6 +93,7 @@
 </div>
 <%-- end account page --%>
 <script type="text/javascript">
+<%-- 
 var loginProcessObject = {
 	getInputValue : function(){
 		var returnObj ={};
@@ -126,6 +127,26 @@ var loginProcessObject = {
 				}
 			});
 		}
+	},
+}
+ --%>
+var loginProcessObject = {
+	getInputValue : function(){
+		var returnObj ={};
+		returnObj["email"]			=	$("#email").val(); 
+		returnObj["pwd"]				=	$("#pwd").val();
+		returnObj["${_csrf.parameterName}"]	=	"${_csrf.token}"; 
+		return returnObj;
+	},
+	valueDataValidation : function(obj){
+		return true;
+	},
+	
+	trySignIn : function(){
+		var form = document.getElementById("signInForm");
+		form.action="/member/signInProcess.ajax";
+		form.method = "POST";
+		form.submit(); 
 	},
 }
 </script>

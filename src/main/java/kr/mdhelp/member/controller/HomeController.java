@@ -6,6 +6,8 @@ import java.util.Locale;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,6 +36,8 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
+		Authentication auth =  SecurityContextHolder.getContext().getAuthentication();
+		logger.debug("++++++++++++++++++++++++++++++직접 찾은 세션정보 [{}] - ROOT ",auth.getName());
 		return "home";
 	}
 	
@@ -42,6 +46,14 @@ public class HomeController {
 	@RequestMapping(value = "member/main", method = RequestMethod.GET)
 	public ModelAndView signUpPage() {
 		ModelAndView mav  = new ModelAndView();
+		
+		
+		Authentication auth =  SecurityContextHolder.getContext().getAuthentication();
+		logger.debug("++++++++++++++++++++++++++++++직접 찾은 세션정보 [{}] - MAIN ",auth.getName());
+
+
+		
+		
 		mav.setViewName("member/main/main");
 		return mav;
 	}

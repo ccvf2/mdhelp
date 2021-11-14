@@ -23,11 +23,18 @@ public class CustomUserService implements CustomUserServiceInterface {
 		MemberDTO memberDto = new MemberDTO();
 		memberDto.setId(username);
 		
-		UserDetails user = (CustomUserDetails)signInDAO.loginProcess(memberDto);
+		CustomUserDetails user = (CustomUserDetails)signInDAO.loginProcess(memberDto);
 		
 		if(user==null) {
+			//사용자가 없음 또는 ID 를 잘못 입력.
 			throw new UsernameNotFoundException(username);
 		}else {
+			//DB에서 사용자를 찾아온 경우.
+			/*
+			 * Set<GrantedAuthority> dbAuthSet = new HashSet<GrantedAuthority>();
+			 * if(StringUtils.equals(user.getUsername(), username)) { //등급니 사용자면.
+			 * dbAuthSet.addAll(dbAuthSet) }
+			 */
 			return user;
 		}
 		

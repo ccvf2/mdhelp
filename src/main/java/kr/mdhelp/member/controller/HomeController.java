@@ -37,7 +37,10 @@ public class HomeController {
 		model.addAttribute("serverTime", formattedDate );
 		
 		Authentication auth =  SecurityContextHolder.getContext().getAuthentication();
-		logger.debug("++++++++++++++++++++++++++++++직접 찾은 세션정보 [{}] - ROOT ",auth.getName());
+		logger.debug("++++++++++++++++++++++++++++++직접 찾은 세션정보 Name[{}] - ROOT ",auth.getName());
+		logger.debug("++++++++++++++++++++++++++++++직접 찾은 세션정보 Credentials[{}] - ROOT ",auth.getCredentials());
+		logger.debug("++++++++++++++++++++++++++++++직접 찾은 세션정보 Details[{}] - ROOT ",auth.getDetails());
+		logger.debug("++++++++++++++++++++++++++++++직접 찾은 세션정보 Authorities[{}] - ROOT ",auth.getAuthorities());
 		return "home";
 	}
 	
@@ -49,7 +52,10 @@ public class HomeController {
 		
 		
 		Authentication auth =  SecurityContextHolder.getContext().getAuthentication();
-		logger.debug("++++++++++++++++++++++++++++++직접 찾은 세션정보 [{}] - MAIN ",auth.getName());
+		logger.debug("++++++++++++++++++++++++++++++직접 찾은 세션정보 Name[{}] - ROOT ",auth.getName());
+		logger.debug("++++++++++++++++++++++++++++++직접 찾은 세션정보 Credentials[{}] - ROOT ",auth.getCredentials());
+		logger.debug("++++++++++++++++++++++++++++++직접 찾은 세션정보 Details[{}] - ROOT ",auth.getDetails());
+		logger.debug("++++++++++++++++++++++++++++++직접 찾은 세션정보 Authorities[{}] - ROOT ",auth.getAuthorities());
 
 
 		

@@ -25,7 +25,7 @@ public class CustomUserDetails extends MemberDTO implements UserDetails, Seriali
 		if( StringUtils.equals(member_level, "USERLEV1") ) {
 			//일반 사용자
 			memberAuthority = "USER";
-		}else if(StringUtils.equals(member_level, "USERLEV12") ) {
+		}else if(StringUtils.equals(member_level, "USERLEV2") ) {
 			//관리자
 			memberAuthority = "ADMIN";
 		}else {
@@ -37,6 +37,11 @@ public class CustomUserDetails extends MemberDTO implements UserDetails, Seriali
 		return auth;
 	}
 
+	
+	
+	
+	
+	
 	@Override
 	public String getPassword() {
 		return getPwd();

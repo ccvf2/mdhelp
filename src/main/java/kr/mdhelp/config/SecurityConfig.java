@@ -158,7 +158,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			//.logoutSuccessUrl("/member/main")
 			.logoutSuccessUrl("/")
 			// 로그아웃 하면 Session 초기화 해주기
-			.invalidateHttpSession(true);
+			.invalidateHttpSession(true)
+			.deleteCookies("JSESSIONID");
 			//.and()
 			
 			

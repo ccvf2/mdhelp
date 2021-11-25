@@ -55,7 +55,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		logger.debug(sCPrefix +"configure WEB");
-		web.ignoring().antMatchers("/openapi.naver.com/**","/memberAssets/**","/memberResource/**","/adminAssets/**","/adminResource/**");
+		web.ignoring().antMatchers("/memberAssets/**","/memberResource/**","/adminAssets/**","/adminResource/**","/favicon.ico");
 	}
 
 	/*
@@ -99,24 +99,27 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			//동시로그인 발생시 처리.
 			//.expiredSessionStrategy(null)
 			//세션처리 - 세션 만료시 이동할 URL
-			.expiredUrl("/member/signin");
+			.expiredUrl("/member/sign/signin");
 			
 			
 			//================ 권한정책 ================================
 			http.authorizeRequests()
 				// 한없이 접근 가능 페이지
 				.antMatchers("/").permitAll()
-				.antMatchers("/favicon.ico").permitAll()
-				.antMatchers("/admin/main").permitAll()
-				.antMatchers("/member/main").permitAll()
-				.antMatchers("/member/signin").permitAll()
-				.antMatchers("/member/signup").permitAll()
-				.antMatchers("/member/signupProcess.ajax").permitAll()
-				// /admin으로 시작하는 모든 경로는 "ROLE_ADMIN"롤을 가진 사용자만 접근 가능
-				.antMatchers("/admin/**").hasRole("ADMIN")
-				.antMatchers("/member/**").hasRole("ADMIN")
+				.antMatchers("/test/**").permitAll()
+				//.antMatchers("/member/sign/**").permitAll()
+				.antMatchers("/member/sign/signout").hasAnyAuthority("USERLEV1,USERLEV2")
+				.antMatchers("/member/sign/**").hasAuthority("ANONYMOUS")
+				
 				// /member로 시작하는 모든 경로는 "ROLE_USER"롤을 가진 사용자만 접근 가능
-				.antMatchers("/member/info").hasRole("USER")
+				//.antMatchers("/member/**").hasAnyAuthority("USERLEV1,USERLEV2")
+				.antMatchers("/member/**").hasAuthority("USERLEV1")
+				//.antMatchers("/member/info").hasRole("USERLEV1")
+				//.antMatchers("/member/main").hasRole("USERLEV1")
+				
+				// /admin으로 시작하는 모든 경로는 "ROLE_ADMIN"롤을 가진 사용자만 접근 가능
+				//.antMatchers("/admin/main").hasAuthority("USERLEV2")
+				.antMatchers("/admin/**").hasAuthority("USERLEV2")
 				// 모든 요청에 대해, 인증된 사용자만 접근하도록 설정(필터)
 				.anyRequest().authenticated();
 				//.and()
@@ -133,13 +136,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			.usernameParameter("email")
 			.passwordParameter("pwd")
 			// SpringSecurity가 제공해주는 폼을 사용안할 거면 .loginPage()로 URL 지정
-			.loginPage("/member/signin")
+			.loginPage("/member/sign/signin")
 			// form action의 경로와 일치 시켜줘야 한다.
-			.loginProcessingUrl("/member/signInProcess.ajax")
+			.loginProcessingUrl("/member/sign/signInProcess.ajax")
 			// 로그인 성공시 이동할 페이지
-			.defaultSuccessUrl("/member/main")
-			//.successHandler(new CustomA)
-			//.failureHandler()
+			//.defaultSuccessUrl("/member/main")
+			.successHandler(new CustomAuthenticationSuccessHandler("/main"))
+			.failureHandler(new CustomAuthenticationFailureHandler("/"))
 			.permitAll();
 			//.and()
 			
@@ -148,7 +151,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			// 로그아웃
 			http.logout()
 			// 로그아웃 컨트롤러 매핑
-			.logoutRequestMatcher(new AntPathRequestMatcher("/member/signout"))
+			.logoutRequestMatcher(new AntPathRequestMatcher("/member/sign/signout"))
 			// 로그아웃 성공시 경로
 			//.logoutSuccessUrl("/member/main")
 			.logoutSuccessUrl("/")

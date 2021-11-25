@@ -6,21 +6,38 @@ import java.util.Collection;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import kr.mdhelp.config.SecurityConfig;
 import kr.mdhelp.member.model.MemberDTO;
 
 
 public class CustomUserDetails extends MemberDTO implements UserDetails, Serializable{
 	private static final long serialVersionUID = 5117277687461102365L;
+	private static final Logger logger = LoggerFactory.getLogger(CustomUserDetails.class);
+	private static final String sCPrefix = "▦▩▦▩▦CustomUserDetails▩ - ";
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		List<GrantedAuthority> auth = new ArrayList<GrantedAuthority>();
 		
-		String member_level = super.getMember_level();
+		logger.debug(sCPrefix +"//Member_level[{}]",super.getMember_level());
+		if( StringUtils.isNotBlank(super.getMember_level()) ) {
+			//로그인정보 있음.
+			logger.debug(sCPrefix +"//로그인정보 있음.");
+			auth.add(new SimpleGrantedAuthority(super.getMember_level()));
+			if(StringUtils.equals(super.getMember_level(), "USERLEV2")) {
+				auth.add(new SimpleGrantedAuthority("USERLEV1"));
+			}
+		}else {
+			logger.debug(sCPrefix +"//로그인정보 없음.");
+			auth.add(new SimpleGrantedAuthority("ANONYMOUS"));
+		}
+		/**
 		String memberAuthority = "ANONYMOUS";
 		if( StringUtils.equals(member_level, "USERLEV1") ) {
 			//일반 사용자
@@ -33,6 +50,7 @@ public class CustomUserDetails extends MemberDTO implements UserDetails, Seriali
 			memberAuthority = "ANONYMOUS";
 		}
 		auth.add(new SimpleGrantedAuthority(memberAuthority));
+		*/
 		//MemberDTO정보
 		return auth;
 	}

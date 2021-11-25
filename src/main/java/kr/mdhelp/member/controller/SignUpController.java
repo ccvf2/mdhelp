@@ -26,7 +26,7 @@ public class SignUpController {
 	/**
 	 * 회원가입 페이지 호출
 	 */
-	@RequestMapping(value = "member/signup", method = RequestMethod.GET)
+	@RequestMapping(value = "member/sign/signup", method = RequestMethod.GET)
 	public ModelAndView signUpPage() {
 		ModelAndView mav  = new ModelAndView();
 		mav.setViewName("member/signup");
@@ -35,7 +35,7 @@ public class SignUpController {
 	
 	
 	@ResponseBody
-	@RequestMapping(value = "member/signupProcess.ajax", method = RequestMethod.POST)
+	@RequestMapping(value = "member/sign/signupProcess.ajax", method = RequestMethod.POST)
 	public MemberDTO signUp(HttpServletRequest request, HttpServletResponse response, 
 			@RequestParam(defaultValue = "",	name = "reg_idEmail",	required = true)String reg_idEmail
 			, @RequestParam(defaultValue = "",	name = "reg_pwd",		required = true)String reg_pwd

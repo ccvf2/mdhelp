@@ -81,7 +81,7 @@
 				</div>
 				<%-- end card --%>
 				<div class="mt-5 text-center">
-					<p>Don't have an account ? <a href="/member/signup" class="fw-semibold text-decoration-underline text-primary"> Sign up </a> </p>
+					<p>Don't have an account ? <a href="/member/sign/signup" class="fw-semibold text-decoration-underline text-primary"> Sign up </a> </p>
 					<p>© <script>document.write(new Date().getFullYear())</script> <b>Samply</b>. Crafted with <i class="mdi mdi-heart text-danger"></i> by Pichforest</p>
 				</div>
 			</div>
@@ -144,7 +144,7 @@ var loginProcessObject = {
 	
 	trySignIn : function(){
 		var form = document.getElementById("signInForm");
-		form.action="/member/signInProcess.ajax";
+		form.action="/member/sign/signInProcess.ajax";
 		form.method = "POST";
 		form.submit(); 
 	},

@@ -46,33 +46,26 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
 		logger.debug(sCPrefix +"++++++++++++++++++++++++++++++직접 찾은 세션정보 Principal[{}] - ROOT ",auth.getPrincipal());
 		String goURL =this.defaultSuccessUrl;
 		
-		if(auth.isAuthenticated()) {
-			logger.debug(sCPrefix +"♥ 로그인 되어 있다. ");
-			
-			boolean adminFlag = false;
-			
-			Collection<? extends GrantedAuthority> ga =auth.getAuthorities();
-			Iterator<?> it = ga.iterator();
-			while(it.hasNext()) {
-				String keyString = it.next().toString();
-				if(StringUtils.equals(keyString, "USERLEV2")) {
-					logger.debug(sCPrefix +"♥ USERLEV2 AutZhorities 찾음 ");
-					adminFlag = true;
-				}
+		boolean adminFlag = false;
+		
+		Collection<? extends GrantedAuthority> ga =auth.getAuthorities();
+		Iterator<?> it = ga.iterator();
+		while(it.hasNext()) {
+			String keyString = it.next().toString();
+			if(StringUtils.equals(keyString, "USERLEV2")) {
+				logger.debug(sCPrefix +"♥ USERLEV2 AutZhorities 찾음 ");
+				adminFlag = true;
 			}
-			
-			if(adminFlag) {
-				logger.debug(sCPrefix +"♥ 관리자다");
-				goURL = "/admin"+goURL;
-			}else {
-				logger.debug(sCPrefix +"♥ 사용자다");
-				goURL = "/member"+goURL;
-			}
-			
-		}else{
-			logger.debug(sCPrefix +"▣ 로그인 안되어 있다. ");
+		}
+		
+		if(adminFlag) {
+			logger.debug(sCPrefix +"♥ 관리자다");
+			goURL = "/admin"+goURL;
+		}else {
+			logger.debug(sCPrefix +"♥ 사용자다");
 			goURL = "/member"+goURL;
-		};
+		}
+		
 		logger.debug(sCPrefix +"redirectURL:[{}]",goURL);
 		response.sendRedirect(goURL);
 	}

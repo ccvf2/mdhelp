@@ -109,7 +109,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 				.antMatchers("/test/**").permitAll()
 				//.antMatchers("/member/sign/**").permitAll()
 				.antMatchers("/member/sign/signout").hasAnyAuthority("USERLEV1,USERLEV2")
-				.antMatchers("/member/sign/**").hasAuthority("ANONYMOUS")
+				.antMatchers("/member/sign/signup").hasAuthority("ROLE_ANONYMOUS")
+				.antMatchers("/member/sign/signin").hasAuthority("ROLE_ANONYMOUS")
+				.antMatchers("/member/sign/**").hasAnyAuthority("ROLE_ANONYMOUS,ANONYMOUS,USERLEV1,USERLEV2")
 				
 				// /member로 시작하는 모든 경로는 "ROLE_USER"롤을 가진 사용자만 접근 가능
 				//.antMatchers("/member/**").hasAnyAuthority("USERLEV1,USERLEV2")

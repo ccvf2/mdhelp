@@ -27,9 +27,6 @@
 	<br/>
 	권한상세 : ${authoritiesDetail}
 </h3>
-
-
-
 	<h2>공통</h2>
 	<c:choose>
 		<c:when test='${loginName eq "" }'>

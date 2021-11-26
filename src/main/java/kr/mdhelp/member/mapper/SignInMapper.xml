@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.mdhelp.member.mapper.SignInMapper">
+	<select id="select_member_check" parameterType="memberDTO" resultType="customUserDetails">
+		SELECT
+			USER_SEQ AS userNumber
+			, USER_ID AS id
+			, PASSWORD AS pwd
+			, USER_NAME AS fullName
+			, USER_REGDT AS registrationDate
+			, USER_UPDT AS modifiedDate
+			, USER_CONTACT_NUMBER1 AS contactNumber1
+			, USER_CONTACT_ADDR AS contactAddress
+			, USER_CONTACT_NUMBER2 AS contactNumber2
+			, USER_SUB_EMAIL AS subEmail
+			, USER_CONTACT_FILD1 AS contactFild1
+			, USER_CONTACT_FILD2 AS contactFild2
+			, USER_LEVEL AS member_level
+			, USER_AUTHENTICAT AS authenticat_method
+			, USER_ACTIVE AS account_active
+		FROM
+			TBL_USER
+		WHERE
+			USER_ID =#{id}
+	</select>
+</mapper>

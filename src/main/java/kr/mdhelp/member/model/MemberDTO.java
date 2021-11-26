@@ -1,15 +1,17 @@
 package kr.mdhelp.member.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class MemberDTO{
-
+public class MemberDTO implements Serializable{
+	private static final long serialVersionUID = 6243620526197664310L;
+	
 	/** 고객번호 */
 	private Integer userNumber = new Integer(0);
 	/** 고객 ID */
 	private String id = "";
 	/** 고객 ID */
-	private String password = "";
+	private String pwd = "";
 	/** 고객명 */
 	private String fullName = "";
 	/** 고객등록일 */
@@ -29,11 +31,12 @@ public class MemberDTO{
 	/** 미사용필드2 */
 	private String contactFild2 ="";
 	/** 고객등급 */
-	private String level ="";
+	private String member_level ="";
 	/** 고객이메일 인증여부 */
-	private String authenticat ="";
+	private String authenticat_method ="";
 	/** 고객이메일 유저상태 */
-	private String active ="";
+	private String account_active ="";
+	
 	public Integer getUserNumber() {
 		return userNumber;
 	}
@@ -46,13 +49,11 @@ public class MemberDTO{
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getPassword() {
-		String tempPWd = new String(password);
-		this.password = "";
-		return tempPWd;
+	public String getPwd() {
+		return pwd;
 	}
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
 	}
 	public String getFullName() {
 		return fullName;
@@ -108,24 +109,23 @@ public class MemberDTO{
 	public void setContactFild2(String contactFild2) {
 		this.contactFild2 = contactFild2;
 	}
-	public String getLevel() {
-		return level;
+	public String getMember_level() {
+		return member_level;
 	}
-	public void setLevel(String level) {
-		this.level = level;
+	public void setMember_level(String member_level) {
+		this.member_level = member_level;
 	}
-	public String getAuthenticat() {
-		return authenticat;
+	public String getAuthenticat_method() {
+		return authenticat_method;
 	}
-	public void setAuthenticat(String authenticat) {
-		this.authenticat = authenticat;
+	public void setAuthenticat_method(String authenticat_method) {
+		this.authenticat_method = authenticat_method;
 	}
-	public String getActive() {
-		return active;
+	public String getAccount_active() {
+		return account_active;
 	}
-	public void setActive(String active) {
-		this.active = active;
+	public void setAccount_active(String account_active) {
+		this.account_active = account_active;
 	}
-	
 
 }

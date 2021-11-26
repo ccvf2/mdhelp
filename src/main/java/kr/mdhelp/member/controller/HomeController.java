@@ -1,11 +1,17 @@
 package kr.mdhelp.member.controller;
 
 import java.text.DateFormat;
+import java.util.Collection;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.Locale;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,14 +40,52 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
+		Authentication auth =  SecurityContextHolder.getContext().getAuthentication();
+		String loginName = "";
+		if( StringUtils.equals(auth.getName(), "anonymousUser") || StringUtils.equals(auth.getName(), "") ) {
+			loginName = "";
+		}else {
+			loginName = auth.getName();
+		}
+		
+		String authorities ="";
+		StringBuffer sb = new StringBuffer();
+			boolean adminFlag = false;
+			boolean anonymousFlag = true;
+			Collection<? extends GrantedAuthority> ga =auth.getAuthorities();
+			Iterator<?> it = ga.iterator();
+			while(it.hasNext()) {
+				String keyString = it.next().toString();
+				sb.append(keyString);sb.append(",");
+				if(StringUtils.equals(keyString, "USERLEV2")) {
+					adminFlag = true;
+				}else if(StringUtils.equals(keyString, "ROLE_ANONYMOUS")) {
+					anonymousFlag = true;
+				}else {
+					anonymousFlag = false;
+				}
+			}
+			if(adminFlag) {
+				authorities = "administor";
+			}else{
+				if(anonymousFlag) {
+					authorities ="anonymous";
+				}else {
+					authorities = "normalUser";
+				}
+			}
+			
+		model.addAttribute("loginName", loginName );
+		model.addAttribute("authorities", authorities );
+		model.addAttribute("authoritiesDetail", sb.toString() );
+		
 		return "home";
 	}
-	
-	
 	
 	@RequestMapping(value = "member/main", method = RequestMethod.GET)
 	public ModelAndView signUpPage() {
 		ModelAndView mav  = new ModelAndView();
+		Authentication auth =  SecurityContextHolder.getContext().getAuthentication();
 		mav.setViewName("member/main/main");
 		return mav;
 	}

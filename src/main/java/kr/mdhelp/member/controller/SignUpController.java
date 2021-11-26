@@ -26,7 +26,7 @@ public class SignUpController {
 	/**
 	 * 회원가입 페이지 호출
 	 */
-	@RequestMapping(value = "member/signup", method = RequestMethod.GET)
+	@RequestMapping(value = "member/sign/signup", method = RequestMethod.GET)
 	public ModelAndView signUpPage() {
 		ModelAndView mav  = new ModelAndView();
 		mav.setViewName("member/signup");
@@ -35,7 +35,7 @@ public class SignUpController {
 	
 	
 	@ResponseBody
-	@RequestMapping(value = "member/signupProcess.ajax", method = RequestMethod.POST)
+	@RequestMapping(value = "member/sign/signupProcess.ajax", method = RequestMethod.POST)
 	public MemberDTO signUp(HttpServletRequest request, HttpServletResponse response, 
 			@RequestParam(defaultValue = "",	name = "reg_idEmail",	required = true)String reg_idEmail
 			, @RequestParam(defaultValue = "",	name = "reg_pwd",		required = true)String reg_pwd
@@ -47,7 +47,7 @@ public class SignUpController {
 		MemberDTO memberDto = new MemberDTO();
 		//memberDto.setUserNumber(0);
 		memberDto.setId(StringUtils.trimToEmpty(reg_idEmail));
-		memberDto.setPassword(reg_pwdTrim);
+		memberDto.setPwd(reg_pwdTrim);
 		memberDto.setFullName(reg_username);
 		//memberDto.setRegistrationDate();
 		//memberDto.setModifiedDate();
@@ -57,9 +57,9 @@ public class SignUpController {
 		//memberDto.setContactAddress();
 		//memberDto.setContactFild1();
 		//memberDto.setContactFild2();
-		memberDto.setLevel("USERLEV1");
-		memberDto.setAuthenticat("UAUTH00");
-		memberDto.setActive("NOACTIVE");
+		memberDto.setMember_level("USERLEV1");
+		memberDto.setAuthenticat_method("UAUTH00");
+		memberDto.setAccount_active("NOACTIVE");
 		
 		signUpService.MemberSignUpProcess1(memberDto); 
 		

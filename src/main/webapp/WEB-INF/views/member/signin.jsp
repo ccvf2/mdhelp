@@ -36,16 +36,16 @@
 								</div>
 							
 								<div class="mt-4 pt-3">
-									<form action="index.html">
+									<form action="index.html" id="signInForm">
 	
 										<div class="mb-3">
-											<label for="username" class="fw-semibold">Username</label>
-											<input type="text" class="form-control" id="username" placeholder="Enter username">
+											<label for="email" class="fw-semibold">Username</label>
+											<input type="text" class="form-control" id="email" name="email" placeholder="Enter username">
 										</div>
 				
 										<div class="mb-3 mb-4">
-											<label for="userpassword" class="fw-semibold">Password</label>
-											<input type="password" class="form-control" id="userpassword" placeholder="Enter password">
+											<label for="pwd" class="fw-semibold">Password</label>
+											<input type="password" class="form-control" id="pwd" name="pwd" placeholder="Enter password">
 										</div>
 
 										<div class="row align-items-center">
@@ -57,7 +57,7 @@
 											</div>  
 											<div class="col-6">
 												<div class="text-end">
-													<button class="btn btn-primary w-md waves-effect waves-light" type="submit">Log In</button>
+													<button class="btn btn-primary w-md waves-effect waves-light" type="button" onclick="loginProcessObject.trySignIn();">Log In</button>
 												</div>
 											</div>
 										</div>
@@ -81,7 +81,7 @@
 				</div>
 				<%-- end card --%>
 				<div class="mt-5 text-center">
-					<p>Don't have an account ? <a href="/member/signup" class="fw-semibold text-decoration-underline text-primary"> Sign up </a> </p>
+					<p>Don't have an account ? <a href="/member/sign/signup" class="fw-semibold text-decoration-underline text-primary"> Sign up </a> </p>
 					<p>© <script>document.write(new Date().getFullYear())</script> <b>Samply</b>. Crafted with <i class="mdi mdi-heart text-danger"></i> by Pichforest</p>
 				</div>
 			</div>
@@ -92,3 +92,61 @@
 	<%-- end container --%>
 </div>
 <%-- end account page --%>
+<script type="text/javascript">
+<%-- 
+var loginProcessObject = {
+	getInputValue : function(){
+		var returnObj ={};
+		returnObj["email"]			=	$("#email").val(); 
+		returnObj["pwd"]				=	$("#pwd").val();
+		returnObj["${_csrf.parameterName}"]	=	"${_csrf.token}"; 
+		return returnObj;
+	},
+	valueDataValidation : function(obj){
+		return true;
+	},
+	
+	trySignIn : function(){
+		var data = this.getInputValue();
+		var valid = this.valueDataValidation(data);
+		if(valid){
+			$.ajax({
+				url: "/member/signInProcess.ajax",
+				type:"POST",
+				dataType:"TEXT",
+				data:data,
+				success:function(data){
+					console.log(data)
+					alert("통신성공.새로고침 하세요.");
+				},
+				error:function(xhr, status, errorMsg){
+					alert("등록 실패 되었습니다.");
+					console.log(xhr)
+					console.log(status)
+					console.log(errorMsg)
+				}
+			});
+		}
+	},
+}
+ --%>
+var loginProcessObject = {
+	getInputValue : function(){
+		var returnObj ={};
+		returnObj["email"]			=	$("#email").val(); 
+		returnObj["pwd"]				=	$("#pwd").val();
+		returnObj["${_csrf.parameterName}"]	=	"${_csrf.token}"; 
+		return returnObj;
+	},
+	valueDataValidation : function(obj){
+		return true;
+	},
+	
+	trySignIn : function(){
+		var form = document.getElementById("signInForm");
+		form.action="/member/sign/signInProcess.ajax";
+		form.method = "POST";
+		form.submit(); 
+	},
+}
+</script>

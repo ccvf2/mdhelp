@@ -7,6 +7,6 @@
 	INSERT INTO 
 		TBL_USER ( USER_ID, PASSWORD, USER_NAME, USER_LEVEL, USER_AUTHENTICAT, USER_ACTIVE ) 
 	VALUES 
-		(#{id}, #{password}, #{fullName}, #{level}, #{authenticat}, #{active})
+		(#{id}, #{pwd}, #{fullName}, #{member_level}, #{authenticat_method}, #{account_active})
 	</insert>
 </mapper>

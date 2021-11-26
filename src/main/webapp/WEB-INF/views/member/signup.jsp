@@ -79,7 +79,7 @@
 				
 				<!-- end card -->
 				<div class="mt-5 text-center">
-					<p>Already have an account ? <a href="/member/signin" class="fw-semibold text-decoration-underline"> Sign In </a> </p>
+					<p>Already have an account ? <a href="/member/sign/signin" class="fw-semibold text-decoration-underline"> Sign In </a> </p>
 					<p>© <script>document.write(new Date().getFullYear())</script> <b>Samply</b>. Crafted with <i class="mdi mdi-heart text-danger"></i> by Pichforest</p>
 				</div>
 			</div>
@@ -135,9 +135,9 @@ var signUpCore = {
 		var validation = true;
 		if(validation){
 			$.ajax({
-				url: "/member/signupProcess.ajax",
+				url: "/member/sign/signupProcess.ajax",
 				type:"POST",
-				dataType:"TEXT",
+				dataType:"json",
 				data:dataObj,
 				success:function(data){
 					alert("등록 성공 되었습니다.");

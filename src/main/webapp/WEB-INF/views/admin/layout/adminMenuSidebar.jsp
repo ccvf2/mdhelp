@@ -35,6 +35,7 @@
 								<ul class="sub-menu" aria-expanded="false">
 									<li><a href="/admin/codegroup"><span key="t-calendar">코드그룹관리</span></a></li>
 									<li><a href="/admin/code"><span key="t-chat">코드관리</span></a></li>
+									<li><a href="/admin/apikey"><span key="t-chat2">API-KEY 코드관리</span></a></li>
 									<!-- <li>
 										<a href="javascript: void(0);" class="has-arrow"><span key="t-email">Email</span></a>
 										<ul class="sub-menu" aria-expanded="true">

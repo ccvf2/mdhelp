@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.mdhelp.admin.mapper.adminApiMapper">
+
+	<resultMap type="apiKeyDTO" id="apiMap">
+		<result property="API_ORG" column="API_ORG" />
+		<result property="ORG_ID" column="ORG_ID" />
+		<result property="API_KEY" column="API_KEY" />
+		<result property="API_VALUE" column="API_VALUE" />
+		<result property="API_TITLE" column="API_TITLE" />
+		<result property="API_REGDT" column="API_REGDT" />
+		<result property="API_STATUS" column="API_STATUS" />
+		<result property="OWNER" column="OWNER" />
+	</resultMap>
+	
+	
+	
+	<select id="select_api_group_list" resultType="apiKeyDTO">
+		SELECT
+				API.API_ORG as API_ORG, comm.CODE_NAME as CODE_NAME
+		FROM
+			TBL_ADMIN_API_KEY AS API
+		JOIN TBL_COMMON_CODE AS comm ON API.API_ORG = comm.CODE
+		GROUP BY API_ORG, comm.CODE_NAME
+		ORDER BY API_REGDT DESC
+	</select>
+	
+</mapper>

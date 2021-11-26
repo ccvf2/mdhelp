@@ -182,4 +182,44 @@ public class AdminCodeController {
 		dto = codeList.get(0);
 		return dto;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/*@RequestMapping(value = "/admin/codeApikey", method = RequestMethod.GET)
+	public ModelAndView codeApikeyPage(HttpServletRequest request, HttpServletResponse response) {
+		logger.info("=============================codeApikeyPage get");
+		ModelAndView mav = new ModelAndView();
+		List<CodeDTO> codeGroupList = codeService.getCodeGroupListNotRetunToNULL(new HashMap<String, Object>());
+		List<CodeDTO> codeList = codeService.getCodeListNotRetunToNULL(new HashMap<String, Object>());
+		mav.addObject("codeGroupList", codeGroupList);
+		mav.addObject("codeList", codeList);
+		mav.setViewName("admin/code/codeApikey");
+		return mav;
+	}
+	@RequestMapping(value = "/admin/codeApikey", method = RequestMethod.POST) 
+	public ModelAndView codeApikeyPagePost(HttpServletRequest request, HttpServletResponse response,
+			@RequestParam Map<String,Object> searchMap) {
+		logger.info("=============================codeApikeyPage post");
+		ModelAndView mav = new ModelAndView();
+		
+		logger.info("============================= searchMap : [{}]", searchMap.toString());
+		
+		
+		
+		List<CodeDTO> codeGroupList = codeService.getCodeGroupListNotRetunToNULL(new HashMap<String, Object>());
+		mav.addObject("codeGroupList", codeGroupList);
+		mav.addObject("searchMap", searchMap);
+
+		List<CodeDTO> codeList = codeService.getCodeListNotRetunToNULL(searchMap);
+		mav.addObject("codeList", codeList);
+		mav.setViewName("admin/code/codeApikey");
+		return mav;
+	}*/
 }

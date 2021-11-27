@@ -213,20 +213,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		return new CustomAuthenticationEntryPoint("/loginPage?error=e"); 
 	}
 */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }//class END Block

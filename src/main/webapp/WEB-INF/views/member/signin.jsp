@@ -40,7 +40,7 @@
 	
 										<div class="mb-3">
 											<label for="email" class="fw-semibold">Username</label>
-											<input type="text" class="form-control" id="email" name="email" placeholder="Enter username">
+											<input type="text" class="form-control" id="email" name="email" placeholder="Enter username" value="ccvf2@naver.com">
 										</div>
 				
 										<div class="mb-3 mb-4">

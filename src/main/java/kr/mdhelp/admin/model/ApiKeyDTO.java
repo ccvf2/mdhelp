@@ -4,68 +4,67 @@ import java.util.Date;
 
 public class ApiKeyDTO {
 	
-	private String API_ORG		="";
-	private String ORG_ID		="";
-	private String API_KEY		="";
-	private String API_VALUE	="";
-	private String API_TITLE	="";
-	private Date API_REGDT		=new Date();
-	private String API_STATUS	="";
-	private String OWNER		="";
-	private String CODE_NAME	="";
-	
-	public String getAPI_ORG() {
-		return API_ORG;
+	private String api_org		="";
+	private String org_id		="";
+	private String api_key		="";
+	private String api_value	="";
+	private String api_title	="";
+	private Date   api_regdt	=new Date();
+	private String api_status	="";
+	private String owner		="";
+	private String code_name	="";
+	public String getApi_org() {
+		return api_org;
 	}
-	public void setAPI_ORG(String aPI_ORG) {
-		this.API_ORG = aPI_ORG;
+	public void setApi_org(String api_org) {
+		this.api_org = api_org;
 	}
-	public String getORG_ID() {
-		return ORG_ID;
+	public String getOrg_id() {
+		return org_id;
 	}
-	public void setORG_ID(String oRG_ID) {
-		this.ORG_ID = oRG_ID;
+	public void setOrg_id(String org_id) {
+		this.org_id = org_id;
 	}
-	public String getAPI_KEY() {
-		return API_KEY;
+	public String getApi_key() {
+		return api_key;
 	}
-	public void setAPI_KEY(String aPI_KEY) {
-		this.API_KEY = aPI_KEY;
+	public void setApi_key(String api_key) {
+		this.api_key = api_key;
 	}
-	public String getAPI_VALUE() {
-		return API_VALUE;
+	public String getApi_value() {
+		return api_value;
 	}
-	public void setAPI_VALUE(String aPI_VALUE) {
-		this.API_VALUE = aPI_VALUE;
+	public void setApi_value(String api_value) {
+		this.api_value = api_value;
 	}
-	public String getAPI_TITLE() {
-		return API_TITLE;
+	public String getApi_title() {
+		return api_title;
 	}
-	public void setAPI_TITLE(String aPI_TITLE) {
-		this.API_TITLE = aPI_TITLE;
+	public void setApi_title(String api_title) {
+		this.api_title = api_title;
 	}
-	public Date getAPI_REGDT() {
-		return API_REGDT;
+	public Date getApi_regdt() {
+		return api_regdt;
 	}
-	public void setAPI_REGDT(Date aPI_REGDT) {
-		this.API_REGDT = aPI_REGDT;
+	public void setApi_regdt(Date api_regdt) {
+		this.api_regdt = api_regdt;
 	}
-	public String getAPI_STATUS() {
-		return API_STATUS;
+	public String getApi_status() {
+		return api_status;
 	}
-	public void setAPI_STATUS(String aPI_STATUS) {
-		this.API_STATUS = aPI_STATUS;
+	public void setApi_status(String api_status) {
+		this.api_status = api_status;
 	}
-	public String getOWNER() {
-		return OWNER;
+	public String getOwner() {
+		return owner;
 	}
-	public void setOWNER(String oWNER) {
-		this.OWNER = oWNER;
+	public void setOwner(String owner) {
+		this.owner = owner;
 	}
-	public String getCODE_NAME() {
-		return CODE_NAME;
+	public String getCode_name() {
+		return code_name;
 	}
-	public void setCODE_NAME(String cODE_NAME) {
-		this.CODE_NAME = cODE_NAME;
+	public void setCode_name(String code_name) {
+		this.code_name = code_name;
 	}
 }

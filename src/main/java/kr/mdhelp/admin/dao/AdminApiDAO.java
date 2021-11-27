@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import kr.mdhelp.admin.model.ApiKeyDTO;
 import kr.mdhelp.common.dao.CommonCodeDAO;
+import kr.mdhelp.common.model.CodeDTO;
 
 @Repository
 public class AdminApiDAO implements AdminApiDAOinterface {
@@ -20,9 +21,24 @@ public class AdminApiDAO implements AdminApiDAOinterface {
 	private SqlSessionTemplate sql;
 
 	@Override
-	public List<ApiKeyDTO> getApiList(Map<String, Object> searchParam) {
+	public List<CodeDTO> getApiGroupList(Map<String, Object> searchParam) {
 		// TODO Auto-generated method stub
 		logger.info("=============================get_apiGroup_List DAO");
 		return sql.selectList("select_api_group_list", searchParam);
+	}
+
+	@Override
+	public List<CodeDTO> getApiGroupStateList(Map<String, Object> searchParam) {
+		// TODO Auto-generated method stub
+		logger.info("=============================get_apiGroup_List DAO");
+		return sql.selectList("select_api_group_state_list", searchParam);		
+	}
+
+	@Override
+	public List<ApiKeyDTO> getApiList(Map<String, Object> searchParam) {
+		// TODO Auto-generated method stub
+		logger.info("=============================getApiList DAO");
+		logger.info("============================= searchMap : [{}]", searchParam.toString());
+		return sql.selectList("select_api_list", searchParam);		
 	}
 }

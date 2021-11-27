@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import kr.mdhelp.admin.dao.AdminApiDAOinterface;
 import kr.mdhelp.admin.model.ApiKeyDTO;
+import kr.mdhelp.common.model.CodeDTO;
 
 @Service
 public class AdminApiService implements AdminApiServiceInterface{
@@ -17,6 +18,18 @@ public class AdminApiService implements AdminApiServiceInterface{
 	@Autowired
 	AdminApiDAOinterface adminApiDAO; 
 	
+	@Override
+	public List<CodeDTO> getApiGroupList(Map<String, Object> searchParam) {
+		// TODO Auto-generated method stub
+		return adminApiDAO.getApiGroupList(searchParam);
+	}
+
+	@Override
+	public List<CodeDTO> getApiGroupStateList(Map<String, Object> searchParam) {
+		// TODO Auto-generated method stub
+		return adminApiDAO.getApiGroupStateList(searchParam);
+	}
+
 	@Override
 	public List<ApiKeyDTO> getApiList(Map<String, Object> searchParam) {
 		// TODO Auto-generated method stub

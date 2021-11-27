@@ -35,7 +35,8 @@
 	</div>
 </div>
 
-<form action="/admin/apikey" method="post" name="searchCode" id="searchCode">
+
+<form action="/admin/searchApiList" method="post" name="searchApiCode" id="searchApiCode">
 <input type="hidden"  name="${_csrf.parameterName}" value="${_csrf.token}" />
 <div class="row">
 	<div class="col-lg-12">
@@ -46,19 +47,19 @@
 				<div class="row">
 					<div class="col-lg-2">
 						<div class="mb-3">
-							<label class="form-label">코드그룹</label>
+							<label class="form-label">API키 발급기관</label>
 							<select class="form-select" onchange="codeOBJECT.selectApiGroup(this.value);" name="searchCondition1" >
 								<option value="">전체</option>
-								<c:forEach var="groupItem" items="${apiList}" varStatus="index">
+								<c:forEach var="groupItem" items="${apiGroupList}" varStatus="index">
 									<c:choose>
-										<c:when test="${groupItem.API_ORG eq searchMap.searchCondition1}">
-											<option value="${groupItem.API_ORG}" selected="selected">
-												${groupItem.CODE_NAME}(${groupItem.API_ORG})
+										<c:when test="${groupItem.code eq searchMap.searchCondition1}">
+											<option value="${groupItem.code}" selected="selected">
+												${groupItem.code}(${groupItem.code_name})
 											</option>
 										</c:when>
 										<c:otherwise>
-											<option value="${groupItem.API_ORG}">
-												${groupItem.CODE_NAME}(${groupItem.API_ORG})
+											<option value="${groupItem.code}">
+												${groupItem.code}(${groupItem.code_name})
 											</option>
 										</c:otherwise>
 									</c:choose>
@@ -67,17 +68,43 @@
 						</div>
 					</div>
 					
-					<div class="col-lg-4">
+					<div class="col-lg-2">
 						<div class="mb-3">
-							<label class="form-label">검색조건</label>
-							<select class="form-select" name="searchCondition2" >
-								
+							<label class="form-label">사용유무</label>
+							<select class="form-select" onchange="codeOBJECT.selectApiGroupState(this.value);" name="searchCondition2" >
+								<option value="">전체</option>
+								<c:forEach var="groupItem" items="${apiGroupStateList}" varStatus="index">
+									<c:choose>
+										<c:when test="${groupItem.code eq searchMap.searchCondition2}">
+											<option value="${groupItem.code}" selected="selected">
+												${groupItem.code}(${groupItem.code_name})
+											</option>
+										</c:when>
+										<c:otherwise>
+											<option value="${groupItem.code}">
+												${groupItem.code}(${groupItem.code_name})
+											</option>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
 							</select>
 						</div>
-						
-						
-						
 					</div>
+					
+					
+					<div class="col-lg-2">
+						<div class="mb-3">
+							<label class="form-label">검색조건</label>
+							<select class="form-select" name="searchCondition3" >
+								<option value="all" <c:if test='${searchMap.searchCondition2 eq "code_name|code_value|code_comment"}'>selected="selected"</c:if>>등록자 + 타이틀 + API_Key</option>
+								<option value="org_id" <c:if test='${searchMap.searchCondition3 eq "org_id"}'>selected="selected"</c:if>>등록자</option>
+								<option value="api_title" <c:if test='${searchMap.searchCondition3 eq "code_name"}'>selected="selected"</c:if>>타이틀</option>
+								<option value="api_key" <c:if test='${searchMap.searchCondition3 eq "code_value"}'>selected="selected"</c:if>>API_Key</option>
+							</select>
+						</div>
+					</div>
+					
+					
 					<div class="col-lg-6">
 						<div class="mb-3">
 							<label for="example-search-input" class="form-label">검색어</label>
@@ -87,6 +114,30 @@
 							</div>
 						</div>
 					</div>
+					<div class="col-lg-12">
+						<div class="card" id="modals">
+							<div class="card-body">
+								<h4 class="card-title mb-4">API키 등록</h4>
+								<div class="row">
+									<div class="col-lg-12">
+										<div class="col-xl-4 col-md-6">
+											<div class="mt-4">
+												<div class="d-flex flex-wrap gap-2">
+													<div>
+														<button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal"
+															data-bs-target="#exampleModalScrollable" onclick="test()">API키 등록</button>
+														<div id="apikeyInsertModal_div"></div>
+													</div>
+													 
+												</div>
+											</div>
+										</div>
+									</div><!-- col-lg-12 -->
+								</div>
+							</div>
+						</div>
+					</div>
+					
 				</div>
 			</div>
 		</div>
@@ -94,16 +145,85 @@
 </div>
 </form>
 
-
+<div class="row">
+	<div class="col-lg-12">
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title">검색결과</h4>
+				<p class="card-title-desc">검색결과입니다.</p>
+				<div class="table-responsive">
+					<table class="table table-hover mb-0">
+						<thead class="table-light">
+							<tr>
+								<th>no</th>
+								<th>발급기관</th>
+								<th>등록자</th>
+								<th>API_TITLE</th>
+								<th>API_KEY</th>
+								<th>API_PASSWORD</th>
+								<th>사용상태</th>
+								<th>등록일</th>
+							</tr>
+						</thead>
+						<tbody>
+						<c:forEach var="item" items="${apiList}" varStatus="index">
+							<tr>
+								<th scope="row">${index.count}</th>
+								<td>${item.api_org}</td>
+								<td>${item.org_id}</td>
+								<td>${item.api_title}</td>
+								<td>${item.api_key}</td>
+								<td>${item.api_value}</td>
+								<td>${item.api_status}</td>
+								<td><fmt:formatDate pattern="yyyy-MM-dd hh:mm" value="${item.api_regdt}"/></td>
+							</tr>
+						</c:forEach>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
 <c:set value="<mark>${searchMap.searchWord}</mark>" var="replaceWord" />
 
 <script type="text/javascript">
+//var commonUI = new commonUIcomponent();
+//commonUI.requrstURLPopup();
+
+
+
+
+function test(){
+	var param;
+	
+	$.ajax({
+		url: "/admin/apikeyInsertModal",
+		type:"GET",
+		//dataType:"TEXT",
+		//data:param,
+		success:function(data){
+			$("#apikeyInsertModal_div").html(data);
+		},
+		error:function(xhr, status, errorMsg){
+			alert("등록 실패 되었습니다.");
+			console.log(xhr)
+			console.log(status)
+			console.log(errorMsg)
+		}
+	});
+}
+
 
 var codeOBJECT = {
 	selectApiGroup : function (obj){
 		var form = document.getElementById("searchApiCode");
 		form.submit(); 
+	},
+	selectApiGroupState : function (obj){
+		var form = document.getElementById("searchApiCode");
+		form.submit();	
 	}
 	
 /*,

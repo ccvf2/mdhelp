@@ -2,14 +2,9 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-<<<<<<< HEAD
-		<typeAlias alias="codeDTO" type="kr.mdhelp.common.model.CodeDTO"/>
-		<typeAlias alias="apiKeyDTO" type="kr.mdhelp.admin.model.ApiKeyDTO"/>
-		<typeAlias alias="memberDTO" type="kr.mdhelp.member.model.MemberDTO"/>
-=======
 		<typeAlias alias="codeDTO"				type="kr.mdhelp.common.model.CodeDTO"			/>
 		<typeAlias alias="memberDTO"			type="kr.mdhelp.member.model.MemberDTO"			/>
 		<typeAlias alias="customUserDetails"	type="kr.mdhelp.common.model.CustomUserDetails"	/>
->>>>>>> a9cfb2f58c1889418c8e6f5e4015b4ce2242259d
+		<typeAlias alias="apiKeyDTO" 			type="kr.mdhelp.admin.model.ApiKeyDTO"/>
 	</typeAliases>
 </configuration>

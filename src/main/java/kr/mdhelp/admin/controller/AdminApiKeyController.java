@@ -66,13 +66,15 @@ public class AdminApiKeyController {
 		return mav;
 	}
 	
-	@RequestMapping(value = "/admin/apikeyInsertModal", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/popup/apikeyInsertModal", method = RequestMethod.GET)
 	public ModelAndView apikeyInsertModal(HttpServletRequest request, HttpServletResponse response) {
 		logger.info("=============================apikeyInsertModal POST");		
+		List<CodeDTO> apiGroupStateList = adminApiService.getApiGroupStateList(new HashMap<String, Object>());
 		
 		ModelAndView mav = new ModelAndView();
 		
-		mav.setViewName("admin/api/apikeyInsertModal");
+		mav.addObject("apiGroupStateList", apiGroupStateList);
+		mav.setViewName("admin/popup/api/apikeyInsertModal");
 		return mav;
 	}
 	

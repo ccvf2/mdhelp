@@ -124,9 +124,8 @@
 											<div class="mt-4">
 												<div class="d-flex flex-wrap gap-2">
 													<div>
-														<button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal"
+														<button type="button" id="apikeyInsertModal_div" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal"
 															data-bs-target="#exampleModalScrollable" onclick="test()">API키 등록</button>
-														<div id="apikeyInsertModal_div"></div>
 													</div>
 													 
 												</div>
@@ -199,12 +198,15 @@ function test(){
 	var param;
 	
 	$.ajax({
-		url: "/admin/apikeyInsertModal",
+		url: "/admin/popup/apikeyInsertModal",
 		type:"GET",
+		
 		//dataType:"TEXT",
 		//data:param,
 		success:function(data){
-			$("#apikeyInsertModal_div").html(data);
+			console.log(data);
+			$("#modalArea").html(data);
+			$("#modalArea").modal();
 		},
 		error:function(xhr, status, errorMsg){
 			alert("등록 실패 되었습니다.");

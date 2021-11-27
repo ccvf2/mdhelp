@@ -19,6 +19,7 @@
 		<property name="mapperLocations">
 			<list>
 				<value>classpath*:/kr/mdhelp/common/mapper/*.xml</value>
+				<value>classpath*:/kr/mdhelp/admin/mapper/*.xml</value>
 				<value>classpath*:/kr/mdhelp/member/mapper/*.xml</value>
 			</list>
 		</property>

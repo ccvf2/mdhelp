@@ -5,5 +5,6 @@
 		<typeAlias alias="codeDTO"				type="kr.mdhelp.common.model.CodeDTO"			/>
 		<typeAlias alias="memberDTO"			type="kr.mdhelp.member.model.MemberDTO"			/>
 		<typeAlias alias="customUserDetails"	type="kr.mdhelp.common.model.CustomUserDetails"	/>
+		<typeAlias alias="apiKeyDTO" 			type="kr.mdhelp.admin.model.ApiKeyDTO"/>
 	</typeAliases>
 </configuration>

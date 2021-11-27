@@ -29,8 +29,8 @@
 	<definition name="admin/*/*" extends="adminTemplate">
 		<put-attribute name="adminBody" value="/WEB-INF/views/admin/{1}/{2}.jsp" />
 	</definition>
-	<definition name="admin/poupup/*" extends="layerPopUpTemplate">
-		<put-attribute name="adminBody" value="/WEB-INF/views/admin/{1}/poupup/{2}.jsp" />
+	<definition name="admin/poupup/*/*" extends="layerPopUpTemplate">
+		<put-attribute name="adminBody" value="/WEB-INF/views/admin/{1}/{2}.jsp" />
 	</definition>
 
 	<definition name="layerPopUpTemplate"	template="/WEB-INF/views/admin/layout/adminLayerPopup.jsp"></definition>

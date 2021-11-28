@@ -41,4 +41,29 @@ public class AdminApiDAO implements AdminApiDAOinterface {
 		logger.info("============================= searchMap : [{}]", searchParam.toString());
 		return sql.selectList("select_api_list", searchParam);		
 	}
+
+	@Override
+	public int insertApikeyRetunToNULL(ApiKeyDTO apiKeyDTO) {
+		// TODO Auto-generated method stub
+		logger.info("=============================insertApikey DAO");
+		logger.info("============================= apiKeyDTO : [{}]", apiKeyDTO.toString());
+		return sql.insert("insert_api_key", apiKeyDTO);
+	}
+
+	@Override
+	public int updateApikeyRetunToNULL(ApiKeyDTO apiKeyDTO) {
+		// TODO Auto-generated method stub
+		logger.info("=============================updateApikey DAO");
+		logger.info("============================= apiKeyDTO : [{}]", apiKeyDTO.toString());
+		return sql.update("update_api_key", apiKeyDTO);
+	}
+
+	@Override
+	public ApiKeyDTO getApikeyRetunToNULL(Map<String, Object> searchParam) {
+		// TODO Auto-generated method stub
+		logger.info("=============================getApikeyRetunToNULL DAO");
+		logger.info("============================= apiKeyDTO : [{}]", searchParam.toString());
+		
+		return sql.selectOne("select_api_one", searchParam);
+	}
 }

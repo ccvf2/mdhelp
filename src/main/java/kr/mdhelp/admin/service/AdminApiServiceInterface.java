@@ -16,4 +16,10 @@ public interface AdminApiServiceInterface {
 
 	List<ApiKeyDTO> getApiList(Map<String, Object> searchParam);
 
+	int insertApikeyRetunToNULL(ApiKeyDTO apiKeyDTO);
+
+	int updateApikeyRetunToNULL(ApiKeyDTO apiKeyDTO);
+
+	ApiKeyDTO getApikeyRetunToNULL(Map<String, Object> searchMap);
+
 }

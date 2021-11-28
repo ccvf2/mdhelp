@@ -35,4 +35,22 @@ public class AdminApiService implements AdminApiServiceInterface{
 		// TODO Auto-generated method stub
 		return adminApiDAO.getApiList(searchParam);
 	}
+
+	@Override
+	public int insertApikeyRetunToNULL(ApiKeyDTO apiKeyDTO) {
+		// TODO Auto-generated method stub
+		return adminApiDAO.insertApikeyRetunToNULL(apiKeyDTO);
+	}
+
+	@Override
+	public int updateApikeyRetunToNULL(ApiKeyDTO apiKeyDTO) {
+		// TODO Auto-generated method stub
+		return adminApiDAO.updateApikeyRetunToNULL(apiKeyDTO);
+	}
+
+	@Override
+	public ApiKeyDTO getApikeyRetunToNULL(Map<String, Object> searchParam) {
+		// TODO Auto-generated method stub
+		return adminApiDAO.getApikeyRetunToNULL(searchParam);
+	}
 }

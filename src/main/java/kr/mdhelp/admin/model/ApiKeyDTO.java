@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class ApiKeyDTO {
 	
+	private Integer api_seq		=new Integer(0);
 	private String api_org		="";
 	private String org_id		="";
 	private String api_key		="";
@@ -13,6 +14,14 @@ public class ApiKeyDTO {
 	private String api_status	="";
 	private String owner		="";
 	private String code_name	="";
+	
+	
+	public Integer getApi_seq() {
+		return api_seq;
+	}
+	public void setApi_seq(Integer api_seq) {
+		this.api_seq = api_seq;
+	}
 	public String getApi_org() {
 		return api_org;
 	}

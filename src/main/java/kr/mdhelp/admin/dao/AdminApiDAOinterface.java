@@ -12,4 +12,10 @@ public interface AdminApiDAOinterface {
 	List<CodeDTO> getApiGroupStateList(Map<String, Object> searchParam);
 
 	List<ApiKeyDTO> getApiList(Map<String, Object> searchParam);
+
+	int insertApikeyRetunToNULL(ApiKeyDTO apiKeyDTO);
+
+	int updateApikeyRetunToNULL(ApiKeyDTO apiKeyDTO);
+
+	ApiKeyDTO getApikeyRetunToNULL(Map<String, Object> searchParam);
 }

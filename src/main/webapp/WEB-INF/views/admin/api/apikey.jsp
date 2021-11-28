@@ -124,9 +124,15 @@
 											<div class="mt-4">
 												<div class="d-flex flex-wrap gap-2">
 													<div>
-														<button type="button" id="apikeyInsertModal_div" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal"
-															data-bs-target="#exampleModalScrollable" onclick="test()">API키 등록</button>
+														<button type="button" id="apikeyInsertModal_btn" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal"
+															data-bs-target="#exampleModalScrollable" onclick="apiModalOpen('apikeyInsertModal', 0)">API키 등록</button>
+													
+														<button type="button" id="apikeyUpdatetModal_btn"  class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" 
+															data-bs-target="#exampleModalScrollable">API키 수정</button>
 													</div>
+													<div id="apikeyInsertModal_div"></div>
+													<div id="apikeyUpdateModal_div"></div>
+													
 													 
 												</div>
 											</div>
@@ -166,7 +172,7 @@
 						</thead>
 						<tbody>
 						<c:forEach var="item" items="${apiList}" varStatus="index">
-							<tr>
+							<tr onclick="apiTableSelect('apikeyUpdateModal', ${item.api_seq})">
 								<th scope="row">${index.count}</th>
 								<td>${item.api_org}</td>
 								<td>${item.org_id}</td>
@@ -191,22 +197,32 @@
 //var commonUI = new commonUIcomponent();
 //commonUI.requrstURLPopup();
 
+var apiflag = true;
+var apiflag2 = true;
+var api_seq = 0;
 
-
-
-function test(){
-	var param;
+function apiModalOpen(api_url, param){
+	var param = {"api_seq":param};
+	apiflag2=true;
 	
 	$.ajax({
-		url: "/admin/popup/apikeyInsertModal",
+		url: "/admin/popup/" + api_url,
 		type:"GET",
 		
-		//dataType:"TEXT",
-		//data:param,
+		dataType:"TEXT",
+		data:param,
 		success:function(data){
 			console.log(data);
-			$("#modalArea").append(data);
-			$("#modalArea").modal();
+			$("#exampleModalScrollable").remove();
+			$("#exampleModalScrollable").remove();
+			
+			$("#apikeyInsertModal_div").html("");
+			$("#apikeyInsertModal_div").html(data);
+			if(apiflag2){
+				$("#apikeyInsertModal_btn").click();
+			}
+			apiflag2=false;
+			//$("#apikeyModal_div").modal();
 		},
 		error:function(xhr, status, errorMsg){
 			alert("등록 실패 되었습니다.");
@@ -217,6 +233,45 @@ function test(){
 	});
 }
 
+function apiTableSelect(api_url, seq){
+	console.log("api_url : " + api_url);
+	console.log("seq : " + seq);
+	if(api_seq==seq){
+		apiflag = false;
+	}else{
+		apiflag = true;
+		api_seq=seq;
+		
+		var param = {"api_seq":seq};
+		
+		$.ajax({
+			url: "/admin/popup/apikeyUpdateModal",
+			type:"GET",
+			
+			dataType:"TEXT",
+			data:param,
+			success:function(data){
+				console.log(data);
+				$("#exampleModalScrollable").remove();
+				$("#exampleModalScrollable").remove();
+				
+				if(apiflag) {
+					$("#apikeyUpdateModal_div").html("");
+					$("#apikeyUpdateModal_div").html(data);
+					apiflag=false;
+					$("#apikeyUpdatetModal_btn").click();
+				}
+				//$("#modalArea").modal();
+			},
+			error:function(xhr, status, errorMsg){
+				alert("등록 실패 되었습니다.");
+				console.log(xhr)
+				console.log(status)
+				console.log(errorMsg)
+			}
+		});
+	}
+}
 
 var codeOBJECT = {
 	selectApiGroup : function (obj){
@@ -227,7 +282,26 @@ var codeOBJECT = {
 		var form = document.getElementById("searchApiCode");
 		form.submit();	
 	}
-	
+};
+
+/* var apiOBJECT = {
+		apiTableSelect : function(url, seq){
+			console.log(url);
+			console.log(seq);
+			if(api_seq==seq){
+				apiflag = false;
+			}else{
+				apiflag = true;
+				api_seq=seq;
+				apiModalOpen(url, seq);
+			}
+		}
+}; */
+
+
+
+
+
 /*,
 	
 	targetCodeGroupChange : function(obj){
@@ -244,5 +318,5 @@ var codeOBJECT = {
 		}
 	}*/
 	
-};
+
 </script>

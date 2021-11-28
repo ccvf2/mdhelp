@@ -12,6 +12,7 @@
 	</resultMap>
 	
 	<resultMap type="apiKeyDTO" id="apiMap">
+		<result property="api_seq" column="API_SEQ" />
 		<result property="api_org" column="API_ORG" />
 		<result property="org_id" column="ORG_ID" />
 		<result property="api_title" column="API_TITLE" />
@@ -19,6 +20,7 @@
 		<result property="api_value" column="API_VALUE" />
 		<result property="api_status" column="API_STATUS" />
 		<result property="api_regdt" column="API_REGDT" />
+		<result property="owner" column="OWNER" />
 	</resultMap>
 	
 	
@@ -42,6 +44,7 @@
 	
 	<select id="select_api_list" resultType="apiKeyDTO">
 		SELECT
+				API.API_SEQ		AS api_seq,
 				COMM.CODE_NAME 	AS api_org,
 				API.ORG_ID		AS org_id, 
 				API.API_TITLE	AS api_title, 
@@ -74,6 +77,57 @@
 		<if test="searchCondition3 =='api_key'">
 			AND API.API_KEY like '%'||#{searchWord}||'%'
 		</if>
+	</select>
+	
+	
+	<insert id="insert_api_key" parameterType="apiKeyDTO">
+		INSERT INTO TBL_ADMIN_API_KEY 
+		(	
+			  API_ORG
+			, ORG_ID
+			, API_KEY
+			, API_VALUE
+			, API_TITLE
+			, API_STATUS
+			, OWNER
+		) 
+		VALUES 
+		(
+			  #{api_org}
+			, #{org_id}
+			, #{api_key}
+			, #{api_value}
+			, #{api_title}
+			, #{api_status}
+			, #{owner}
+		)
+	</insert>
+	
+	<update id="update_api_key" parameterType="apiKeyDTO">
+		UPDATE TBL_ADMIN_API_KEY
+		SET 
+			  API_ORG	= #{api_org}
+			, ORG_ID	= #{org_id}
+			, API_KEY	= #{api_key}
+			, API_VALUE	= #{api_value}
+			, API_TITLE	= #{api_title}
+			, API_STATUS= #{api_status}
+			, OWNER		= #{owner}
+		WHERE  API_SEQ  = #{api_seq}
+	</update>
+	
+	<select id="select_api_one" resultType="apiKeyDTO">
+		SELECT
+				API.API_SEQ		AS api_seq,		
+				API.ORG_ID		AS org_id, 
+				API.API_TITLE	AS api_title, 
+				API.API_KEY		AS api_key, 
+				API.API_VALUE	AS api_value,
+				API.API_REGDT	AS api_regdt,
+				API.API_STATUS	AS api_status
+		FROM
+			TBL_ADMIN_API_KEY AS API
+		WHERE API.API_SEQ = #{api_seq}
 	</select>
 	
 </mapper>

@@ -2,7 +2,7 @@
  * 
  */
 
-function commonUIcomponent() { }(jQuery);
+/*function commonUIcomponent() { }(jQuery);
 
 var layerPopup = new commonUIcomponent();
 
@@ -40,7 +40,7 @@ commonUIcomponent.prototype.requrstURLPopup = function(url, param, loddingContro
 /*	var myModalEl = document.getElementById('modalArea');
 	myModalEl.addEventListener('shown.bs.modal', function (event) {
 		console.log("====ㅡ modal 실행1");
-	});*/
+	});
 
 
 function commonUIbodyMask() { }(jQuery);
@@ -52,4 +52,4 @@ commonUIbodyMask.prototype.makeMask = function() {
 
 var myModal = new bootstrap.Modal(document.getElementById('modalArea'), {
   keyboard: false
-});
+});*/

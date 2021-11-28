@@ -205,7 +205,7 @@ function test(){
 		//data:param,
 		success:function(data){
 			console.log(data);
-			$("#modalArea").html(data);
+			$("#modalArea").append(data);
 			$("#modalArea").modal();
 		},
 		error:function(xhr, status, errorMsg){

@@ -23,6 +23,9 @@
 <style type="text/css">
 .boldFont {font-weight: bold !important;}
 </style>
+<script src="/adminResource/asynchronousHttp.js"></script>
+<script type="text/javascript">
+</script>
 </head>
 	<body data-sidebar="dark">
 
@@ -88,7 +91,5 @@
 		<!-- adminHeader로 이동 -->
 		<!-- App js -->
 		<script src="/adminAssets/js/app.js"></script>
-		<script src="/adminResource/asynchronousHttp.js"></script>
-
 	</body>
 </html>

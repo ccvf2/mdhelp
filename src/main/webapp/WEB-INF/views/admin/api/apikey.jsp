@@ -114,34 +114,30 @@
 							</div>
 						</div>
 					</div>
+					
 					<div class="col-lg-12">
-						<div class="card" id="modals">
-							<div class="card-body">
-								<h4 class="card-title mb-4">API키 등록</h4>
-								<div class="row">
-									<div class="col-lg-12">
-										<div class="col-xl-4 col-md-6">
-											<div class="mt-4">
-												<div class="d-flex flex-wrap gap-2">
-													<div>
-														<button type="button" id="apikeyInsertModal_btn" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal"
-															data-bs-target="#exampleModalScrollable" onclick="apiModalOpen('apikeyInsertModal', 0)">API키 등록</button>
-													
-														<button type="button" id="apikeyUpdatetModal_btn"  class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" 
-															data-bs-target="#exampleModalScrollable">API키 수정</button>
-													</div>
-													<div id="apikeyInsertModal_div"></div>
-													<div id="apikeyUpdateModal_div"></div>
-													
-													 
-												</div>
-											</div>
+						<div class="card overflow-hidden" id="placeholder">
+							<div class="card" id="modals">
+								<div class="card-body">
+									<h4 class="card-title mb-4">API키 등록</h4>
+									<button type="button" id="apikeyInsertModal_btn" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#myModal"
+												onclick="apiModalOpen('apikeyInsertModal', 0)">API키 등록</button>
+												
+									<button type="button" id="apikeyUpdatetModal_btn" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#myModal"
+												data-bs-toggle="modal" data-bs-target="#exampleModalScrollable">API키 수정</button>
+																
+									 <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+										<div class="modal-dialog">
+											<div class="modal-content" id="modal_content"></div>
 										</div>
-									</div><!-- col-lg-12 -->
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
+					
+					
+					
 					
 				</div>
 			</div>
@@ -172,7 +168,7 @@
 						</thead>
 						<tbody>
 						<c:forEach var="item" items="${apiList}" varStatus="index">
-							<tr onclick="apiTableSelect('apikeyUpdateModal', ${item.api_seq})">
+							<tr onclick="apiModalOpen('apikeyUpdateModal', ${item.api_seq})">
 								<th scope="row">${index.count}</th>
 								<td>${item.api_org}</td>
 								<td>${item.org_id}</td>
@@ -194,16 +190,20 @@
 <c:set value="<mark>${searchMap.searchWord}</mark>" var="replaceWord" />
 
 <script type="text/javascript">
-//var commonUI = new commonUIcomponent();
-//commonUI.requrstURLPopup();
 
-var apiflag = true;
-var apiflag2 = true;
-var api_seq = 0;
+$( document ).ready(function() {
+    $("#apikeyUpdatetModal_btn").hide();
+});
+
 
 function apiModalOpen(api_url, param){
-	var param = {"api_seq":param};
-	apiflag2=true;
+	var param;
+	if(api_url=="apikeyInsertModal"){
+		param = {"api_seq":param};
+	}else if(api_url=="apikeyUpdateModal"){
+		param = {"api_seq":param};
+	}
+	console.log(param);
 	
 	$.ajax({
 		url: "/admin/popup/" + api_url,
@@ -213,16 +213,12 @@ function apiModalOpen(api_url, param){
 		data:param,
 		success:function(data){
 			console.log(data);
-			$("#exampleModalScrollable").remove();
-			$("#exampleModalScrollable").remove();
+			$("#modal_content").html("");
+			$("#modal_content").html(data);
 			
-			$("#apikeyInsertModal_div").html("");
-			$("#apikeyInsertModal_div").html(data);
-			if(apiflag2){
-				$("#apikeyInsertModal_btn").click();
+			if(api_url=="apikeyUpdateModal"){
+				$("#apikeyUpdatetModal_btn").click();
 			}
-			apiflag2=false;
-			//$("#apikeyModal_div").modal();
 		},
 		error:function(xhr, status, errorMsg){
 			alert("등록 실패 되었습니다.");
@@ -231,46 +227,6 @@ function apiModalOpen(api_url, param){
 			console.log(errorMsg)
 		}
 	});
-}
-
-function apiTableSelect(api_url, seq){
-	console.log("api_url : " + api_url);
-	console.log("seq : " + seq);
-	if(api_seq==seq){
-		apiflag = false;
-	}else{
-		apiflag = true;
-		api_seq=seq;
-		
-		var param = {"api_seq":seq};
-		
-		$.ajax({
-			url: "/admin/popup/apikeyUpdateModal",
-			type:"GET",
-			
-			dataType:"TEXT",
-			data:param,
-			success:function(data){
-				console.log(data);
-				$("#exampleModalScrollable").remove();
-				$("#exampleModalScrollable").remove();
-				
-				if(apiflag) {
-					$("#apikeyUpdateModal_div").html("");
-					$("#apikeyUpdateModal_div").html(data);
-					apiflag=false;
-					$("#apikeyUpdatetModal_btn").click();
-				}
-				//$("#modalArea").modal();
-			},
-			error:function(xhr, status, errorMsg){
-				alert("등록 실패 되었습니다.");
-				console.log(xhr)
-				console.log(status)
-				console.log(errorMsg)
-			}
-		});
-	}
 }
 
 var codeOBJECT = {
@@ -283,40 +239,5 @@ var codeOBJECT = {
 		form.submit();	
 	}
 };
-
-/* var apiOBJECT = {
-		apiTableSelect : function(url, seq){
-			console.log(url);
-			console.log(seq);
-			if(api_seq==seq){
-				apiflag = false;
-			}else{
-				apiflag = true;
-				api_seq=seq;
-				apiModalOpen(url, seq);
-			}
-		}
-}; */
-
-
-
-
-
-/*,
-	
-	targetCodeGroupChange : function(obj){
-		var spArr = obj.split("/");
-		document.getElementById("code_group").value = spArr[0];
-		document.getElementById("code_group_name").value = spArr[1];
-	},
-	insert : function (){
-		var valide = this.dataValidetion();
-		if(valide){
-			var form = document.getElementById("insertCodeForm");
-			form.action="/admin/codeinsert";
-			form.submit(); 
-		}
-	}*/
-	
 
 </script>

@@ -18,7 +18,7 @@ public class LoginInfomaitionUtils {
 	private static final Logger logger = LoggerFactory.getLogger(AdminCodeController.class);
 	
 	
-	public static final String getUserNameToNotNull () {
+	public static final String getUserNameToNotNull () { 
 		logger.info("=============================getUserNameToNotNull ::::::::::::::::::::::::::::");
 		
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();

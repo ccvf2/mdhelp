@@ -59,7 +59,7 @@
 
 		<!-- Begin page -->
 		<div id="layout-wrapper">
-			<header id="page-topbar">
+			<header id="page-topbar" style="background-color: #00bbbb; border-color: #00bbbb;">
 				<!-- //topBar -->
 				<tiles:insertAttribute name="topBar" />
 			</header>
@@ -74,7 +74,7 @@
 			<div class="main-content">
 
 				<div class="page-content">
-					<div class="container-fluid">
+					<div class="container-fluid" style="max-width: 90%;">
 
 						<!-- //body -->
 						<tiles:insertAttribute name="body" />

@@ -3,6 +3,11 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
+
+<!-- Sweet Alert-->
+<link href="/adminAssets/libs/sweetalert2/sweetalert2.min.css" id="app-style" rel="stylesheet" type="text/css" />
+
+
 <form action="/admin/apikeyUpdate" method="post" name="updateApi" id="updateApi">
 	<input type="hidden" id="api_seq" name="api_seq" value="${apiKeyDTO.api_seq}" />
 		<div class="row">
@@ -97,9 +102,19 @@
 	
 	<div class="modal-footer">
 		<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-		<button type="button" class="btn btn-primary" onclick='updateAPI()'>수정</button>
+		<!-- <button type="button" class="btn btn-primary waves-effect waves-light" id="sa-warning">수정</button> -->
+		<button type="button" class="btn btn-primary" onclick="updateAPI()">수정</button>
 	</div>
 </form>
+
+<!-- Sweet Alerts js -->
+<script src="/adminAssets/libs/sweetalert2/sweetalert2.min.js"></script>
+
+<!-- Sweet alert init js-->
+<script src="/adminAssets/js/pages/sweet-alerts.init.js"></script>
+
+<!-- App js -->
+<script src="/adminAssets/js/app.js"></script>
 
 <script type="text/javascript">
 function updateAPI(){

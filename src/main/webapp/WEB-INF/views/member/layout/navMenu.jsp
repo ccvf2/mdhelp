@@ -22,10 +22,28 @@
 
 				<li class="nav-item">
 					<a class="nav-link" href="index.html">
-						<i class="bx bxs-dashboard me-2"></i><span key="t-dashboards">Dashboard</span>
+						<i class="bx bx-comment-dots"></i><span key="t-dashboards">&nbsp;사용방법</span>
 					</a>
 				</li>
+				
 				<li class="nav-item">
+					<a class="nav-link" href="index.html">
+						<i class="bx bx-cart-alt"></i><span key="t-dashboards">&nbsp;요금제</span>
+					</a>
+				</li>
+				
+				<li class="nav-item">
+					<a class="nav-link" href="index.html">
+						<i class="bx bx-mail-send"></i><span key="t-dashboards">&nbsp;문의하기</span>
+					</a>
+				</li>
+				
+				<li class="nav-item">
+					<a class="nav-link" href="/member/search/naver">
+						<i class="bx bx-search-alt"></i><span key="t-dashboards">&nbsp;상품검색</span>
+					</a>
+				</li>
+			<!-- 	<li class="nav-item">
 					<a class="nav-link" href="ui-components.html">
 						<i class="bx bx-briefcase me-2"></i><span key="t-ui-elements">UI Elements</span>
 					</a>
@@ -149,7 +167,7 @@
 						</div>
 					</div>
 				</li>
-
+ -->
 			</ul>
 		</div>
 	</nav>

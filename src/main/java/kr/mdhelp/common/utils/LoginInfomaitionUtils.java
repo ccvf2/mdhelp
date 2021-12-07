@@ -29,7 +29,7 @@ public class LoginInfomaitionUtils {
 			loginName = auth.getName();
 			//CustomUserDetails memberDTO = (CustomUserDetails)auth.getDetails();
 			
-			logger.info("============================ =memberDTO.getId   [{}]",loginName);			
+			logger.info("============================ =memberDTO.getId   [{}]",loginName);
 		}
 		return loginName;
 	}

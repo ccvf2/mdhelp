@@ -49,4 +49,12 @@
 	<!-- aop를 위한 셋팅 -->
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 	
+	<beans:bean id="properties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<beans:property name="locations">
+			<beans:list>
+				<beans:value>classpath:kr/mdhelp/config/paymentProvider.properties</beans:value>
+			</beans:list>
+		</beans:property>
+	</beans:bean>
+	
 </beans:beans>

@@ -46,12 +46,22 @@
 		<script src="/memberAssets/libs/simplebar/simplebar.min.js"></script>
 		<script src="/memberAssets/libs/node-waves/waves.min.js"></script>
 
-		<!-- apexcharts -->
-		<script src="/memberAssets/libs/apexcharts/apexcharts.min.js"></script>
-
-		<!-- dashboard init -->
-		<script src="/memberAssets/js/pages/dashboard.init.js"></script>
-
+		<script type="text/javascript">
+		window.onerror = function (msg, url, line) {
+			var alertErrorMsg = new Array();
+			alertErrorMsg.push("스크립트 오류가 발생하였습니다.\n 개발자도구 console을 확인하세요.\n")
+			alertErrorMsg.push("메세지 원문:")
+			alertErrorMsg.push("[")
+			alertErrorMsg.push(msg)
+			alertErrorMsg.push("]")
+			alertErrorMsg.push("\n")
+			alertErrorMsg.push("발생 Line:[")
+			alertErrorMsg.push(line)
+			alertErrorMsg.push("]")
+			alert(alertErrorMsg.join(""));
+		}
+		</script>
+		
 
 	</head>
 
@@ -271,9 +281,15 @@
 		<!-- Right bar overlay-->
 		<div class="rightbar-overlay"></div>
 --%>
+		<!-- apexcharts
+		<script src="/memberAssets/libs/apexcharts/apexcharts.min.js"></script>
+		 -->
 
-		<!-- App js -->
+		<!-- dashboard init 
+		<script src="/memberAssets/js/pages/dashboard.init.js"></script>
+		-->
+		<!-- App js 
 		<script src="/memberAssets/js/app.js"></script>
+		-->
 	</body>
-
 </html>

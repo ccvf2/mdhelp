@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
+	<link rel="shortcut icon" href="/memberAssets/images/favicon.ico">
 	<title>Home</title>
 </head>
 <body>
@@ -44,8 +45,9 @@
 	<hr/>
 	<h2>사용자</h2>
 	<a href="/member/main">사용자-메인</a><br/>
+	<a href="/member/search/naver">사용자-검색화면</a><br/>
 	<a href="/member/sign/signup">사용자-회원가입</a><br/>
-	<a href="/member/payment/page">결제모둘 연동</a><br/>
+	<a href="/member/payment/page">결제모듈 연동</a><br/>
 	<hr/>
 	관리자 계정 : ccvf2@naver.com / 123456<br/>
 	사용자 계정 : user@user.com / 123456<br/>

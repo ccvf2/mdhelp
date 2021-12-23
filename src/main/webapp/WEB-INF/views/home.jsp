@@ -13,6 +13,7 @@
 <P>  The time on the server is ${serverTime}. </P>
 
 <h3>
+	서비스모드:${serviceMode}<br/>
 	상태:&nbsp;
 	<c:choose>
 		<c:when test='${loginName eq "" }'>

@@ -67,11 +67,14 @@ var paymentWrapperObj = {
 	/** MethodNote : 화면에 있는 input 정보를 긁어와 object화 하여 반환한다.*/
 	inputValueHooker : function(){
 		var resultObj = {
-			product:[{"productKey": "112313","productName": "수량형", "count":10},{"productKey": "112313","productName": "구독형", "count":10}]
-			,totalAmount : 0
+			"coupon"		:[{"couponKey":"xxxx","count":1},{"couponKey":"yyyyy","count":2}]
+			,"product"		:[{"productKey": "112313","productName": "수량형", "count":10},{"productKey": "112313","productName": "구독형", "count":10}]
+			,"raw_tot_amt"	: 1000
+			,"discount_amt"	: 0
+			,"paymented_amt": 1000
 		};
 		var amount = document.getElementById("paymentAmount");
-		var methodList = document.getElementsByName("paymentMethod");
+		var methodList = document.getElementsByName("paymentMethod"); 
 		var method ="";
 		methodList.forEach(function(item,index){
 			console.log(index);
@@ -97,12 +100,13 @@ var paymentWrapperObj = {
 	
 	/** MethodNote : 상품과 수량, 쿠폰 서버로 보내고 merchant_uid를 서버로 부터 얻어온다. */
 	paymentMerchantUIDGenerator : function(obj){
+		var dataStr = {"data":JSON.stringify(obj)};
 		var merchantUID =""; 
 		$.ajax({
 			url: "/member/payment/muid",
 			type:"POST",
 			dataType:"text",
-			data:obj,
+			data:dataStr,
 			async : false,
 			success:function(data){
 				console.log(data)

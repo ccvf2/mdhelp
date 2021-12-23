@@ -287,7 +287,13 @@
 			<artifactId>jackson-mapper-asl</artifactId>
 			<version>${org.codehaus-version}</version>
 		</dependency>
-		
+		<!-- https://mvnrepository.com/artifact/org.json/json -->
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20211205</version>
+		</dependency>
+
 		<!-- 결제 관련 모듈 -->
 		<dependency>
 			<groupId>com.github.iamport</groupId>

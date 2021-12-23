@@ -9,6 +9,7 @@ import java.util.Locale;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -25,7 +26,8 @@ import org.springframework.web.servlet.ModelAndView;
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	
+	@Value("${service.mode}")
+	private String SERVICE_MODE;
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
@@ -75,6 +77,7 @@ public class HomeController {
 				}
 			}
 			
+		model.addAttribute("serviceMode", SERVICE_MODE );
 		model.addAttribute("loginName", loginName );
 		model.addAttribute("authorities", authorities );
 		model.addAttribute("authoritiesDetail", sb.toString() );

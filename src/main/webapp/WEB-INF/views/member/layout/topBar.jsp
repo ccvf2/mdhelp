@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
-<%-- 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+<sec:authentication property="principal" var="loginInfo"/>
+<%-- user
  @author	: ccvf2.dev
  @since		: 2021. 10. 18.
  @partType	: (ex: admin | user | common | etx)
@@ -224,12 +227,12 @@
 			data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				<img class="rounded-circle header-profile-user" src="/memberAssets/images/users/avatar-1.jpg"
 					alt="Header Avatar">
-				<span class="d-none d-xl-inline-block ms-1">Peter</span>
+				<span class="d-none d-xl-inline-block ms-1">${loginInfo.fullName}</span>
 				<i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
 			</button>
 			<div class="dropdown-menu dropdown-menu-end">
 				<!-- item-->
-				<h6 class="dropdown-header">Welcome Peter!</h6>
+				<h6 class="dropdown-header">반갑습니다. ${loginInfo.fullName} 님</h6>
 				<a class="dropdown-item" href="#"><i class="mdi mdi-account-circle text-muted font-size-16 align-middle me-1"></i> <span class="align-middle" key="t-profile">Profile</span></a>
 				<a class="dropdown-item" href="#"><i class="mdi mdi-message-text-outline text-muted font-size-16 align-middle me-1"></i> <span class="align-middle" key="t-messages">Messages</span></a>
 				<a class="dropdown-item" href="#"><i class="mdi mdi-calendar-check-outline text-muted font-size-16 align-middle me-1"></i> <span class="align-middle" key="t-taskboard">Taskboard</span></a>
@@ -238,15 +241,22 @@
 				<a class="dropdown-item" href="#"><i class="mdi mdi-wallet text-muted font-size-16 align-middle me-1"></i> <span class="align-middle" key="t-balance">Balance : <b>$1901.67</b></span></a>
 				<a class="dropdown-item" href="#"><span class="badge bg-success bg-soft text-success mt-1 float-end">New</span><i class="mdi mdi-cog-outline text-muted font-size-16 align-middle me-1"></i> <span class="align-middle" key="t-settings">Settings</span></a>
 				<a class="dropdown-item" href="#"><i class="mdi mdi-lock text-muted font-size-16 align-middle me-1"></i> <span class="align-middle" key="t-lock-screen">Lock screen</span></a>
+				<c:if test='${loginInfo.member_level eq "USERLEV2"}'>
+				<a class="dropdown-item" href="/admin/main">
+					<i class="mdi mdi-lock text-muted font-size-16 align-middle me-1"></i>
+					<span class="align-middle" key="t-lock-screen">관리자화면으로이동</span>
+				</a>
+				</c:if>
 				<a class="dropdown-item" href="/member/sign/signout"><i class="mdi mdi-logout text-muted font-size-16 align-middle me-1"></i> <span class="align-middle" key="t-logout">Logout</span></a>
 			</div>
 		</div>
-
+<%--
 		<div class="dropdown d-inline-block">
 			<button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect">
 				<i class="bx bx-cog bx-spin"></i>
 			</button>
 		</div>
+ --%>
 
 	</div>
 </div>

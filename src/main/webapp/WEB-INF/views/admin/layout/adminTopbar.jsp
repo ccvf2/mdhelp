@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+
 <%-- 
  @author	: ccvf2.dev
  @since		: 2021. 10. 7.
@@ -14,6 +17,7 @@
  * 1.	2021. 10. 7.	ccvf2.dev		최초작성
  ***************************************
  --%>
+<sec:authentication property="principal" var="loginInfo"/>
 <div class="navbar-header">
 	<div class="d-flex">
 		<!-- LOGO -->
@@ -217,20 +221,23 @@
 			data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				<img class="rounded-circle header-profile-user" src="/adminAssets/images/users/avatar-1.jpg"
 					alt="Header Avatar">
-				<span class="d-none d-xl-inline-block ms-1">Peter</span>
+				<span class="d-none d-xl-inline-block ms-1">${loginInfo.fullName}</span>
 				<i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
 			</button>
 			<div class="dropdown-menu dropdown-menu-end">
 				<!-- item-->
-				<h6 class="dropdown-header">Welcome Peter!</h6>
-				<a class="dropdown-item" href="#"><i class="mdi mdi-account-circle text-muted font-size-16 align-middle me-1"></i> <span class="align-middle" key="t-profile">Profile</span></a>
+				<h6 class="dropdown-header">${loginInfo.fullName} 관리자님 안녕하세요.</h6>
+				<a class="dropdown-item" href="#">
+					<i class="mdi mdi-account-circle text-muted font-size-16 align-middle me-1"></i> <span class="align-middle" key="t-profile">Profile</span>
+				</a>
 				<a class="dropdown-item" href="#"><i class="mdi mdi-message-text-outline text-muted font-size-16 align-middle me-1"></i> <span class="align-middle" key="t-messages">Messages</span></a>
 				<a class="dropdown-item" href="#"><i class="mdi mdi-calendar-check-outline text-muted font-size-16 align-middle me-1"></i> <span class="align-middle" key="t-taskboard">Taskboard</span></a>
 				<a class="dropdown-item" href="#"><i class="mdi mdi-lifebuoy text-muted font-size-16 align-middle me-1"></i> <span class="align-middle" key="t-help">Help</span></a>
 				<div class="dropdown-divider"></div>
 				<a class="dropdown-item" href="#"><i class="mdi mdi-wallet text-muted font-size-16 align-middle me-1"></i> <span class="align-middle" key="t-balance">Balance : <b>$1901.67</b></span></a>
 				<a class="dropdown-item" href="#"><span class="badge bg-success bg-soft text-success mt-1 float-end">New</span><i class="mdi mdi-cog-outline text-muted font-size-16 align-middle me-1"></i> <span class="align-middle" key="t-settings">Settings</span></a>
-				<a class="dropdown-item" href="#"><i class="mdi mdi-lock text-muted font-size-16 align-middle me-1"></i> <span class="align-middle" key="t-lock-screen">Lock screen</span></a>
+				
+				<a class="dropdown-item" href="/member/main"><i class="mdi mdi-lock text-muted font-size-16 align-middle me-1"></i> <span class="align-middle" key="t-lock-screen">사용자 화면으로 이동</span></a>
 				<a class="dropdown-item" href="/member/sign/signout"><i class="mdi mdi-logout text-muted font-size-16 align-middle me-1"></i> <span class="align-middle" key="t-logout">Logout</span></a>
 			</div>
 		</div>

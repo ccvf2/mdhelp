@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.mdhelp.common.model.CustomUserDetails;
+
 /**
  * Handles requests for the application home page.
  */

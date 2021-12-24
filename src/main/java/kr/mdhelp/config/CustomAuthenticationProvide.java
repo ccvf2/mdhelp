@@ -23,41 +23,28 @@ public class CustomAuthenticationProvide implements AuthenticationProvider {
 
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-	
 		String username = authentication.getName();
 		String password = (String)authentication.getCredentials();
-		//logger.debug(sCPrefix +"authenticate-username : [{}]",username);
-		//logger.debug(sCPrefix +"authenticate-password : [{}]",password);
-		
-
 		CustomUserDetails user = (CustomUserDetails) userDetailsService.loadUserByUsername(username);
 		
-
 		String dbPwd =user.getPwd();
-		logger.debug(sCPrefix +"user-password : [{}]",dbPwd);
 		// password 일치하지 않으면!
 		Authentication authenticationObj = null;
 		if(!passwordEncoder.matches(password,dbPwd)){
-			logger.debug(sCPrefix +" !!!-- 비밀번호 불일치 --!!! ");
+			//logger.debug(sCPrefix +" !!!-- 비밀번호 불일치 --!!! ");
 			throw new BadCredentialsException("BadCredentialsException");
 		}else {
-			logger.debug(sCPrefix +" !!!-- 비밀번호 ●일치● --!!! ");
-			authenticationObj = new UsernamePasswordAuthenticationToken(username, password, user.getAuthorities());
-			
-			// TO-DO 인증정보가 맞으면 세션에 고객정보를 담는다.
-			
+			//logger.debug(sCPrefix +" !!!-- 비밀번호 ●일치● --!!! ");
+			//authenticationObj = new UsernamePasswordAuthenticationToken(username, password, user.getAuthorities());
+			authenticationObj = new UsernamePasswordAuthenticationToken(user, password, user.getAuthorities());
 		}
-	
-		
-		logger.debug(sCPrefix +" --------------------------------------------- > [{}] ",authenticationObj.isAuthenticated());
+		//logger.debug(sCPrefix +" --------------------------------------------- > [{}] ",authenticationObj.isAuthenticated());
 		return authenticationObj;
-
-
 	}
 	// 토큰 타입과 일치할 때 인증
 	@Override
 	public boolean supports(Class<?> authentication) {
-		logger.debug(sCPrefix +" !!!-- ●토큰 타입과 일치할 때 인증● --!!! ");
+		//logger.debug(sCPrefix +" !!!-- ●토큰 타입과 일치할 때 인증● --!!! ");
 		return UsernamePasswordAuthenticationToken.class.isAssignableFrom(authentication);
 	}
 

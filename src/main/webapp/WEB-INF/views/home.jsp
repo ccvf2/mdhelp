@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+
 <html>
 <head>
 	<link rel="shortcut icon" href="/memberAssets/images/favicon.ico">
@@ -12,8 +14,19 @@
 
 <P>  The time on the server is ${serverTime}. </P>
 
-<h3>
-	서비스모드:${serviceMode}<br/>
+<div>
+	<sec:authentication property="principal" var="loginInfo"/>
+		loginInfo:${loginInfo}<br/>
+	<%-- 
+		USER:${loginInfo.fullName}<br/><br/>
+	USER:${loginInfo.fullName}<br/><br/>
+	principal:${loginInfo.userNumber}<br/><br/>
+	sessionScope :${sessionScope}<br/><br/>
+	sessionScope.SPRING_SECURITY_CONTEXT :${sessionScope.SPRING_SECURITY_CONTEXT}<br/><br/>
+	sessionScope.SPRING_SECURITY_CONTEXT.getPrincipal :${sessionScope.SPRING_SECURITY_CONTEXT.Principal}<br/><br/>
+	sessionScope :${sessionScope.UserInfo.userNumber}<br/><br/>
+	 --%>
+	서비스모드:${serviceMode}<br/><br/>
 	상태:&nbsp;
 	<c:choose>
 		<c:when test='${loginName eq "" }'>
@@ -28,7 +41,7 @@
 	권한 : ${authorities}
 	<br/>
 	권한상세 : ${authoritiesDetail}
-</h3>
+</div>
 	<h2>공통</h2>
 	<c:choose>
 		<c:when test='${loginName eq "" }'>

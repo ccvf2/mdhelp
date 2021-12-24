@@ -5,6 +5,4 @@ import kr.mdhelp.member.model.MemberDTO;
 
 public interface SignInDAOInterface {
 	public CustomUserDetails loginProcess(MemberDTO memberDTO);
-	
-	//public MemberDTO getUserDetailInfomationReturnToNULL(MemberDTO memberDTO);
 }

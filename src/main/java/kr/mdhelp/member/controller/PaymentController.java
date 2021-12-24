@@ -53,6 +53,7 @@ public class PaymentController {
 		ModelAndView mav = new ModelAndView();
 		
 		logger.debug(loggerPrix+"get properties : [{}]",paymentGateWay);
+		mav.addObject("paymentGateWay", paymentGateWay);
 		mav.addObject("IMP_UID", IMP_UID);
 		mav.setViewName("member/payment/paymentPage");
 		

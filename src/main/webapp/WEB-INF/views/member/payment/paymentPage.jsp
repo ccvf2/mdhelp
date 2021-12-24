@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <%-- 
  @author	: ccvf2.dev
  @since		: 2021. 12. 7.
@@ -50,7 +51,7 @@
 		<span><h5>v1_devgroup\네이버&아임포트계정.txt</h5>를 참조</span>
 	</div>
 </div>
-
+<sec:authentication property="principal" var="loginInfo"/>
 <script type="text/javascript">
 
 	/** MethodNote :  */
@@ -137,22 +138,28 @@ var paymentWrapperObj = {
 			console.log("-===================merchantUID 생성요청");
 			var merchantUID = this.paymentMerchantUIDGenerator(obj);
 			console.log("-===================merchantUID 결과: " + merchantUID);
+			var trimAddress = $.trim("<c:out value='${loginInfo.contactAddress}'/>");
+			if(trimAddress == ""){
+				trimAddress = $.trim("서울특별시 강남구 삼성동");
+			}
+			//경제 창에 표기할 상품명
+			var paymentTitle = "정기결제권 외1개";
 			var paymentRequestObj = {
-					pg				: 'danal_tpay',
+					pg				: "<c:out value='${paymentGateWay}'/>",//'danal_tpay'
 					pay_method		: obj.method,// card(신용카드), trans(실시간계좌이체), vbank(가상계좌), 또는 phone(휴대폰소액결제)
 					merchant_uid	: merchantUID, //상점에서 생성한 고유 주문번호
-					name			: '주문명:결제테스트',
+					name			: paymentTitle,//'주문명:결제테스트'
 					amount			: obj.totalAmount,
-					buyer_email		: 'iamport@siot.do',
-					buyer_name		: '구매자이름',
-					buyer_tel		: '010-1234-5678',
-					buyer_addr		: '서울특별시 강남구 삼성동',
-					buyer_postcode	: '123-456'
+					buyer_email		: "<c:out value='${loginInfo.id}'/>",//'iamport@siot.do'
+					buyer_name		: "<c:out value='${loginInfo.fullName}'/>",//'구매자이름'
+					buyer_tel		: "<c:out value='${loginInfo.contactNumber1}'/>",//'010-1234-5678'
+					//buyer_addr		: trimAddress,//'서울특별시 강남구 삼성동'
+					//buyer_postcode	: ''//'123-456'
 			};
 			//결제창 요청
-			console.log("-===================결제창 요청");
+			console.log("-===================결제창 요청2");
 			console.log(paymentRequestObj);
-			console.log("-===================결제창 요청");
+			console.log("-===================결제창 요청2");
 			this.IMP.request_pay(paymentRequestObj, this.cb_request_pay.bind(this));
 		}else{
 			//화면값 검증 실패

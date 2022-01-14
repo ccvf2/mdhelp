@@ -55,7 +55,7 @@ public class PaymentController {
 		logger.debug(loggerPrix+"get properties : [{}]",paymentGateWay);
 		mav.addObject("paymentGateWay", paymentGateWay);
 		mav.addObject("IMP_UID", IMP_UID);
-		mav.setViewName("member/payment/paymentPage2");
+		mav.setViewName("member/payment/paymentPage");
 		
 		return mav;
 	}

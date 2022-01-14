@@ -36,6 +36,11 @@
 		<link href="/memberAssets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
 		<!-- Dark Mode Css-->
 		<link href="/memberAssets/css/dark-layout.min.css" id="app-style" rel="stylesheet" type="text/css" />
+		
+
+		<link href="/memberAssets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+		<link href="/memberAssets/libs/spectrum-colorpicker2/spectrum.min.css" rel="stylesheet" type="text/css">
+		<link href="/memberAssets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css" rel="stylesheet" type="text/css" />
 
 
 
@@ -69,11 +74,11 @@
 
 		<!-- Begin page -->
 		<div id="layout-wrapper">
-			<header id="page-topbar" style="background-color: #00bbbb; border-color: #00bbbb;">
+			<header id="page-topbar" style="background-color: #fff; border-color: #fff;">
 				<!-- //topBar -->
 				<tiles:insertAttribute name="topBar" />
 			</header>
-			<div class="topnav">
+			<div class="topnav" style="background-color:#f8f8f8;">
 				<!-- //navMenu -->
 				<tiles:insertAttribute name="navMenu" />
 			</div>
@@ -83,8 +88,8 @@
 			<!-- ============================================================== -->
 			<div class="main-content">
 
-				<div class="page-content">
-					<div class="container-fluid" style="max-width: 90%;">
+				<div class="page-content" style="padding: calc(94px + 20px) calc(20px / 2) 60px calc(20px / 2);">
+					<div class="container-fluid" style="max-width: 100%;">
 
 						<!-- //body -->
 						<tiles:insertAttribute name="body" />

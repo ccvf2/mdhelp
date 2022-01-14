@@ -17,7 +17,22 @@
  * 1.	2021. 10. 18.	ccvf2.dev		최초작성
  ***************************************
  --%>
-<div class="navbar-header" style="background-color: #00bbbb; border-color: #00bbbb;">
+ 
+ <style>
+ .btn-outline-success:hover {
+    color: #fff;
+    background-color: #00bbbb;
+    border-color: #00bbbb;
+}
+ </style>
+ 
+ <script>
+ 	$(function () {
+	  	$('[data-toggle="tooltip"]').tooltip();
+	})
+ </script>
+ 
+<div class="navbar-header" style="background-color: #fff; border-color: #fff;"> <!-- 00bbbb -->
 	<div class="d-flex">
 		<!-- LOGO -->
 		<div class="navbar-brand-box">
@@ -35,7 +50,7 @@
 					<img src="/memberAssets/images/logo-sm-light.png" alt="logo-sm-light" height="22">
 				</span>
 				<span class="logo-lg">
-					<img src="/memberAssets/images/logo-light.png" alt="logo-light" height="23">
+					<img src="/memberAssets/images/logo.png" alt="logo-light" height="23">
 				</span>
 			</a>
 		</div>
@@ -113,19 +128,22 @@
 			</div> -->
 		</div>
 
+
+<!-- 로그인전 상단 노출 -->
 		<div class="dropdown d-none d-lg-inline-block ms-1">
 			<!-- <button type="button" class="btn header-item noti-icon waves-effect" data-toggle="fullscreen">
 				<i class="mdi mdi-fullscreen"></i>
 			</button> -->
-			<!-- <h2 class="mb-3" style="margin-top: 10px;">
-				<small class="text-muted"><font style="color: #eef1ff; margin-right: 40px;">사용방법</font></small>
-				<small class="text-muted"><font style="color: #eef1ff; margin-right: 40px;">요금제</font></small>
-				<small class="text-muted"><font style="color: #eef1ff; margin-right: 40px;">문의하기</font></small>
-				<small class="text-muted"><font style="color: #eef1ff; margin-right: 10px;">로그인/회원가입</font></small>
-			</h2> -->
+			<h2 class="mb-3" style="margin-top: 10px;">
+				<small class="text-muted"><font style="color: #495057; margin-right: 20px; font-size: 67%; font-weight: normal;;">로그인</font></small>
+				<!--<button type="button" class="btn btn-outline-secondary" style="background-color: #fff; border-color: #fff; margin-right: 40px; font-size: 16px; color: #00bbbb; font-weight: bold;">지금시작하기</button>  -->
+				<button type="button" class="btn btn-outline-success waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="여기 눌러">지금시작하기</button>
+			</h2> 
 			
 		</div>
 
+		
+<!-- 알림 
 		<div class="dropdown d-inline-block">
 			<button type="button" class="btn header-item noti-icon waves-effect" id="page-header-notifications-dropdown"
 			data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -221,7 +239,9 @@
 				</div>
 			</div>
 		</div>
+-->
 
+<!-- 프로필 창 
 		<div class="dropdown d-inline-block">
 			<button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
 			data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -231,7 +251,7 @@
 				<i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
 			</button>
 			<div class="dropdown-menu dropdown-menu-end">
-				<!-- item-->
+				<!-- item--
 				<h6 class="dropdown-header">반갑습니다. ${loginInfo.fullName} 님</h6>
 				<a class="dropdown-item" href="#"><i class="mdi mdi-account-circle text-muted font-size-16 align-middle me-1"></i> <span class="align-middle" key="t-profile">Profile</span></a>
 				<a class="dropdown-item" href="#"><i class="mdi mdi-message-text-outline text-muted font-size-16 align-middle me-1"></i> <span class="align-middle" key="t-messages">Messages</span></a>
@@ -250,6 +270,7 @@
 				<a class="dropdown-item" href="/member/sign/signout"><i class="mdi mdi-logout text-muted font-size-16 align-middle me-1"></i> <span class="align-middle" key="t-logout">Logout</span></a>
 			</div>
 		</div>
+-->		
 <%--
 		<div class="dropdown d-inline-block">
 			<button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect">

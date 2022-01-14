@@ -14,7 +14,7 @@
  * 1.	2021. 10. 18.	ccvf2.dev		최초작성
  ***************************************
  --%>
-<div class="container-fluid">
+<div class="container-fluid" style="background-color:#f8f8f8;">
 	<nav class="navbar navbar-light navbar-expand-lg topnav-menu">
 
 		<div class="collapse navbar-collapse" id="topnav-menu-content">
@@ -22,16 +22,16 @@
 
 				<li class="nav-item">
 					<a class="nav-link" href="index.html">
-						<i class="bx bx-comment-dots"></i><span key="t-dashboards">&nbsp;사용방법</span>
+						<i class="mdi mdi-border-color"></i><span key="t-dashboards">&nbsp;상품안내</span>
 					</a>
 				</li>
 				
 				<li class="nav-item">
 					<a class="nav-link" href="index.html">
-						<i class="bx bx-cart-alt"></i><span key="t-dashboards">&nbsp;요금제</span>
+						<i class="bx bx-cart-alt"></i><span key="t-dashboards">&nbsp;이용권</span>
 					</a>
 				</li>
-				
+				<!-- 로그인 했을때만 노출 
 				<li class="nav-item">
 					<a class="nav-link" href="index.html">
 						<i class="bx bx-mail-send"></i><span key="t-dashboards">&nbsp;문의하기</span>
@@ -43,6 +43,8 @@
 						<i class="bx bx-search-alt"></i><span key="t-dashboards">&nbsp;상품검색</span>
 					</a>
 				</li>
+				
+				-->
 			<!-- 	<li class="nav-item">
 					<a class="nav-link" href="ui-components.html">
 						<i class="bx bx-briefcase me-2"></i><span key="t-ui-elements">UI Elements</span>

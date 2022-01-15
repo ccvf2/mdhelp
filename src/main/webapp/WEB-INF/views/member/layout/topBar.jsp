@@ -241,7 +241,7 @@
 		</div>
 -->
 
-<!-- 프로필 창 
+<%-- 프로필 창 
 		<div class="dropdown d-inline-block">
 			<button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
 			data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -270,7 +270,7 @@
 				<a class="dropdown-item" href="/member/sign/signout"><i class="mdi mdi-logout text-muted font-size-16 align-middle me-1"></i> <span class="align-middle" key="t-logout">Logout</span></a>
 			</div>
 		</div>
--->		
+ --%>		
 <%--
 		<div class="dropdown d-inline-block">
 			<button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect">

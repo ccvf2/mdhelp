@@ -88,7 +88,7 @@
 			<!-- ============================================================== -->
 			<div class="main-content">
 
-				<div class="page-content" style="padding: calc(94px + 20px) calc(20px / 2) 60px calc(20px / 2);">
+				<div class="page-content">
 					<div class="container-fluid" style="max-width: 100%;">
 
 						<!-- //body -->

@@ -2,6 +2,7 @@ package kr.mdhelp.member.controller;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
@@ -31,6 +32,8 @@ import com.siot.IamportRestClient.exception.IamportResponseException;
 import com.siot.IamportRestClient.response.IamportResponse;
 import com.siot.IamportRestClient.response.Payment;
 
+import kr.mdhelp.common.model.CodeDTO;
+
 @Controller
 public class PaymentController {
 	private static final Logger logger = LoggerFactory.getLogger(PaymentController.class);
@@ -47,6 +50,16 @@ public class PaymentController {
 	//private static final String sessionKey = "PAYMENT_PROCESS";
 	
 	
+	@RequestMapping(value = "/member/popup/payment/couponModal", method = RequestMethod.GET)
+	public ModelAndView apikeyInsertModal(HttpServletRequest request, HttpServletResponse response) {
+		logger.info("=============================apikeyInsertModal GET");
+		
+		ModelAndView mav = new ModelAndView();
+
+		mav.setViewName("member/popup/payment/couponModal");
+		return mav;
+	}
+	
 	
 	@RequestMapping(value = "member/payment/page", method = RequestMethod.GET)
 	public ModelAndView paymentTestPage(HttpServletRequest request, HttpServletResponse response) {
@@ -55,7 +68,7 @@ public class PaymentController {
 		logger.debug(loggerPrix+"get properties : [{}]",paymentGateWay);
 		mav.addObject("paymentGateWay", paymentGateWay);
 		mav.addObject("IMP_UID", IMP_UID);
-		mav.setViewName("member/payment/paymentPage");
+		mav.setViewName("member/payment/paymentPage2");
 		
 		return mav;
 	}

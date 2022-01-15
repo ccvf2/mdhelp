@@ -17,15 +17,15 @@
 <div>
 	<sec:authentication property="principal" var="loginInfo"/>
 		loginInfo:${loginInfo}<br/>
-	<%-- 
-		USER:${loginInfo.fullName}<br/><br/>
+ 
+	<%-- 	USER:${loginInfo.fullName}<br/><br/>
 	USER:${loginInfo.fullName}<br/><br/>
 	principal:${loginInfo.userNumber}<br/><br/>
 	sessionScope :${sessionScope}<br/><br/>
 	sessionScope.SPRING_SECURITY_CONTEXT :${sessionScope.SPRING_SECURITY_CONTEXT}<br/><br/>
 	sessionScope.SPRING_SECURITY_CONTEXT.getPrincipal :${sessionScope.SPRING_SECURITY_CONTEXT.Principal}<br/><br/>
-	sessionScope :${sessionScope.UserInfo.userNumber}<br/><br/>
-	 --%>
+	sessionScope :${sessionScope.UserInfo.userNumber}<br/><br/> --%>
+	 
 	서비스모드:${serviceMode}<br/><br/>
 	상태:&nbsp;
 	<c:choose>

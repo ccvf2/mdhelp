@@ -107,6 +107,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 				// 한없이 접근 가능 페이지
 				.antMatchers("/").permitAll()
 				.antMatchers("/test/**").permitAll()
+				.antMatchers("/member/main").permitAll()
 				//.antMatchers("/member/sign/**").permitAll()
 				.antMatchers("/member/sign/signout").hasAnyAuthority("USERLEV1,USERLEV2")
 				.antMatchers("/member/sign/signup").hasAuthority("ROLE_ANONYMOUS")

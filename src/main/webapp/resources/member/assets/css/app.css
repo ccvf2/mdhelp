@@ -134,8 +134,8 @@ body:not([data-topbar="dark"]) .navbar-brand-box {
   content: "\F0294"; }
 
 body[data-topbar="dark"] #page-topbar {
-  background-color: #0576b9;
-  border-color: #0576b9; }
+  background-color: #ffffff;
+  border-color: #ffffff; }
 
 body[data-topbar="dark"] .navbar-header .dropdown .show.header-item {
   background-color: rgba(255, 255, 255, 0.05); }
@@ -665,7 +665,7 @@ body[data-sidebar="brand"]body[data-sidebar-size="sm"] .vertical-menu #sidebar-m
       color: #0576b9 !important; }
 
 .topnav {
-  background: #fff;
+  background: #f2f2f5;
   padding: 0 calc(20px / 2);
   border-bottom: 1px solid rgba(233, 235, 236, 0.6);
   margin-top: 60px;
@@ -718,9 +718,9 @@ body[data-layout="horizontal"] #page-topbar, body[data-layout="horizontal"] .nav
 
 @media (max-width: 991.98px) {
   body[data-layout="horizontal"] #page-topbar {
-    padding: 0; }
+    padding: 0; background-color: #00bbbb;}
   body[data-layout="horizontal"] .navbar-header {
-    padding-left: 0; } }
+    padding-left: 0; background-color: #00bbbb;} }
 
 @media (min-width: 1200px) {
   body[data-layout="horizontal"] .container-fluid,

@@ -32,7 +32,7 @@
 	})
  </script>
  
-<div class="navbar-header" style="background-color: #fff; border-color: #fff;"> <!-- 00bbbb -->
+<div class="navbar-header""> <!-- style="background-color: #fff; border-color: #fff; 00bbbb -->
 	<div class="d-flex">
 		<!-- LOGO -->
 		<div class="navbar-brand-box">

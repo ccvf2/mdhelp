@@ -14,7 +14,7 @@
  * 1.	2021. 10. 18.	ccvf2.dev		최초작성
  ***************************************
  --%>
-<div class="container-fluid" style="background-color:#f8f8f8;">
+<div class="container-fluid"> <!--  style="background-color:#f2f2f5;" -->
 	<nav class="navbar navbar-light navbar-expand-lg topnav-menu">
 
 		<div class="collapse navbar-collapse" id="topnav-menu-content">

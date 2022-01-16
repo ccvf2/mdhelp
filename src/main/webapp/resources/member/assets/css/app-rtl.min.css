@@ -665,7 +665,7 @@ body[data-sidebar="brand"]body[data-sidebar-size="sm"] .vertical-menu #sidebar-m
       color: #0576b9 !important; }
 
 .topnav {
-  background: #fff;
+  background: #f2f2f5;
   padding: 0 calc(20px / 2);
   border-bottom: 1px solid rgba(233, 235, 236, 0.6);
   margin-top: 60px;
@@ -710,7 +710,7 @@ body[data-layout="horizontal"] .vertinav-toggle {
   display: none; }
 
 body[data-layout="horizontal"] #page-topbar, body[data-layout="horizontal"] .navbar-header {
-  padding: 0 calc(20px / 2); }
+  padding: 0 calc(20px / 2);}
 
 @media (min-width: 992px) {
   body[data-layout="horizontal"] .navbar-brand-box {
@@ -720,7 +720,7 @@ body[data-layout="horizontal"] #page-topbar, body[data-layout="horizontal"] .nav
   body[data-layout="horizontal"] #page-topbar {
     padding: 0; }
   body[data-layout="horizontal"] .navbar-header {
-    padding-right: 0; } }
+    padding-right: 0; background-color: #00bbbb;} }
 
 @media (min-width: 1200px) {
   body[data-layout="horizontal"] .container-fluid,

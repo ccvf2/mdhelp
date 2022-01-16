@@ -29,11 +29,12 @@
 		<link rel="shortcut icon" href="/memberAssets/images/favicon.ico">
 
 		<!-- Bootstrap Css -->
-		<link href="/memberAssets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+		<link href="/memberAssets/css/bootstrap.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
 		<!-- Icons Css -->
 		<link href="/memberAssets/css/icons.min.css" rel="stylesheet" type="text/css" />
 		<!-- App Css-->
-		<link href="/memberAssets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+		<link href="/memberAssets/css/app.css" id="app-style" rel="stylesheet" type="text/css" /><!-- 
+		<link href="/memberAssets/css/app-rtl.min.min.css" id="app-style" rel="stylesheet" type="text/css" /> -->
 		<!-- Dark Mode Css-->
 		<link href="/memberAssets/css/dark-layout.min.css" id="app-style" rel="stylesheet" type="text/css" />
 		
@@ -67,18 +68,22 @@
 		}
 		</script>
 		
-
+		<style type="text/css">
+			.row .borders{
+				display: inline-flex; height: 900px;
+			}
+		</style>
 	</head>
 
-	<body data-topbar="dark" data-layout="horizontal">
+	<body data-topbar="dark" data-layout="horizontal"> <!-- style="background-color:#fff;" -->
 
-		<!-- Begin page -->
+		<!-- Begin page --> 
 		<div id="layout-wrapper">
-			<header id="page-topbar" style="background-color: #fff; border-color: #fff;">
+			<header id="page-topbar"> <!-- style="background-color: #fff; border-color: #fff;" -->
 				<!-- //topBar -->
 				<tiles:insertAttribute name="topBar" />
 			</header>
-			<div class="topnav" style="background-color:#f8f8f8;">
+			<div class="topnav"> <!-- style="background-color:#f2f2f5;" -->
 				<!-- //navMenu -->
 				<tiles:insertAttribute name="navMenu" />
 			</div>
@@ -88,7 +93,7 @@
 			<!-- ============================================================== -->
 			<div class="main-content">
 
-				<div class="page-content" style="padding: calc(94px + 20px) calc(20px / 2) 60px calc(20px / 2);">
+				<div class="page-content">
 					<div class="container-fluid" style="max-width: 100%;">
 
 						<!-- //body -->

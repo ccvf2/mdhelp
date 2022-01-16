@@ -16,7 +16,7 @@
 
 <div>
 	<sec:authentication property="principal" var="loginInfo"/>
-		loginInfo:${loginInfo}<br/>
+		loginInfo:${loginInfo}<br/> 
 	<%-- 
 		USER:${loginInfo.fullName}<br/><br/>
 	USER:${loginInfo.fullName}<br/><br/>

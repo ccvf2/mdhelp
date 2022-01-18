@@ -75,15 +75,15 @@
 		</style>
 	</head>
 
-	<body data-topbar="dark" data-layout="horizontal"> <!-- style="background-color:#fff;" -->
+	<body data-topbar="dark" data-layout="horizontal">
 
 		<!-- Begin page --> 
 		<div id="layout-wrapper">
-			<header id="page-topbar"> <!-- style="background-color: #fff; border-color: #fff;" -->
+			<header id="page-topbar">
 				<!-- //topBar -->
 				<tiles:insertAttribute name="topBar" />
 			</header>
-			<div class="topnav"> <!-- style="background-color:#f2f2f5;" -->
+			<div class="topnav">
 				<!-- //navMenu -->
 				<tiles:insertAttribute name="navMenu" />
 			</div>

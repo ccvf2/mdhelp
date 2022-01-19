@@ -113,7 +113,7 @@
 					<!-- <h2 class="mb-3" style="margin-top: 10px;"> -->
 						<%-- <a href="/member/sign/signin" class="a_login">로그인</a>--%><%-- <font style="color: #495057; margin-right: 20px; font-size: 67%; font-weight: normal;">로그인</font> --%>
 						<button onclick="$commonPage.url_request_get('/member/sign/signin')" type="button" class="btn btn-outline-success waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="로그인">로그인</button>
-						<button type="button" class="btn btn-outline-success waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="여기 눌러">지금시작하기3</button>
+						<button type="button" class="btn btn-outline-success waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="여기 눌러">지금시작하기</button>
 					<!-- </h2> -->
 				</div>
 			</c:when>

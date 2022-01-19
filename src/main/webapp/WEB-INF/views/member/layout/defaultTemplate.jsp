@@ -103,8 +103,7 @@
 
 						<!-- //body -->
 						<tiles:insertAttribute name="body" />
-
-
+						<div id="modalAppendArr"></div>
 <%-- 
 						<!-- subscribeModal -->
 						<div class="modal fade modal-with-bg" id="subscribeModal" tabindex="-1" aria-hidden="true">

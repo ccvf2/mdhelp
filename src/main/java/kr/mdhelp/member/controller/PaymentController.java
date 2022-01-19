@@ -62,14 +62,25 @@ public class PaymentController {
 	
 	
 	@RequestMapping(value = "member/payment/page", method = RequestMethod.GET)
-	public ModelAndView paymentTestPage(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView paymentPage1(HttpServletRequest request, HttpServletResponse response) {
 		ModelAndView mav = new ModelAndView();
 		
 		logger.debug(loggerPrix+"get properties : [{}]",paymentGateWay);
 		mav.addObject("paymentGateWay", paymentGateWay);
 		mav.addObject("IMP_UID", IMP_UID);
 		mav.setViewName("member/payment/paymentPage2");
-		
+		return mav;
+	}
+	@RequestMapping(value = "member/payment/page", method = RequestMethod.POST)
+	public ModelAndView paymentPage2(HttpServletRequest request
+			, HttpServletResponse response
+			, @RequestParam(value="productKey") List<String> productList
+			, @RequestParam(value="productCount") List<String> productCountList) {
+		ModelAndView mav = new ModelAndView();
+		logger.debug(loggerPrix+"get properties : [{}]",paymentGateWay);
+		mav.addObject("paymentGateWay", paymentGateWay);
+		mav.addObject("IMP_UID", IMP_UID);
+		mav.setViewName("member/payment/paymentPage2");
 		return mav;
 	}
 	

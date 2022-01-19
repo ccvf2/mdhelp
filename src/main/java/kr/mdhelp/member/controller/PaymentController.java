@@ -69,15 +69,6 @@ public class PaymentController {
 		mav.addObject("paymentGateWay", paymentGateWay);
 		mav.addObject("IMP_UID", IMP_UID);
 		mav.setViewName("member/payment/paymentPage2");
-<<<<<<< HEAD
-		
-		
-		
-		
-		
-		
-=======
->>>>>>> e849fa07c4730a36dcfd5f2b413737688b09574d
 		
 		return mav;
 	}

@@ -149,7 +149,7 @@
 							<div class="d-flex align-items-start border-bottom py-4">
 								<div class="flex-grow-1">
 									<h5 class="font-size-15 mt-0 mb-1">
-<!-- 										2021.12.01 - 13:30:29 검색 (총 <font color="red">105</font>건)<small class="text-muted float-end">2일전</small> -->
+										2021.12.01 - 13:30:29 검색 (총 <font color="red">105</font>건)<small class="text-muted float-end">2일전</small>
 										<a href="javascript: void(0);" class="text-muted font-13 d-inline-block"><i class="mdi mdi-book-clock-outline"></i> 목록 확인</a>
 									</h5>
 								</div>

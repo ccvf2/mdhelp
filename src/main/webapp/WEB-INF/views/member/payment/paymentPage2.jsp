@@ -1,8 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="sec"
-	uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <%-- 
  @author	: ccvf2.dev
  @since		: 2021. 12. 7.
@@ -19,7 +17,7 @@
  ***************************************
  --%>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
-<script src="/memberAssets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js"></script>
+<%--<script src="/memberAssets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js"></script> --%>
 
 <div class="row">
 	<div class="col-lg-12" style="background-color: #fff;">

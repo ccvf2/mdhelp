@@ -51,6 +51,11 @@
 		<script src="/memberAssets/libs/metismenu/metisMenu.min.js"></script>
 		<script src="/memberAssets/libs/simplebar/simplebar.min.js"></script>
 		<script src="/memberAssets/libs/node-waves/waves.min.js"></script>
+		
+		<script src="/memberAssets/customScript/JS_StringUtils.js"></script>
+		
+		
+		<script src="/memberAssets/customScript/paga_common.js"></script>
 
 		<script type="text/javascript">
 		window.onerror = function (msg, url, line) {

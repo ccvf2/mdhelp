@@ -16,18 +16,15 @@
 
 <div>
 	<sec:authentication property="principal" var="loginInfo"/>
-<<<<<<< HEAD
-		loginInfo:${loginInfo}<br/> 
+	loginInfo:${loginInfo eq "anonymousUser" or loginInfo eq ""}<br/> 
+	sessionScope :${sessionScope}<br/><br/>
 	<%-- 
 		USER:${loginInfo.fullName}<br/><br/>
-=======
 		loginInfo:${loginInfo}<br/>
  
 	<%-- 	USER:${loginInfo.fullName}<br/><br/>
->>>>>>> e849fa07c4730a36dcfd5f2b413737688b09574d
 	USER:${loginInfo.fullName}<br/><br/>
 	principal:${loginInfo.userNumber}<br/><br/>
-	sessionScope :${sessionScope}<br/><br/>
 	sessionScope.SPRING_SECURITY_CONTEXT :${sessionScope.SPRING_SECURITY_CONTEXT}<br/><br/>
 	sessionScope.SPRING_SECURITY_CONTEXT.getPrincipal :${sessionScope.SPRING_SECURITY_CONTEXT.Principal}<br/><br/>
 	sessionScope :${sessionScope.UserInfo.userNumber}<br/><br/> --%>

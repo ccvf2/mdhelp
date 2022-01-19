@@ -69,7 +69,7 @@
 						<div class="col-lg-2 text-sm-end">
 							<div class="flex-grow-1">
 								<h5 class="mb-0">-1,000 원</h5>
-                            </div>
+							</div>
 						</div>
 					</div>
 					<br>
@@ -93,7 +93,7 @@
 							<div class="flex-grow-1">
 								<h5 class="mb-0">10,000 원</h5>
 								<p class="text-muted mb-2">(부가세 포함)</p>
-                            </div>
+							</div>
 						</div>
 					</div>
 					
@@ -108,12 +108,18 @@
 					</div>
 					<hr>
 					<br>
-					<div class="row mb-3 mt-1">
-						<div class="col-lg-6">
-							<button type="button" class="btn btn-outline-success waves-effect waves-light" style="width:99%">이용권 변경</button>
+					<div class="row mb-2 mt-1">
+						<div class="col-lg-2"></div>
+						<div class="col-lg-8">
+							<button type="button" class="btn btn-outline-success waves-effect waves-light" style="width:99%">이용권 결제하기</button>
 						</div>
-						<div class="col-lg-6">
-							<button type="button" class="btn btn-outline-success waves-effect waves-light" style="width:99%">결제하기</button>
+						<div class="col-lg-2"></div>
+					</div>
+					<div class="row mb-3 mt-1">
+						<div class="col-lg-12">
+							<p class="text-muted text-sm-center">
+								<a href="/member/main" class="card-link">다른 이용권으로 변경</a>
+							</p>
 						</div>
 					</div>
 				</div>

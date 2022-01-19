@@ -88,9 +88,56 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "member/main", method = RequestMethod.GET)
-	public ModelAndView signUpPage() {
+	public ModelAndView signUpPage(Locale locale, Model model) {
 		ModelAndView mav  = new ModelAndView();
+		
+		Date date = new Date();
+		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+		
+		String formattedDate = dateFormat.format(date);
+		
+		model.addAttribute("serverTime", formattedDate );
+		
 		Authentication auth =  SecurityContextHolder.getContext().getAuthentication();
+		String loginName = "";
+		if( StringUtils.equals(auth.getName(), "anonymousUser") || StringUtils.equals(auth.getName(), "") ) {
+			loginName = "";
+		}else {
+			loginName = auth.getName();
+		}
+		
+		String authorities ="";
+		StringBuffer sb = new StringBuffer();
+			boolean adminFlag = false;
+			boolean anonymousFlag = true;
+			Collection<? extends GrantedAuthority> ga =auth.getAuthorities();
+			Iterator<?> it = ga.iterator();
+			while(it.hasNext()) {
+				String keyString = it.next().toString();
+				sb.append(keyString);sb.append(",");
+				if(StringUtils.equals(keyString, "USERLEV2")) {
+					adminFlag = true;
+				}else if(StringUtils.equals(keyString, "ROLE_ANONYMOUS")) {
+					anonymousFlag = true;
+				}else {
+					anonymousFlag = false;
+				}
+			}
+			if(adminFlag) {
+				authorities = "administor";
+			}else{
+				if(anonymousFlag) {
+					authorities ="anonymous";
+				}else {
+					authorities = "normalUser";
+				}
+			}
+			
+		model.addAttribute("serviceMode", SERVICE_MODE );
+		model.addAttribute("loginName", loginName );
+		model.addAttribute("authorities", authorities );
+		model.addAttribute("authoritiesDetail", sb.toString() );
+		
 		mav.setViewName("member/main/main");
 		return mav;
 	}

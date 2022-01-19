@@ -36,58 +36,57 @@
 </div>
 <!-- end page title -->
 
-<div class="row mb-4">
-	<div class="col-xl-4" style="width:18.33333%;">
+<div class="row">
+	<div class="col-lg-2">
 		<div class="card">
 			<form id="naverSearch" name="naverSearch" action="#">
-				<div style="-webkit-box-flex: 1;padding: 1.25rem 1.25rem;" id="searchDiv">
-					<div class="border rounded" style="margin-top: -0.5rem">
-						
-							<div class="px-2 py-1 bg-light">
-								<div class="btn-group" role="group">
-									총 검색 (0건)
-								</div>
+				<div class="border rounded">
+					
+						<div class="px-2 py-1 bg-light">
+							<div class="btn-group" role="group">
+								총 검색 (0건)
 							</div>
-							<textarea rows="3" id="searchArea" name="searchArea" class="form-control border-0 resize-none" style="height: 700px;" placeholder="검색코드 입력.."></textarea>
-					</div>
+						</div>
+						<textarea rows="3" id="searchArea" name="searchArea" class="form-control border-0 resize-none" style="height: 700px;" placeholder="검색코드 입력.."></textarea>
 				</div>
 				<div style="text-align: center; margin-bottom: 16px;">
-					<button type="button" id="searchBtn" onclick="MemberOBJECT.naverSearch()" class="btn btn-success w-lg waves-effect waves-light" style="background-color: #00bbbb;">검색시작</button>
+					<button type="button" id="searchBtn" onclick="MemberOBJECT.naverSearch()" class="btn btn-outline-success w-lg waves-effect waves-light">검색시작</button>
 				</div>
 			</form>
 		</div>
 	</div>
 
-	<div class="col-xl-8" style="width:81.66667%;">
-		<div class="card mb-0">
-			<!-- Nav tabs -->
-			<ul class="nav nav-tabs nav-tabs-custom nav-justified" role="tablist">
-				<li class="nav-item"><a class="nav-link active"
-					data-bs-toggle="tab" href="#about" role="tab"> <i
-						class="mdi mdi-account-circle-outline font-size-20"></i> <span
-						class="d-none d-sm-block">검색</span>
-				</a></li>
-				
-				<li class="nav-item"><a class="nav-link" data-bs-toggle="tab"
-					href="#messages" role="tab"> <i
-						class="mdi mdi-email-outline font-size-20"></i> <span
-						class="d-none d-sm-block">검색이력(이전검색)</span>
-				</a></li>
-			</ul>
-			<!-- Tab content -->
-			<div class="tab-content p-4">
-				<div class="tab-pane active" id="about" role="tabpanel">
-					<div>
-						<div>
+	<div class="col-lg-10">
+		<div class="row mt-0">
+			<div class="col-lg-12">
+				<div class="mt-0">
+					<!-- Nav tabs -->
+					<ul class="nav nav-tabs nav-tabs-custom nav-justified" role="tablist">
+						<li class="nav-item">
+							<a class="nav-link active" data-bs-toggle="tab" href="#search" role="tab" aria-selected="true">
+								<i class="mdi mdi-account-circle-outline font-size-20"></i> 
+								<span class="d-none d-sm-block">검색</span>
+							</a>
+						</li>
+						
+						<li class="nav-item">
+							<a class="nav-link" data-bs-toggle="tab" href="#history" role="tab" aria-selected="false">
+								<i class="mdi mdi-email-outline font-size-20"></i>
+								<span class="d-none d-sm-block">검색이력(이전검색)</span>
+							</a>
+						</li>
+					</ul>
+					
+					<!-- Tab panes -->
+					<div class="tab-content p-3 text-muted">
+						<div class="tab-pane active" id="search" role="tabpanel">
 							<h5 class="font-size-16 mb-4">검색결과</h5>
 							
-							<div class="d-flex flex-wrap gap-1">
-								<button type="button" class="btn btn-outline-dark waves-effect waves-light">검색초기화</button>
-								<button type="button" class="btn btn-outline-dark waves-effect waves-light">엑셀다운로드</button>
+							<div class="d-flex flex-wrap gap-1 mb-3">
+								<button type="button" class="btn btn-outline-success waves-effect waves-light">검색초기화</button>
+								<button type="button" class="btn btn-outline-success waves-effect waves-light">엑셀다운로드</button>
 							</div>
-							<hr/>
 							
-
 							<div class="table-responsive">
 								<table class="table table-nowrap table-hover mb-0">
 									<thead>
@@ -106,324 +105,65 @@
 										<tr>
 											<td scope="row" colspan="8" align="center" style="text-align: center;">검색 결과가 없습니다.</td>
 										</tr>
-										<!-- 
-										<tr>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td><a href="#" class="text-dark">Brand Logo Design</a></td>
-											<td>18 Jan, 2021</td>
-										</tr>
-										<tr>
-											<th scope="row">02</th>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td><a href="#" class="text-dark">Brand Logo Design</a></td>
-											<td>18 Jan, 2021</td>
-										</tr>
-										<tr>
-											<th scope="row">03</th>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td><a href="#" class="text-dark">Brand Logo Design</a></td>
-											<td>18 Jan, 2021</td>
-										</tr>
-										<tr>
-											<th scope="row">04</th>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td><a href="#" class="text-dark">Brand Logo Design</a></td>
-											<td>18 Jan, 2021</td>
-										</tr>
-										<tr>
-											<th scope="row">05</th>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td><a href="#" class="text-dark">Brand Logo Design</a></td>
-											<td>18 Jan, 2021</td>
-										</tr>
-										<tr>
-											<th scope="row">05</th>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td><a href="#" class="text-dark">Brand Logo Design</a></td>
-											<td>18 Jan, 2021</td>
-										</tr>
-										<tr>
-											<th scope="row">05</th>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td><a href="#" class="text-dark">Brand Logo Design</a></td>
-											<td>18 Jan, 2021</td>
-										</tr>
-										<tr>
-											<th scope="row">05</th>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td><a href="#" class="text-dark">Brand Logo Design</a></td>
-											<td>18 Jan, 2021</td>
-										</tr>
-										<tr>
-											<th scope="row">05</th>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td><a href="#" class="text-dark">Brand Logo Design</a></td>
-											<td>18 Jan, 2021</td>
-										</tr>
-										<tr>
-											<th scope="row">05</th>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td><a href="#" class="text-dark">Brand Logo Design</a></td>
-											<td>18 Jan, 2021</td>
-										</tr>
-										<tr>
-											<th scope="row">05</th>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td><a href="#" class="text-dark">Brand Logo Design</a></td>
-											<td>18 Jan, 2021</td>
-										</tr>
-										<tr>
-											<th scope="row">05</th>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td><a href="#" class="text-dark">Brand Logo Design</a></td>
-											<td>18 Jan, 2021</td>
-										</tr>
-										<tr>
-											<th scope="row">05</th>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td><a href="#" class="text-dark">Brand Logo Design</a></td>
-											<td>18 Jan, 2021</td>
-										</tr>
-										<tr>
-											<th scope="row">05</th>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td><a href="#" class="text-dark">Brand Logo Design</a></td>
-											<td>18 Jan, 2021</td>
-										</tr>
-										<tr>
-											<th scope="row">05</th>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td><a href="#" class="text-dark">Brand Logo Design</a></td>
-											<td>18 Jan, 2021</td>
-										</tr>
-										<tr>
-											<th scope="row">05</th>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td><a href="#" class="text-dark">Brand Logo Design</a></td>
-											<td>18 Jan, 2021</td>
-										</tr>
-										<tr>
-											<th scope="row">05</th>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td><a href="#" class="text-dark">Brand Logo Design</a></td>
-											<td>18 Jan, 2021</td>
-										</tr>
-										<tr>
-											<th scope="row">05</th>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td><a href="#" class="text-dark">Brand Logo Design</a></td>
-											<td>18 Jan, 2021</td>
-										</tr>
-										<tr>
-											<th scope="row">05</th>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td><a href="#" class="text-dark">Brand Logo Design</a></td>
-											<td>18 Jan, 2021</td>
-										</tr>
-										<tr>
-											<th scope="row">05</th>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td><a href="#" class="text-dark">Brand Logo Design</a></td>
-											<td>18 Jan, 2021</td>
-										</tr>
-										<tr>
-											<th scope="row">05</th>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td><a href="#" class="text-dark">Brand Logo Design</a></td>
-											<td>18 Jan, 2021</td>
-										</tr>
-										<tr>
-											<th scope="row">05</th>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td><a href="#" class="text-dark">Brand Logo Design</a></td>
-											<td>18 Jan, 2021</td>
-										</tr>
-										<tr>
-											<th scope="row">05</th>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td><a href="#" class="text-dark">Brand Logo Design</a></td>
-											<td>18 Jan, 2021</td>
-										</tr>
-										<tr>
-											<th scope="row">05</th>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td>18 Jan, 2021</td>
-											<td><a href="#" class="text-dark">Brand Logo Design</a></td>
-											<td>18 Jan, 2021</td>
-										</tr> -->
 									</tbody>
 								</table>
 							</div>
 						</div>
-					</div>
-				</div>
-				
-				
-				
-				<div class="tab-pane" id="messages" role="tabpanel">
-					<div>
-						<div data-simplebar style="max-height: 700px;">
-							<div class="me-3">
-								<div class="d-flex align-items-start border-bottom py-4">
-									<div class="flex-grow-1">
-										<h5 class="font-size-15 mt-0 mb-1">
-											2021.12.03 - 11:40:00 검색 (총 <font color="red">552</font>건) <small class="text-muted float-end">3시간전</small>
-											<a href="javascript: void(0);" class="text-muted font-13 d-inline-block"><i class="mdi mdi-book-clock-outline"></i> 목록 확인</a>
-										</h5>
-										
-										
-									</div>
+						<div class="tab-pane" id="history" role="tabpanel">
+							<div class="d-flex align-items-start border-bottom py-4">
+								<div class="flex-grow-1">
+									<h5 class="font-size-15 mt-0 mb-1">
+										2021.12.03 - 11:40:00 검색 (총 <font color="red">552</font>건) <small class="text-muted float-end">3시간전</small>
+										<a href="javascript: void(0);" class="text-muted font-13 d-inline-block"><i class="mdi mdi-book-clock-outline"></i> 목록 확인</a>
+									</h5>
 								</div>
+							</div>
 								
-								<div class="d-flex align-items-start border-bottom py-4">
-									<div class="flex-grow-1">
-										<h5 class="font-size-15 mt-0 mb-1">
-											2021.12.03 - 10:20:11 검색 (총 <font color="red">580</font>건)<small class="text-muted float-end">6시간전</small>
-											<a href="javascript: void(0);" class="text-muted font-13 d-inline-block"><i class="mdi mdi-book-clock-outline"></i> 목록 확인</a>
-										</h5>
-									</div>
+							<div class="d-flex align-items-start border-bottom py-4">
+								<div class="flex-grow-1">
+									<h5 class="font-size-15 mt-0 mb-1">
+										2021.12.03 - 10:20:11 검색 (총 <font color="red">580</font>건)<small class="text-muted float-end">6시간전</small>
+										<a href="javascript: void(0);" class="text-muted font-13 d-inline-block"><i class="mdi mdi-book-clock-outline"></i> 목록 확인</a>
+									</h5>
 								</div>
-								
-								<div class="d-flex align-items-start border-bottom py-4">
-									<div class="flex-grow-1">
-										<h5 class="font-size-15 mt-0 mb-1">
-											2021.12.02 - 18:30:00 검색 (총 <font color="red">1819</font>건)<small class="text-muted float-end">1일전</small>
-											<a href="javascript: void(0);" class="text-muted font-13 d-inline-block"><i class="mdi mdi-book-clock-outline"></i> 목록 확인</a>
-										</h5>
-									</div>
+							</div>
+							
+							<div class="d-flex align-items-start border-bottom py-4">
+								<div class="flex-grow-1">
+									<h5 class="font-size-15 mt-0 mb-1">
+										2021.12.02 - 18:30:00 검색 (총 <font color="red">1819</font>건)<small class="text-muted float-end">1일전</small>
+										<a href="javascript: void(0);" class="text-muted font-13 d-inline-block"><i class="mdi mdi-book-clock-outline"></i> 목록 확인</a>
+									</h5>
 								</div>
-								
-								<div class="d-flex align-items-start border-bottom py-4">
-									<div class="flex-grow-1">
-										<h5 class="font-size-15 mt-0 mb-1">
-											2021.12.02 - 15:28:29검색 (총 <font color="red">322</font>건)<small class="text-muted float-end">1일전</small>
-											<a href="javascript: void(0);" class="text-muted font-13 d-inline-block"><i class="mdi mdi-book-clock-outline"></i> 목록 확인</a>
-										</h5>
-									</div>
+							</div>
+							
+							<div class="d-flex align-items-start border-bottom py-4">
+								<div class="flex-grow-1">
+									<h5 class="font-size-15 mt-0 mb-1">
+										2021.12.02 - 15:28:29검색 (총 <font color="red">322</font>건)<small class="text-muted float-end">1일전</small>
+										<a href="javascript: void(0);" class="text-muted font-13 d-inline-block"><i class="mdi mdi-book-clock-outline"></i> 목록 확인</a>
+									</h5>
 								</div>
-								
-								<div class="d-flex align-items-start border-bottom py-4">
-									<div class="flex-grow-1">
-										<h5 class="font-size-15 mt-0 mb-1">
-											2021.12.01 - 13:30:29 검색 (총 <font color="red">105</font>건)<small class="text-muted float-end">2일전</small>
-											<a href="javascript: void(0);" class="text-muted font-13 d-inline-block"><i class="mdi mdi-book-clock-outline"></i> 목록 확인</a>
-										</h5>
-									</div>
+							</div>
+							
+							<div class="d-flex align-items-start border-bottom py-4">
+								<div class="flex-grow-1">
+									<h5 class="font-size-15 mt-0 mb-1">
+										2021.12.01 - 13:30:29 검색 (총 <font color="red">105</font>건)<small class="text-muted float-end">2일전</small>
+										<a href="javascript: void(0);" class="text-muted font-13 d-inline-block"><i class="mdi mdi-book-clock-outline"></i> 목록 확인</a>
+									</h5>
 								</div>
-								
 							</div>
 						</div>
-						<!-- end .border-->
 					</div>
 				</div>
-			</div>
+			</div><!-- End col -->
 		</div>
 	</div>
 </div>
 <!-- end main content-->
 
 <script type="text/javascript">
-
-$( document ).ready(function() {
-	$("#searchDiv").removeClass("flex");
-});
-
-
 var MemberOBJECT = {
 	naverSearch : function (){
 		var form = document.getElementById("naverSearch");

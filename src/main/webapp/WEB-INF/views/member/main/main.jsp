@@ -15,7 +15,6 @@
  ***************************************
  --%>
  
- 
 <div class="row mt-5 mb-5" >
 	<div class="col-lg-12">
 		<div class="row mt-5 mb-5">
@@ -23,33 +22,33 @@
 			</div>
 			<div class="col-lg-10 mt-5 mb-5">
 				<div class="row g-0 mt-5 mb-5">
-	                <div class="col-lg-6  order-2 order-lg-1 mt-5 mb-5">
-	                    <div class="p-lg-5 p-4 mt-5">
-	                        <div class="maintenance-box">
-	                            <div class="d-flex">
-	                                <div>
-	                                	<br><br><br><br>
-	                                    <h1 class="mb-3">네이버 최저가를 가장 쉽고 빠르게 찾고 싶을때?</h1>
-		                                <p class="text-muted text-sm-end">실시간으로 최저가 정보가 한번에!</p>
-	                                </div>
-	                            </div>
-	                        </div>
-	    
-	                    </div>
-	                </div>
-	                <div class="col-lg-6 order-1 order-lg-2 mt-5 mb-5">
-	                    <div class="p-lg-0 p-0 bg h-100">
-	                        <div class="maintenance-img">
-	                            <img src="/memberAssets/images/maintenance.png" alt="maintenance Image" class="img-fluid mx-auto d-block">
-	                        </div>
-	                    </div>
-	                </div>
-            	</div>
+					<div class="col-lg-6  order-2 order-lg-1 mt-5 mb-5">
+						<div class="p-lg-5 p-4 mt-5">
+							<div class="maintenance-box">
+								<div class="d-flex">
+									<div>
+										<br><br><br><br>
+									<h1 class="mb-3">네이버 최저가를 가장 쉽고 빠르게 찾고 싶을때?</h1>
+								<p class="text-muted text-sm-end">실시간으로 최저가 정보가 한번에!</p>
+									</div>
+								</div>
+							</div>
+						
+						</div>
+					</div>
+					<div class="col-lg-6 order-1 order-lg-2 mt-5 mb-5">
+						<div class="p-lg-0 p-0 bg h-100">
+							<div class="maintenance-img">
+								<img src="/memberAssets/images/maintenance.png" alt="maintenance Image" class="img-fluid mx-auto d-block">
+						</div>
+						</div>
+					</div>
+				</div>
 			</div>			
 			<div class="col-lg-1 mt-5 mb-5">
 			</div>
 		</div>
-		<div class="row mt-5 mb-5">
+		<div class="row mt-5 mb-5" id="guid_area">
 			<div class="col-lg-1 mt-5 mb-5">
 			</div>
 			<div class="col-lg-10 mt-5 mb-5">
@@ -123,7 +122,7 @@
 			</div>
 		</div>
 		
-		<div class="row mt-5 mb-5">
+		<div class="row mt-5 mb-5" id="payment_area">
 			<div class="col-lg-1 mt-5 mb-5">
 			</div>
 			<div class="col-lg-10 mt-5 mb-5">
@@ -164,7 +163,7 @@
 								</div>
 								
 								<div class="text-center plan-btn mt-4 mb-2">
-									<a href="#" class="btn btn-primary waves-effect waves-light">회원가입하기</a>
+									<a href="#" class="btn btn-outline-success waves-effect waves-light">회원가입하기</a>
 								</div>
 							</div>
 						</div>
@@ -188,7 +187,7 @@
 								</div>
 								
 								<div class="text-center plan-btn mt-4 mb-2">
-									<a href="/member/payment/page" class="btn btn-primary waves-effect waves-light">결제하기</a>
+									<a href="/member/payment/page" class="btn btn-outline-success waves-effect waves-light">결제하기</a>
 								</div>
 							</div>
 						</div>
@@ -212,7 +211,7 @@
 								</div>
 								
 								<div class="text-center plan-btn mt-4 mb-2">
-									<a href="#" class="btn btn-primary waves-effect waves-light">결제하기</a>
+									<a href="#" class="btn btn-outline-success waves-effect waves-light">결제하기</a>
 								</div>
 							</div>
 						</div>

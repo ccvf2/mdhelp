@@ -152,7 +152,7 @@ body[data-topbar="dark"] .header-profile-user {
   background-color: rgba(255, 255, 255, 0.25); }
 
 body[data-topbar="dark"] .noti-icon i {
-  color: #e9ecef; }
+  color: #00bbbb; }
 
 body[data-topbar="dark"] .logo-dark {
   display: none; }

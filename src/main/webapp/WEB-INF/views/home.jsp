@@ -69,5 +69,10 @@
 	관리자 계정 : ccvf2@naver.com / 123456<br/>
 	사용자 계정 : user@user.com / 123456<br/>
 	디비 참조
+	<hr/>
+	<h2>공통 모달 호출 방법</h2>
+	modalPopup.urlModalOpen("url","전달 파라메터","닫을떄 호출될 콜백");<br/>
+	ex : modalPopup.urlModalOpen("/member/popup/payment/couponModal",{"ddd":"3434"},function(){console.log("닫기콜백");});<br/>
+	참조예시: /MDHelp/src/main/webapp/WEB-INF/views/member/payment/paymentPage2.jsp<br/>
 </body>
 </html>

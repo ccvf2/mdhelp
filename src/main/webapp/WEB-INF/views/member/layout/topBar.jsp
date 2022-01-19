@@ -19,17 +19,44 @@
  --%>
  
  <style>
- .btn-outline-success:hover {
-    color: #fff;
+ /* .btn-outline-success:hover {
+    color: #00bbbb;
     background-color: #00bbbb;
     border-color: #00bbbb;
+} */
+
+.btn-outline-success {
+  color: #fff;
+  border-color: #00bbbb;
+  background-color: #00bbbb;
+}
+
+.btn-outline-success:hover {
+    color: #fff;
+    background-color: #00a2a2;
+    border-color: #00a2a2;
+}
+
+.a_login {
+  color: #495057;
+  text-decoration: none;
+  margin-right: 20px; 
+  font-size: 53%; 
+  font-weight: normal; 
+}
+.a_login:hover {
+  color: #00bbbb;
+  text-decoration: underline;
+  margin-right: 20px; 
+  font-size: 53%; 
+  font-weight: normal; 
 }
  </style>
  
  <script>
  	$(function () {
 	  	$('[data-toggle="tooltip"]').tooltip();
-	})
+	});
  </script>
  
 <div class="navbar-header">
@@ -130,20 +157,18 @@
 
 
 <!-- 로그인전 상단 노출 -->
+<c:choose>
+	<c:when test='${loginName eq "" }'>
 		<div class="dropdown d-none d-lg-inline-block ms-1">
-			<!-- <button type="button" class="btn header-item noti-icon waves-effect" data-toggle="fullscreen">
-				<i class="mdi mdi-fullscreen"></i>
-			</button> -->
 			<h2 class="mb-3" style="margin-top: 10px;">
-				<small class="text-muted"><font style="color: #495057; margin-right: 20px; font-size: 67%; font-weight: normal;;">로그인</font></small>
-				<!--<button type="button" class="btn btn-outline-secondary" style="background-color: #fff; border-color: #fff; margin-right: 40px; font-size: 16px; color: #00bbbb; font-weight: bold;">지금시작하기</button>  -->
+				<a href="/member/sign/signin" class="a_login">로그인</a><!-- <font style="color: #495057; margin-right: 20px; font-size: 67%; font-weight: normal;">로그인</font> -->
 				<button type="button" class="btn btn-outline-success waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="여기 눌러">지금시작하기</button>
-			</h2> 
-			
+			</h2>
 		</div>
-
-		
-<!-- 알림 
+</c:when>
+	<c:otherwise>
+		<%-- ${loginName}로 로그인 --%>
+		<!-- 알림  -->
 		<div class="dropdown d-inline-block">
 			<button type="button" class="btn header-item noti-icon waves-effect" id="page-header-notifications-dropdown"
 			data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -196,41 +221,6 @@
 							</div>
 						</div>
 					</a>
-					<a href="" class="text-reset notification-item d-block ">
-						<div class="d-flex">
-							<div class="flex-shrink-0 me-3">
-								<div class="avatar-xs">
-									<span class="avatar-title bg-success rounded-circle font-size-16">
-										<i class="bx bx-badge-check"></i>
-									</span>
-								</div>
-							</div>
-				
-							<div class="flex-grow-1">
-								<h6 class="mt-0 mb-1" key="t-shipped">Your item is shipped</h6>
-								<div class="font-size-13 text-muted">
-									<p class="mb-1" key="t-grammer">If several languages coalesce the grammar</p>
-									<p class="mb-0 font-size-12"><i class="mdi mdi-clock-outline"></i> <span key="t-min-ago">3 hours ago</span></p>
-								</div>
-							</div>
-						</div>
-					</a>
-
-					<a href="" class="text-reset notification-item d-block ">
-						<div class="d-flex">
-							<div class="flex-shrink-0 me-3">
-								<img src="/memberAssets/images/users/avatar-4.jpg" class="rounded-circle avatar-xs" alt="user-pic">
-							</div>
-				
-							<div class="flex-grow-1">
-								<h6 class="mt-0 mb-1">Salena Layfield</h6>
-								<div class="font-size-13 text-muted">
-									<p class="mb-1" key="t-occidental">As a skeptical Cambridge friend of mine occidental.</p>
-									<p class="mb-0 font-size-12"><i class="mdi mdi-clock-outline"></i> <span key="t-hours-ago">10 hours ago</span></p>
-								</div>
-							</div>
-						</div>
-					</a>
 				</div>
 				<div class="p-2 border-top d-grid">
 					<a class="btn btn-sm btn-link font-size-14 text-center" href="javascript:void(0)">
@@ -239,19 +229,18 @@
 				</div>
 			</div>
 		</div>
--->
-
-<%-- 프로필 창 
+		
+		<%-- 프로필 창  --%>
 		<div class="dropdown d-inline-block">
 			<button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
 			data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				<img class="rounded-circle header-profile-user" src="/memberAssets/images/users/avatar-1.jpg"
 					alt="Header Avatar">
-				<span class="d-none d-xl-inline-block ms-1">${loginInfo.fullName}</span>
+<%-- 				<span class="d-none d-xl-inline-block ms-1">${loginInfo.fullName}</span> --%>
 				<i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
 			</button>
 			<div class="dropdown-menu dropdown-menu-end">
-				<!-- item--
+				<!-- item-->
 				<h6 class="dropdown-header">반갑습니다. ${loginInfo.fullName} 님</h6>
 				<a class="dropdown-item" href="#"><i class="mdi mdi-account-circle text-muted font-size-16 align-middle me-1"></i> <span class="align-middle" key="t-profile">Profile</span></a>
 				<a class="dropdown-item" href="#"><i class="mdi mdi-message-text-outline text-muted font-size-16 align-middle me-1"></i> <span class="align-middle" key="t-messages">Messages</span></a>
@@ -270,7 +259,14 @@
 				<a class="dropdown-item" href="/member/sign/signout"><i class="mdi mdi-logout text-muted font-size-16 align-middle me-1"></i> <span class="align-middle" key="t-logout">Logout</span></a>
 			</div>
 		</div>
- --%>		
+	</c:otherwise>
+</c:choose>		
+
+		
+		
+
+
+		
 <%--
 		<div class="dropdown d-inline-block">
 			<button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect">

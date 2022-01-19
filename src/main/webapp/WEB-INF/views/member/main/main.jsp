@@ -15,7 +15,6 @@
  ***************************************
  --%>
  
- 
 <div class="row mt-5 mb-5" >
 	<div class="col-lg-12">
 		<div class="row mt-5 mb-5">
@@ -49,7 +48,7 @@
 			<div class="col-lg-1 mt-5 mb-5">
 			</div>
 		</div>
-		<div class="row mt-5 mb-5">
+		<div class="row mt-5 mb-5" id="guid_area">
 			<div class="col-lg-1 mt-5 mb-5">
 			</div>
 			<div class="col-lg-10 mt-5 mb-5">
@@ -123,7 +122,7 @@
 			</div>
 		</div>
 		
-		<div class="row mt-5 mb-5">
+		<div class="row mt-5 mb-5" id="payment_area">
 			<div class="col-lg-1 mt-5 mb-5">
 			</div>
 			<div class="col-lg-10 mt-5 mb-5">
@@ -164,7 +163,7 @@
 								</div>
 								
 								<div class="text-center plan-btn mt-4 mb-2">
-									<a href="#" class="btn btn-primary waves-effect waves-light">회원가입하기</a>
+									<a href="#" class="btn btn-outline-success waves-effect waves-light">회원가입하기</a>
 								</div>
 							</div>
 						</div>
@@ -188,7 +187,7 @@
 								</div>
 								
 								<div class="text-center plan-btn mt-4 mb-2">
-									<a href="/member/payment/page" class="btn btn-primary waves-effect waves-light">결제하기</a>
+									<a href="/member/payment/page" class="btn btn-outline-success waves-effect waves-light">결제하기</a>
 								</div>
 							</div>
 						</div>
@@ -212,7 +211,7 @@
 								</div>
 								
 								<div class="text-center plan-btn mt-4 mb-2">
-									<a href="#" class="btn btn-primary waves-effect waves-light">결제하기</a>
+									<a href="#" class="btn btn-outline-success waves-effect waves-light">결제하기</a>
 								</div>
 							</div>
 						</div>

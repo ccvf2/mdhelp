@@ -6,6 +6,9 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.Locale;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,6 +20,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.mdhelp.common.model.CustomUserDetails;
@@ -88,8 +92,16 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "member/main", method = RequestMethod.GET)
-	public ModelAndView signUpPage(Locale locale, Model model) {
+	public ModelAndView memberMainPage(Locale locale, Model model) {
 		ModelAndView mav  = new ModelAndView();
+		mav.setViewName("member/main/main");
+		return mav;
+	}
+	@RequestMapping(value = "member/main", method = RequestMethod.POST)
+	public ModelAndView memberMainPageTarget(HttpServletRequest request, HttpServletResponse response
+			,@RequestParam(value="goTarget", defaultValue = "") String goTarget) {
+		ModelAndView mav  = new ModelAndView();
+		mav.addObject("goTarget", goTarget);
 		mav.setViewName("member/main/main");
 		return mav;
 	}

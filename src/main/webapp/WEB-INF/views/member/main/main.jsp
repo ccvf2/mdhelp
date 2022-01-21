@@ -150,7 +150,7 @@
 				</div>
 				
 				<div class="row g-0">
-					<div class="col-xl-4 col-md-6">
+					<div class="col-xl-4 col-md-4">
 						<div class="card plan-box rounded-start rounded-0">
 							<div class="card-body p-4">
 								<div class="text-center plan-btn mt-4 mb-2">
@@ -173,7 +173,7 @@
 						</div>
 					</div>
 					
-					<div class="col-xl-4 col-md-6">
+					<div class="col-xl-4 col-md-4">
 						<div class="card plan-box rounded-0">
 							<div class="card-body p-4">
 								<div class="text-center plan-btn mt-4 mb-2">
@@ -191,14 +191,14 @@
 								</div>
 								
 								<div class="text-center plan-btn mt-4 mb-2">
-									<a href="/member/payment/page" class="btn btn-outline-success waves-effect waves-light">결제하기</a>
+									<a href="javascript:$MAIN.go_ProductPayment('PAYLEV02');" class="btn btn-outline-success waves-effect waves-light">결제하기</a>
 								</div>
 							</div>
 						</div>
 					</div>
 					
-					<div class="col-xl-4 col-md-6">
-						<div class="card plan-box rounded-0">
+					<div class="col-xl-4 col-md-4">
+						<div class="card plan-box rounded-0 rounded-end">
 							<div class="card-body p-4">
 								<div class="text-center plan-btn mt-4 mb-2">
 									<h2 class="mb-1">무제한 이용권</h2>
@@ -215,13 +215,13 @@
 								</div>
 								
 								<div class="text-center plan-btn mt-4 mb-2">
-									<a href="#" class="btn btn-outline-success waves-effect waves-light">결제하기</a>
+									<a href="javascript:$MAIN.go_ProductPayment('PAYLEV03');" class="btn btn-outline-success waves-effect waves-light">결제하기</a>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>			
+			</div>
 			<div class="col-lg-1 mt-5 mb-5">
 			</div>
 		</div>
@@ -230,5 +230,28 @@
 
 
 <script type="text/javascript">
+$(document).ready(function(){
+	var goTarget = JSStringUtils.trimToEmpty("${goTarget}");
+	<%-- goTarget = "payment_area" || "guid_area" --%>
+	if(goTarget != ""){
+		$commonPage.mainPageInnerMoving(goTarget);
+	}
+});
 
+
+const $MAIN ={
+	go_ProductPayment : function(product){
+		var productArr = [];
+		productArr.push(product);
+		var productCntArr = [];
+		productCntArr.push(1);
+			
+		var goURL	= "/member/payment/page";
+		var params	= {
+			productKey : productArr
+			, productCount:productCntArr
+		};
+		$commonPage.url_request_post(goURL,params,true);
+	}
+};
 </script>

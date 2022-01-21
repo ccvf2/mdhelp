@@ -108,6 +108,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 				.antMatchers("/").permitAll()
 				.antMatchers("/test/**").permitAll()
 				.antMatchers("/member/main").permitAll()
+				.antMatchers("/member/search/naver").permitAll()
 				//.antMatchers("/member/sign/**").permitAll()
 				.antMatchers("/member/sign/signout").hasAnyAuthority("USERLEV1,USERLEV2")
 				.antMatchers("/member/sign/signup").hasAuthority("ROLE_ANONYMOUS")

@@ -19,13 +19,12 @@
  --%>
  
  <style>
-/** <%--
+/* 
  .btn-outline-success:hover {
     color: #00bbbb;
     background-color: #00bbbb;
     border-color: #00bbbb;
-} 
---%> */
+}  */
 
 .btn-outline-success {
   color: #fff;

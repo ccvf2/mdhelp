@@ -135,10 +135,14 @@
 							<h1 class="mb-1">업무루방! 네이버 최저가 데이터 수집,</h1>
 							<h1 class="mb-5">지금 무료로 시작해보세요.</h1>
 							
-							<button type="button" class="btn btn-outline-success waves-effect waves-light mt-3" data-toggle="tooltip" data-placement="bottom">월간결제</button>
-							&nbsp;&nbsp;
-							<button type="button" class="btn btn-outline-success waves-effect waves-light mt-3" data-toggle="tooltip" data-placement="bottom">연간결제</button>
-							
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked>
+								<label class="form-check-label" for="inlineRadio1">월간결제</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+								<label class="form-check-label" for="inlineRadio2">연간결제</label>
+							</div>
 						</div>
 					</div>
 					<div class="col-lg-3 mt-5">

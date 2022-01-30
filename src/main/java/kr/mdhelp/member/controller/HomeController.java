@@ -24,6 +24,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.mdhelp.common.model.CustomUserDetails;
+import kr.mdhelp.common.model.MailDTO;
+import kr.mdhelp.common.utils.MailSender;
 
 /**
  * Handles requests for the application home page.
@@ -39,7 +41,7 @@ public class HomeController {
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
+		logger.debug("Welcome home! The client locale is {}.", locale);
 		
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
@@ -104,5 +106,32 @@ public class HomeController {
 		mav.addObject("goTarget", goTarget);
 		mav.setViewName("member/main/main");
 		return mav;
+	}
+	@RequestMapping(value = "member/gomail", method = RequestMethod.GET)
+	public String mailsendrTest(HttpServletRequest request, HttpServletResponse response) {
+
+		logger.debug("=============================객체생성");
+		MailSender mailSend = new MailSender();
+		
+		MailDTO mail = new MailDTO();
+		mail.setMail_sender_email("webmaster@supergo.kr");/**	[필수]보내는사람 메일주소(발신자) 미기재시 "webmaster@supergo.kr" */
+		mail.setMail_receiver_email("ccvf2@naver.com");/**		[필수]받는사람 메일주소(수신자) */
+		mail.setMail_sender_name("관리자");/** 					[옵션]보내는사람 이름(발신자) */
+		mail.setMail_receiver_name("고객님");/**					[옵션]받는사람 이름(수신자) */
+		mail.setMail_title("메일 제목 라인");/**					[필수]제목 */
+		mail.setMail_content("메일내용여기에기제");/**				[필수]내용 */
+		
+		logger.debug("=============================객체생성 완료");
+		int checkMail = mailSend.mailSender(mail);
+		logger.debug("=============================객체생성 함수호출완료");
+		logger.debug("=============================객체생성 함수호출완료 result : [{}]",checkMail);
+		if(checkMail > 0) {
+			logger.debug("=============================메일이 보내짐");
+		}
+		
+		
+		
+		
+		return "home";
 	}
 }

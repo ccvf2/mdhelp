@@ -54,6 +54,7 @@
 			<beans:list>
 				<beans:value>classpath:kr/mdhelp/config/paymentProvider.properties</beans:value>
 				<beans:value>classpath:kr/mdhelp/config/ServerSettings.properties</beans:value>
+				<beans:value>classpath:kr/mdhelp/config/mail_info.properties</beans:value>
 			</beans:list>
 		</beans:property>
 	</beans:bean>

@@ -65,6 +65,7 @@
 	<a href="/member/search/naver">사용자-검색화면</a><br/>
 	<a href="/member/sign/signup">사용자-회원가입</a><br/>
 	<a href="/member/payment/page">결제모듈 연동</a><br/>
+	<a href="/member/gomail">메일보내기</a><br/>
 	<hr/>
 	관리자 계정 : ccvf2@naver.com / 123456<br/>
 	사용자 계정 : user@user.com / 123456<br/>

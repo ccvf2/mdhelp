@@ -102,11 +102,11 @@
 		<c:choose>
 			<c:when test='${loginInfo eq "anonymousUser" or loginInfo eq ""}'>
 				<div class="d-none d-lg-inline-block ms-1">
-					<!-- <h2 class="mb-3" style="margin-top: 10px;"> -->
-						<%-- <a href="/member/sign/signin" class="a_login">로그인</a>--%><%-- <font style="color: #495057; margin-right: 20px; font-size: 67%; font-weight: normal;">로그인</font> --%>
-						<button onclick="$commonPage.url_request_get('/member/sign/signin')" type="button" class="btn btn-outline-success waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="로그인">로그인</button>
+					<%-- <h2 class="mb-3" style="margin-top: 10px;"> --%>
+						<a href="/member/sign/signin" class="m-3"  data-toggle="tooltip" data-placement="bottom" title="로그인">로그인</a>
+						<%-- <button onclick="$commonPage.url_request_get('/member/sign/signin')" type="button" class="btn btn-outline-success waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="로그인">로그인</button> --%>
 						<button type="button" class="btn btn-outline-success waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="여기 눌러">지금시작하기</button>
-					<!-- </h2> -->
+					<%-- </h2> --%>
 				</div>
 			</c:when>
 			<c:otherwise>
@@ -116,7 +116,7 @@
 					<button type="button" class="btn header-item noti-icon waves-effect" id="page-header-notifications-dropdown"
 					data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						<i class="mdi mdi-bell"></i>
-						<span class="badge bg-danger rounded-pill">3</span>
+						<%--<span class="badge bg-danger rounded-pill">3</span>--%>
 					</button>
 					<div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
 						aria-labelledby="page-header-notifications-dropdown">

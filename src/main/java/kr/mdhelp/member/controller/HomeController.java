@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -36,6 +37,10 @@ public class HomeController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	@Value("${service.mode}")
 	private String SERVICE_MODE;
+	
+	
+	@Autowired
+	MailSender mailSend;
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
@@ -111,7 +116,7 @@ public class HomeController {
 	public String mailsendrTest(HttpServletRequest request, HttpServletResponse response) {
 
 		logger.debug("=============================객체생성");
-		MailSender mailSend = new MailSender();
+		//MailSender mailSend = new MailSender();
 		
 		MailDTO mail = new MailDTO();
 		mail.setMail_sender_email("webmaster@supergo.kr");/**	[필수]보내는사람 메일주소(발신자) 미기재시 "webmaster@supergo.kr" */

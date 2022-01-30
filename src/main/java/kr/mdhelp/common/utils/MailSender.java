@@ -24,65 +24,36 @@ import javax.mail.internet.MimeMultipart;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import kr.mdhelp.common.model.MailDTO;
 
+@Component
 public class MailSender {
 	private static final Logger logger = LoggerFactory.getLogger(MailSender.class);
 	private static Message message = null;
 	private static int totalSender=0;
 	
-	private static boolean serverInfoRoad =false; 
-	private static String smtpHost;
-	private static String smtpPort;
-	private static String smtpAuth;
-	private static String smtpSslTrust;
-	private static String smtpStarttlsEnable;
-	private static String serverLoginID;
-	private static String serverLoginPWD;
+	//private static boolean serverInfoRoad =false;
 	
-	public boolean serverInfoInit(){
-		boolean result = false;
-		if(serverInfoRoad) {
-			result=true;
-		}else {
-			Properties properties = new Properties();
-			try {
-				properties.load(new FileReader("C:\\MDH\\workspace\\MDHelp\\src\\main\\java\\kr\\mdhelp\\config\\mail_info.properties"));
-				for (Object object: properties.keySet()) {
-					String p_key=StringUtils.trimToEmpty( String.valueOf(object) );
-					String p_value=StringUtils.trimToEmpty( String.valueOf(properties.get(object)) );
-					logger.debug("=============================properties [{}]:[{}]",p_key,p_value);
-					if(StringUtils.equals(p_key, "mailServer.info.smtp.host")) {
-						this.smtpHost = p_value;
-					}else if(StringUtils.equals(p_key, "mailServer.info.smtp.port")) {
-						this.smtpPort = p_value;
-					}else if(StringUtils.equals(p_key, "mailServer.info.smtp.auth")) {
-						this.smtpAuth = p_value;
-					}else if(StringUtils.equals(p_key, "mailServer.info.smtp.ssl.trust")) {
-						this.smtpSslTrust = p_value;
-					}else if(StringUtils.equals(p_key, "mailServer.info.smtp.starttls.enable")) {
-						this.smtpStarttlsEnable = p_value;
-					}else if(StringUtils.equals(p_key, "mailServer.info.auth.id")) {
-						this.serverLoginID = p_value;
-					}else if(StringUtils.equals(p_key, "mailServer.info.auth.password")) {
-						this.serverLoginPWD = p_value;
-					}else {
-						
-					}
-				}
-				result=true;
-			} catch (FileNotFoundException e) {
-				result = false;
-				logger.error(e.getMessage());
-			} catch (IOException e) {
-				result = false;
-				logger.error(e.getMessage());
-			}
-		}
-		return result;
-	}
+	@Value("${mailServer.info.smtp.host}")
+	private String smtpHost;
+	@Value("${mailServer.info.smtp.port}")
+	private String smtpPort;
+	@Value("${mailServer.info.smtp.auth}")
+	private String smtpAuth;
+	@Value("${mailServer.info.smtp.ssl.trust}")
+	private String smtpSslTrust;
+	@Value("${mailServer.info.smtp.starttls.enable}")
+	private String smtpStarttlsEnable;
+	@Value("${mailServer.info.auth.id}")
+	private String serverLoginID;
+	@Value("${mailServer.info.auth.password}")
+	private String serverLoginPWD;
 	
+	@Value("${service.mode}")
+	private String SERVICE_MODE;
 	
 	/**
 	 * @author 배성욱
@@ -95,11 +66,11 @@ public class MailSender {
 	 * @return int
 	 */
 	public int mailSender(MailDTO mailDto) {
-		boolean initOk = serverInfoInit();
+		//boolean initOk = serverInfoInit();
+		boolean initOk = true;
 		int result = -2;
 		if(initOk) {
 			logger.debug("=============================connectSMTP S");
-			//logger.debug("=============================connect get mailHost :[{}]",mailHost);
 			boolean connection = connectSMTP();
 			logger.debug("=============================connectSMTP E");
 			//서버연결이 잘되면 실행되면 메일을 작성함
@@ -123,16 +94,7 @@ public class MailSender {
 	
 	private boolean connectSMTP(){
 		boolean connectionResult=false;
-		Properties prop = new Properties();
-		logger.error("========== get propertise 데이터 smtpHost :[{}]",smtpHost);
-		logger.error("========== get propertise 데이터 smtpPort :[{}]",smtpPort);
-		logger.error("========== get propertise 데이터 smtpAuth :[{}]",smtpAuth);
-		logger.error("========== get propertise 데이터 smtpSslTrust :[{}]",smtpSslTrust);
-		logger.error("========== get propertise 데이터 smtpStarttlsEnable :[{}]",smtpStarttlsEnable);
-		logger.error("========== get propertise 데이터 serverLoginID :[{}]",serverLoginID);
-		logger.error("========== get propertise 데이터 serverLoginPWD :[{}]",serverLoginPWD);
-		
-		
+		Properties prop = new Properties();		
 		////사내 메일 망일 경우 smtp host 만 설정해도 됨 (특정 포트가 아닐경우)
 		prop.put("mail.smtp.host", smtpHost);
 		prop.put("mail.smtp.port", smtpPort);
@@ -145,11 +107,9 @@ public class MailSender {
 		//prop.setProperty("mail.smtp.socketFactory.class","javax.net.ssl.SSLSocketFactory");
 		
 		//SMTP 서버 계정 인증정보
-		MyAuthenticator authenticator = new MyAuthenticator(serverLoginID, serverLoginPWD);
+		MailServerAuthenticator authenticator = new MailServerAuthenticator(serverLoginID, serverLoginPWD);
 		try{
-		logger.error("========== Mail Server getDefaultInstance S");
-		Session session = Session.getDefaultInstance(prop, authenticator);
-		logger.error("========== Mail Server getDefaultInstance E");
+			Session session = Session.getDefaultInstance(prop, authenticator);
 			message = new MimeMessage(session);
 			connectionResult=true;
 		} catch (Exception e) {
@@ -159,7 +119,7 @@ public class MailSender {
 		return connectionResult;
 	}
 	
-	private static boolean createMail(MailDTO mailDto){
+	private boolean createMail(MailDTO mailDto){
 		MimeBodyPart mbp = new MimeBodyPart();
 		boolean createResult=false;
 		try{
@@ -254,10 +214,10 @@ public class MailSender {
 	}
 
 }
-class MyAuthenticator extends Authenticator {
+class MailServerAuthenticator extends Authenticator {
 	private String id;
 	private String pw;
-	public MyAuthenticator(String id, String pw) {
+	public MailServerAuthenticator(String id, String pw) {
 		this.id = id;
 		this.pw = pw;
 	}
